@@ -19,7 +19,7 @@ const realms = [
 module.exports = ({ projectName, identityProviders, validRedirectUrls, environments }) => {
   const targetRealm = realms.find((realm) => _.isEqual(realm.idp, _.sortBy(identityProviders)));
 
-  if (!targetRealm) return [];
+  if (!targetRealm) return null;
 
   const SEPARATOR = '\n';
 
