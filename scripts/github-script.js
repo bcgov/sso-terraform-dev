@@ -12,79 +12,84 @@ module.exports = async ({ github, context }) => {
   const repo = repository.name;
 
   let { projectName, identityProviders, validRedirectUrls, environments } = inputs;
+
+  console.log(projectName, identityProviders, validRedirectUrls, environments);
+
   projectName = _.kebabCase(projectName);
   identityProviders = JSON.parse(identityProviders);
   validRedirectUrls = JSON.parse(validRedirectUrls);
   environments = JSON.parse(environments);
 
-  const { realm, paths } = generateClients({
+  const info = generateClients({
     projectName,
     identityProviders,
     validRedirectUrls,
     environments,
   });
 
-  try {
-    const mainRef = await github.git
-      .getRef({
-        owner,
-        repo,
-        ref: `heads/${repository.default_branch}`,
-      })
-      .then(
-        (res) => res.data,
-        (err) => null
-      );
+  if (!info) throw Error('failed in client creation');
 
-    if (!mainRef) {
-      console.error('no main branch');
-    }
+  const { realm, paths } = info;
 
-    const prBranchName = `request/${projectName}`;
+  const mainRef = await github.git
+    .getRef({
+      owner,
+      repo,
+      ref: `heads/${repository.default_branch}`,
+    })
+    .then(
+      (res) => res.data,
+      (err) => null
+    );
 
-    let prRef = await github.git
-      .getRef({
-        owner,
-        repo,
-        ref: `heads/${prBranchName}`,
-      })
-      .then(
-        (res) => res.data,
-        (err) => null
-      );
+  if (!mainRef) {
+    console.error('no main branch');
+  }
 
-    if (!prRef) {
-      await github.git.createRef({
-        owner,
-        repo,
-        ref: `refs/heads/${prBranchName}`,
-        sha: mainRef.object.sha,
-      });
-    }
+  const prBranchName = `request/${projectName}`;
 
-    for (let x = 0; x < paths.length; x++) {
-      await github.repos.createOrUpdateFileContents({
-        owner,
-        repo,
-        sha: await getSHA({
-          ref: prBranchName,
-          path: paths[x],
-        }),
-        branch: prBranchName,
+  let prRef = await github.git
+    .getRef({
+      owner,
+      repo,
+      ref: `heads/${prBranchName}`,
+    })
+    .then(
+      (res) => res.data,
+      (err) => null
+    );
+
+  if (!prRef) {
+    await github.git.createRef({
+      owner,
+      repo,
+      ref: `refs/heads/${prBranchName}`,
+      sha: mainRef.object.sha,
+    });
+  }
+
+  for (let x = 0; x < paths.length; x++) {
+    await github.repos.createOrUpdateFileContents({
+      owner,
+      repo,
+      sha: await getSHA({
+        ref: prBranchName,
         path: paths[x],
-        message: `feat: add a client file for ${projectName}`,
-        content: fs.readFileSync(paths[x], { encoding: 'base64' }),
-      });
-    }
+      }),
+      branch: prBranchName,
+      path: paths[x],
+      message: `feat: add a client file for ${projectName}`,
+      content: fs.readFileSync(paths[x], { encoding: 'base64' }),
+    });
+  }
 
-    await github.pulls
-      .create({
-        owner,
-        repo,
-        base: repository.default_branch,
-        head: prBranchName,
-        title: `request: add client files for ${projectName}`,
-        body: `
+  const pr = await github.pulls.create({
+    owner,
+    repo,
+    base: repository.default_branch,
+    head: prBranchName,
+    title: `request: add client files for ${projectName}`,
+    body: `
 #### Project Name: \`${_.startCase(projectName)}\`
 #### Identity Providers: \`${identityProviders.join(', ')}\`
 #### Target Realm: \`${realm}\`
@@ -96,12 +101,10 @@ ${environments.map(
   )}</ul>\`\`\`
 </details>`
 )}`,
-        maintainer_can_modify: false,
-      })
-      .catch(() => null);
-  } catch (e) {
-    console.log(e);
-  }
+    maintainer_can_modify: false,
+  });
+
+  return pr;
 
   async function getSHA({ ref, path }) {
     const data = await github.repos
