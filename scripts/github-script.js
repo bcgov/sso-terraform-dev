@@ -8,14 +8,13 @@ const axiosConfig = { headers: { Authorization: process.env.GH_SECRET } };
 // This module runs in GitHub Action `github-script`
 // see https://github.com/actions/github-script#run-a-separate-file-with-an-async-function
 module.exports = async ({ github, context }) => {
+  const { payload } = context;
+  const { inputs, repository } = payload;
+  const owner = repository.owner.login;
+  const repo = repository.name;
+  let { projectName, identityProviders, validRedirectUrls, environments, id } = inputs;
+
   try {
-    const { payload } = context;
-    const { inputs, repository } = payload;
-
-    const owner = repository.owner.login;
-    const repo = repository.name;
-
-    let { projectName, identityProviders, validRedirectUrls, environments, id } = inputs;
 
     console.log(projectName, identityProviders, validRedirectUrls, environments, id);
 
@@ -114,6 +113,7 @@ module.exports = async ({ github, context }) => {
     axios.put(API_URL, { prNumber: number, prSuccess: true, id }, axiosConfig);
     return pr;
   } catch (err) {
+    console.log(err)
     axios.put(API_URL, { prNumber: null, prSuccess: false, id }, axiosConfig);
     throw err;
   }
