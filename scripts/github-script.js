@@ -1,17 +1,21 @@
 const fs = require('fs');
 const _ = require('lodash');
 const generateClients = require('./generate-clients');
+const axios = require('axios');
+const API_URL = "https://gcp9dahm4c.execute-api.ca-central-1.amazonaws.com/test/actions/"
+const axiosConfig = { headers: { Authorization: process.env.GH_SECRET } }
 
 // This module runs in GitHub Action `github-script`
 // see https://github.com/actions/github-script#run-a-separate-file-with-an-async-function
 module.exports = async ({ github, context }) => {
+  try {
   const { payload } = context;
   const { inputs, repository } = payload;
 
   const owner = repository.owner.login;
   const repo = repository.name;
 
-  let { projectName, identityProviders, validRedirectUrls, environments } = inputs;
+  let { projectName, identityProviders, validRedirectUrls, environments, id } = inputs;
 
   console.log(projectName, identityProviders, validRedirectUrls, environments);
 
@@ -83,26 +87,33 @@ module.exports = async ({ github, context }) => {
     });
   }
 
-  const pr = await github.pulls.create({
-    owner,
-    repo,
-    base: repository.default_branch,
-    head: prBranchName,
-    title: `request: add client files for ${projectName}`,
-    body: `
-#### Project Name: \`${_.startCase(projectName)}\`
-#### Identity Providers: \`${identityProviders.join(', ')}\`
-#### Target Realm: \`${realm}\`
-#### Environments: \`${environments.join(', ')}\`
-${environments.map(
-  (env) => `<details><summary>Show Details for ${env}</summary>
-\`\`\`<ul>✔️Valid Redirect Urls${(validRedirectUrls[env] || validRedirectUrls || []).map(
-    (url) => `<li>${url}</li>`
-  )}</ul>\`\`\`
-</details>`
-)}`,
-    maintainer_can_modify: false,
-  });
+  let pr;
+    pr = await github.pulls.create({
+      owner,
+      repo,
+      base: repository.default_branch,
+      head: prBranchName,
+      title: `request: add client files for ${projectName}`,
+      body: `
+  #### Project Name: \`${_.startCase(projectName)}\`
+  #### Identity Providers: \`${identityProviders.join(', ')}\`
+  #### Target Realm: \`${realm}\`
+  #### Environments: \`${environments.join(', ')}\`
+  ${environments.map(
+    (env) => `<details><summary>Show Details for ${env}</summary>
+  \`\`\`<ul>✔️Valid Redirect Urls${(validRedirectUrls[env] || validRedirectUrls || []).map(
+      (url) => `<li>${url}</li>`
+    )}</ul>\`\`\`
+  </details>`
+  )}`,
+      maintainer_can_modify: false,
+    });
+    const { data: { number } } = pr;
+    axios.put(API_URL, {prNumber: number, success: true, id}, axiosConfig);
+  } catch (err) {
+    axios.put(API_URL, {prNumber: null, success: false, id}, axiosConfig);
+    throw err;
+  }
 
   return pr;
 
