@@ -17,7 +17,7 @@ module.exports = async ({ github, context }) => {
 
     let { projectName, identityProviders, validRedirectUrls, environments, id } = inputs;
 
-    console.log(projectName, identityProviders, validRedirectUrls, environments);
+    console.log(projectName, identityProviders, validRedirectUrls, environments, id);
 
     projectName = _.kebabCase(projectName);
     identityProviders = JSON.parse(identityProviders);
