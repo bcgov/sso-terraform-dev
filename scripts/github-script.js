@@ -17,7 +17,7 @@ module.exports = async ({ github, context }) => {
 
     let { projectName, identityProviders, validRedirectUrls, environments, id } = inputs;
 
-    console.log(projectName, identityProviders, validRedirectUrls, environments);
+    console.log(projectName, identityProviders, validRedirectUrls, environments, id);
 
     projectName = _.kebabCase(projectName);
     identityProviders = JSON.parse(identityProviders);
@@ -111,10 +111,10 @@ module.exports = async ({ github, context }) => {
     const {
       data: { number },
     } = pr;
-    axios.put(API_URL, { prNumber: number, success: true, id }, axiosConfig);
+    axios.put(API_URL, { prNumber: number, prSuccess: true, id }, axiosConfig);
     return pr;
   } catch (err) {
-    axios.put(API_URL, { prNumber: null, success: false, id }, axiosConfig);
+    axios.put(API_URL, { prNumber: null, prSuccess: false, id }, axiosConfig);
     throw err;
   }
 
