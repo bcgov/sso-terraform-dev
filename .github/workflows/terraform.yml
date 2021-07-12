@@ -103,7 +103,7 @@ jobs:
         with:
           url: '${{env.API_URL}}?status=plan'
           method: 'PUT'
-          data: '{"prNumber": "${{ github.event.number }}", "planSuccess": "${{steps.plan.outcome != ''failure''}}""}'
+          data: '{"prNumber": ${{ github.event.number }}, "planSuccess": "${{steps.plan.outcome != ''failure''}}"}'
           customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
 
       - name: Terraform Plan Status
@@ -122,5 +122,5 @@ jobs:
         with:
           url: '${{env.API_URL}}?status=apply'
           method: 'PUT'
-          data: '{"prNumber": "${{ github.event.number }}", "applySuccess": "${{steps.apply.outcome != ''failure''}}"}'
+          data: '{"prNumber": ${{ github.event.number }}, "applySuccess": "${{steps.apply.outcome != ''failure''}}"}'
           customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
