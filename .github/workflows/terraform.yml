@@ -18,6 +18,8 @@ env:
 jobs:
   terraform:
     runs-on: ubuntu-18.04
+    env:
+      API_URL: https://gcp9dahm4c.execute-api.ca-central-1.amazonaws.com/test/actions/
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -95,11 +97,28 @@ jobs:
               body: output
             })
 
+      - name: Update Plan Status
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: "${{env.API_URL}}?status=plan"
+          method: 'PUT'
+          data: '{"prNumber": "${{ github.event.number }}", "planSuccess": "${{steps.plan.outcome}}""}'
+          customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
+
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: exit 1
 
       - name: Terraform Apply
+        id: apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
         working-directory: ./terraform
+
+      - name: Update Plan Status
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: "${{env.API_URL}}?status=apply"
+          method: 'PUT'
+          data: '{"prNumber": "${{ github.event.number }}", "applySuccess": "${{steps.apply.outcome}}"}'
+          customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
