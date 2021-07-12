@@ -3,6 +3,6 @@ module "client_hi" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "hi"
   valid_redirect_uris = [
-    "http://example.com"
+    "http://exmaple.com"
   ]
 }
