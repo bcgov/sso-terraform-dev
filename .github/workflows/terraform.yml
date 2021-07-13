@@ -18,8 +18,6 @@ env:
 jobs:
   terraform:
     runs-on: ubuntu-18.04
-    outputs:
-      number: ${{steps.prNumber.outputs.number}}
     env:
       API_URL: 'https://gcp9dahm4c.execute-api.ca-central-1.amazonaws.com/test/actions/'
     steps:
