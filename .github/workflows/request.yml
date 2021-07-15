@@ -6,8 +6,8 @@ on:
       projectName:
         description: "Project Name"
         required: true
-      identityProviders:
-        description: "Identity Providers"
+      realm:
+        description: "Realm"
         required: true
       validRedirectUrls:
         description: "Valid Redirect Urls"

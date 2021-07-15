@@ -12,27 +12,26 @@ module.exports = async ({ github, context }) => {
   const { inputs, repository } = payload;
   const owner = repository.owner.login;
   const repo = repository.name;
-  let { projectName, identityProviders, validRedirectUrls, environments, id } = inputs;
+  let { projectName, realm, validRedirectUrls, environments, id } = inputs;
 
   try {
 
-    console.log(projectName, identityProviders, validRedirectUrls, environments, id);
+    console.log(projectName, validRedirectUrls, realm, environments, id);
 
     projectName = _.kebabCase(projectName);
-    identityProviders = JSON.parse(identityProviders);
     validRedirectUrls = JSON.parse(validRedirectUrls);
     environments = JSON.parse(environments);
 
     const info = generateClients({
       projectName,
-      identityProviders,
+      realm,
       validRedirectUrls,
       environments,
     });
 
     if (!info) throw Error('failed in client creation');
 
-    const { realm, paths } = info;
+    const { paths } = info;
 
     const mainRef = await github.git
       .getRef({
@@ -94,7 +93,6 @@ module.exports = async ({ github, context }) => {
       title: `request: add client files for ${projectName}`,
       body: `
   #### Project Name: \`${_.startCase(projectName)}\`
-  #### Identity Providers: \`${identityProviders.join(', ')}\`
   #### Target Realm: \`${realm}\`
   #### Environments: \`${environments.join(', ')}\`
   ${environments.map(

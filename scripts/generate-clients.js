@@ -9,22 +9,12 @@ const mock = new TerraformGenerator();
 
 const keycloakRealm = mock.data('keycloak_realm', 'this', {});
 
-const realms = [
-  { realm: 'onestopauth', idp: _.sortBy(['idir', 'github']) },
-  { realm: 'onestopauth-basic', idp: _.sortBy(['idir', 'github', 'bceid-basic']) },
-  { realm: 'onestopauth-both', idp: _.sortBy(['idir', 'github', 'bceid-basic', 'bceid-business']) },
-  { realm: 'onestopauth-business', idp: _.sortBy(['idir', 'github', 'bceid-business']) },
-];
-
-module.exports = ({ projectName, identityProviders, validRedirectUrls, environments }) => {
-  const targetRealm = realms.find((realm) => _.isEqual(realm.idp, _.sortBy(identityProviders)));
-
-  if (!targetRealm) return null;
+module.exports = ({ projectName, realm, validRedirectUrls, environments }) => {
 
   const SEPARATOR = '\n';
 
   const paths = _.map(environments, (env) => {
-    const outputDir = path.join(`terraform/keycloak-${env}/realms/${targetRealm.realm}`);
+    const outputDir = path.join(`terraform/keycloak-${env}/realms/${realm}`);
     const tfFile = `client-${projectName}.tf`;
     const target = path.join(outputDir, tfFile);
 
@@ -53,5 +43,5 @@ module.exports = ({ projectName, identityProviders, validRedirectUrls, environme
     return target;
   });
 
-  return { realm: targetRealm.realm, paths };
+  return { paths };
 };
