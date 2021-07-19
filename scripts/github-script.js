@@ -12,21 +12,22 @@ module.exports = async ({ github, context }) => {
   const { inputs, repository } = payload;
   const owner = repository.owner.login;
   const repo = repository.name;
-  let { projectName, realm, validRedirectUrls, environments, id } = inputs;
+
+  let { requestId, clientName, realmName, validRedirectUris, environments, publicAccess } = inputs;
 
   try {
+    console.log(requestId, clientName, realmName, validRedirectUris, environments, publicAccess);
 
-    console.log(projectName, validRedirectUrls, realm, environments, id);
-
-    projectName = _.kebabCase(projectName);
-    validRedirectUrls = JSON.parse(validRedirectUrls);
+    identityProviders = JSON.parse(identityProviders);
+    validRedirectUris = JSON.parse(validRedirectUris);
     environments = JSON.parse(environments);
 
     const info = generateClients({
-      projectName,
-      realm,
-      validRedirectUrls,
+      clientName,
+      realmName,
+      validRedirectUris,
       environments,
+      publicAccess,
     });
 
     if (!info) throw Error('failed in client creation');
@@ -48,7 +49,7 @@ module.exports = async ({ github, context }) => {
       console.error('no main branch');
     }
 
-    const prBranchName = `request/${projectName}`;
+    const prBranchName = `request/${clientName}`;
 
     let prRef = await github.git
       .getRef({
@@ -80,7 +81,7 @@ module.exports = async ({ github, context }) => {
         }),
         branch: prBranchName,
         path: paths[x],
-        message: `feat: add a client file for ${projectName}`,
+        message: `feat: add a client file for ${clientName}`,
         content: fs.readFileSync(paths[x], { encoding: 'base64' }),
       });
     }
@@ -90,14 +91,15 @@ module.exports = async ({ github, context }) => {
       repo,
       base: repository.default_branch,
       head: prBranchName,
-      title: `request: add client files for ${projectName}`,
+      title: `request: add client files for ${clientName}`,
       body: `
-  #### Project Name: \`${_.startCase(projectName)}\`
-  #### Target Realm: \`${realm}\`
+  #### Project Name: \`${_.startCase(clientName)}\`
+  #### Identity Providers: \`${identityProviders.join(', ')}\`
+  #### Target Realm: \`${realmName}\`
   #### Environments: \`${environments.join(', ')}\`
   ${environments.map(
     (env) => `<details><summary>Show Details for ${env}</summary>
-  \`\`\`<ul>✔️Valid Redirect Urls${(validRedirectUrls[env] || validRedirectUrls || []).map(
+  \`\`\`<ul>✔️Valid Redirect Urls${(validRedirectUris[env] || validRedirectUris || []).map(
     (url) => `<li>${url}</li>`
   )}</ul>\`\`\`
   </details>`
@@ -108,11 +110,11 @@ module.exports = async ({ github, context }) => {
     const {
       data: { number },
     } = pr;
-    axios.put(API_URL, { prNumber: number, prSuccess: true, id }, axiosConfig);
+    axios.put(API_URL, { prNumber: number, prSuccess: true, id: requestId }, axiosConfig);
     return pr;
   } catch (err) {
-    console.log(err)
-    axios.put(API_URL, { prNumber: null, prSuccess: false, id }, axiosConfig);
+    console.log(err);
+    axios.put(API_URL, { prNumber: null, prSuccess: false, id: requestId }, axiosConfig);
     throw err;
   }
 
