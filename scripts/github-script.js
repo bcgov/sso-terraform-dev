@@ -18,7 +18,6 @@ module.exports = async ({ github, context }) => {
   try {
     console.log(requestId, clientName, realmName, validRedirectUris, environments, publicAccess);
 
-    identityProviders = JSON.parse(identityProviders);
     validRedirectUris = JSON.parse(validRedirectUris);
     environments = JSON.parse(environments);
 
@@ -94,7 +93,6 @@ module.exports = async ({ github, context }) => {
       title: `request: add client files for ${clientName}`,
       body: `
   #### Project Name: \`${_.startCase(clientName)}\`
-  #### Identity Providers: \`${identityProviders.join(', ')}\`
   #### Target Realm: \`${realmName}\`
   #### Environments: \`${environments.join(', ')}\`
   ${environments.map(
