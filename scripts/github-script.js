@@ -13,10 +13,10 @@ module.exports = async ({ github, context }) => {
   const owner = repository.owner.login;
   const repo = repository.name;
 
-  let { requestId, clientName, realm, validRedirectUris, environments, publicAccess } = inputs;
+  let { requestId, clientName, realmName, validRedirectUris, environments, publicAccess } = inputs;
 
   try {
-    console.log(requestId, clientName, realm, validRedirectUris, environments, publicAccess);
+    console.log(requestId, clientName, realmName, validRedirectUris, environments, publicAccess);
 
     identityProviders = JSON.parse(identityProviders);
     validRedirectUris = JSON.parse(validRedirectUris);
@@ -24,7 +24,7 @@ module.exports = async ({ github, context }) => {
 
     const info = generateClients({
       clientName,
-      realm,
+      realmName,
       validRedirectUris,
       environments,
       publicAccess,
@@ -95,7 +95,7 @@ module.exports = async ({ github, context }) => {
       body: `
   #### Project Name: \`${_.startCase(clientName)}\`
   #### Identity Providers: \`${identityProviders.join(', ')}\`
-  #### Target Realm: \`${realm}\`
+  #### Target Realm: \`${realmName}\`
   #### Environments: \`${environments.join(', ')}\`
   ${environments.map(
     (env) => `<details><summary>Show Details for ${env}</summary>

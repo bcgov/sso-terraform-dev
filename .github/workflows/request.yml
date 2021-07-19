@@ -9,8 +9,8 @@ on:
       clientName:
         description: "Client Name"
         required: true
-      realm:
-        description: "Realm"
+      realmName:
+        description: "Realm Name"
         required: true
       publicAccess:
         description: "Public Access"
