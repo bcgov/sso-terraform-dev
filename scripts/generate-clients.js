@@ -9,23 +9,34 @@ const mock = new TerraformGenerator();
 
 const keycloakRealm = mock.data('keycloak_realm', 'this', {});
 
-module.exports = ({ projectName, realm, validRedirectUrls, environments }) => {
+const realms = ['onestopauth', 'onestopauth-basic', 'onestopauth-both', 'onestopauth-business'];
+
+module.exports = ({ clientName, realm, validRedirectUris, environments, publicAccess }) => {
+  if (!realms.includes(realm)) return null;
 
   const SEPARATOR = '\n';
 
   const paths = _.map(environments, (env) => {
-    const outputDir = path.join(`terraform/keycloak-${env}/realms/${realm}`);
-    const tfFile = `client-${projectName}.tf`;
+    const outputDir = path.join(`terraform/keycloak-${env}/realms/${realm.realm}`);
+    const tfFile = `client-${clientName}.tf`;
     const target = path.join(outputDir, tfFile);
 
     const tfg = new TerraformGenerator();
 
-    tfg.module(`client_${projectName}`, {
+    const data = {
       source: '../../../modules/openid-client',
       realm_id: keycloakRealm.attr('id'),
-      client_name: projectName,
-      valid_redirect_uris: validRedirectUrls[env] || validRedirectUrls,
-    });
+      client_name: clientName,
+      valid_redirect_uris: validRedirectUris[env] || validRedirectUris,
+    };
+
+    if (publicAccess === 'true') {
+      data.access_type = 'PUBLIC';
+      data.pkce_code_challenge_method = 'S256';
+      data.web_origins = ['+'];
+    }
+
+    tfg.module(`client_${clientName}`, data);
 
     const result = tfg.generate();
 

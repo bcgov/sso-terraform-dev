@@ -3,20 +3,23 @@ name: Request
 on:
   workflow_dispatch:
     inputs:
-      projectName:
-        description: "Project Name"
+      requestId:
+        description: "Request ID"
+        required: true
+      clientName:
+        description: "Client Name"
         required: true
       realm:
         description: "Realm"
         required: true
-      validRedirectUrls:
-        description: "Valid Redirect Urls"
+      publicAccess:
+        description: "Public Access"
+        required: true
+      validRedirectUris:
+        description: "Valid Redirect Uris"
         required: true
       environments:
         description: "Environments"
-        required: true
-      id:
-        description: "Request id"
         required: true
 
 jobs:
