@@ -108,11 +108,11 @@ module.exports = async ({ github, context }) => {
     const {
       data: { number },
     } = pr;
-    axios.put(API_URL, { prNumber: number, prSuccess: true, id: requestId }, axiosConfig);
+    axios.put(API_URL, { prNumber: number, prSuccess: true, id: requestId, actionNumber: context.runId }, axiosConfig);
     return pr;
   } catch (err) {
     console.log(err);
-    axios.put(API_URL, { prNumber: null, prSuccess: false, id: requestId }, axiosConfig);
+    axios.put(API_URL, { prNumber: null, prSuccess: false, id: requestId, actionNumber: context.runId }, axiosConfig);
     throw err;
   }
 
@@ -132,3 +132,6 @@ module.exports = async ({ github, context }) => {
     return data && data.sha;
   }
 };
+
+// draft, submitted, pr, prfailed, planned, planfailed, approved, applied, applyfailed
+// client: draft, submitted, in review, technical issue
