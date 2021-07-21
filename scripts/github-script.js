@@ -104,7 +104,7 @@ module.exports = async ({ github, context }) => {
 
     // delete the files first before creating ones
     await Promise.all(
-      allPaths.map((path) =>
+      allPaths.map(async (path) =>
         github.repos
           .deleteFile({
             owner,
@@ -126,7 +126,7 @@ module.exports = async ({ github, context }) => {
 
     // create the requested client files
     await Promise.all(
-      paths.map((path) =>
+      paths.map(async (path) =>
         github.repos.createOrUpdateFileContents({
           owner,
           repo,
