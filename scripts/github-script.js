@@ -31,7 +31,7 @@ module.exports = async ({ github, context }) => {
 
     if (!info) throw Error('failed in client creation');
 
-    const { paths } = info;
+    const { paths, allPaths } = info;
 
     const mainRef = await github.git
       .getRef({
@@ -70,27 +70,84 @@ module.exports = async ({ github, context }) => {
       });
     }
 
-    for (let x = 0; x < paths.length; x++) {
-      await github.repos.createOrUpdateFileContents({
-        owner,
-        repo,
-        sha: await getSHA({
+    // check the number of existing files to check the mode; create, update and delete
+    const allPathSHAs = await Promise.all(
+      allPaths.map((path) =>
+        getSHA({
           ref: prBranchName,
-          path: paths[x],
-        }),
-        branch: prBranchName,
-        path: paths[x],
-        message: `feat: add a client file for ${clientName}`,
-        content: fs.readFileSync(paths[x], { encoding: 'base64' }),
-      });
+          path,
+        })
+      )
+    );
+
+    console.log(allPathSHAs);
+
+    const existingCount = _.compact(allPathSHAs).length;
+    console.log(existingCount);
+
+    let mode;
+    if (existingCount === 0) {
+      if (paths.length === 0) {
+        throw Error('no clients to create');
+      }
+
+      mode = 'add';
+    } else {
+      if (paths.length === 0) {
+        mode = 'delete';
+      } else {
+        mode = 'update';
+      }
     }
+
+    console.log('mode', mode);
+
+    // delete the files first before creating ones
+    await Promise.all(
+      allPaths.map((path) =>
+        github.repos
+          .deleteFile({
+            owner,
+            repo,
+            sha: await getSHA({
+              ref: prBranchName,
+              path,
+            }),
+            branch: prBranchName,
+            path,
+            message: `chore: remove a client file for ${clientName}`,
+          })
+          .then(
+            (res) => res.data,
+            (err) => null
+          )
+      )
+    );
+
+    // create the requested client files
+    await Promise.all(
+      paths.map((path) =>
+        github.repos.createOrUpdateFileContents({
+          owner,
+          repo,
+          sha: await getSHA({
+            ref: prBranchName,
+            path,
+          }),
+          branch: prBranchName,
+          path,
+          message: `feat: ${mode} a client file for ${clientName}`,
+          content: fs.readFileSync(path, { encoding: 'base64' }),
+        })
+      )
+    );
 
     let pr = await github.pulls.create({
       owner,
       repo,
       base: repository.default_branch,
       head: prBranchName,
-      title: `request: add client files for ${clientName}`,
+      title: `request: ${mode} client files for ${clientName}`,
       body: `
   #### Project Name: \`${_.startCase(clientName)}\`
   #### Target Realm: \`${realmName}\`

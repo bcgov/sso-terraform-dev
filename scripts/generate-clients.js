@@ -10,14 +10,17 @@ const mock = new TerraformGenerator();
 const keycloakRealm = mock.data('keycloak_realm', 'this', {});
 
 const realms = ['onestopauth', 'onestopauth-basic', 'onestopauth-both', 'onestopauth-business'];
+const allEnvironments = ['dev', 'test', 'prod'];
 
 module.exports = ({ clientName, realmName, validRedirectUris, environments, publicAccess }) => {
   if (!realms.includes(realmName)) return null;
 
+  const getPath = (env) => path.join(`terraform/keycloak-${env}/realms/${realmName}`);
+
   const SEPARATOR = '\n';
 
   const paths = _.map(environments, (env) => {
-    const outputDir = path.join(`terraform/keycloak-${env}/realms/${realmName}`);
+    const outputDir = getPath(env);
     const tfFile = `client-${clientName}.tf`;
     const target = path.join(outputDir, tfFile);
 
@@ -54,5 +57,5 @@ module.exports = ({ clientName, realmName, validRedirectUris, environments, publ
     return target;
   });
 
-  return { paths };
+  return { paths, allPaths: allEnvironments.map(getPath) };
 };
