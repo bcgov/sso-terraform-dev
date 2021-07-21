@@ -124,6 +124,8 @@ module.exports = async ({ github, context }) => {
       )
     );
 
+    console.log(paths);
+
     // create the requested client files
     await Promise.all(
       paths.map(async (path) =>
