@@ -103,33 +103,10 @@ module.exports = async ({ github, context }) => {
     console.log('mode', mode);
 
     // delete the files first before creating ones
-    await Promise.all(
-      allPaths.map(async (path) =>
-        github.repos
-          .deleteFile({
-            owner,
-            repo,
-            sha: await getSHA({
-              ref: prBranchName,
-              path,
-            }),
-            branch: prBranchName,
-            path,
-            message: `chore: remove a client file for ${clientName}`,
-          })
-          .then(
-            (res) => res.data,
-            (err) => null
-          )
-      )
-    );
-
-    console.log(paths);
-
-    // create the requested client files
-    await Promise.all(
-      paths.map(async (path) =>
-        github.repos.createOrUpdateFileContents({
+    for (let x = 0; x < allPaths.length; x++) {
+      const path = allPaths[x];
+      await github.repos
+        .deleteFile({
           owner,
           repo,
           sha: await getSHA({
@@ -138,11 +115,32 @@ module.exports = async ({ github, context }) => {
           }),
           branch: prBranchName,
           path,
-          message: `feat: ${mode} a client file for ${clientName}`,
-          content: fs.readFileSync(path, { encoding: 'base64' }),
+          message: `chore: remove a client file for ${clientName}`,
         })
-      )
-    );
+        .then(
+          (res) => res.data,
+          (err) => null
+        );
+    }
+
+    console.log(paths);
+
+    // create the requested client files
+    for (let x = 0; x < paths.length; x++) {
+      const path = paths[x];
+      await github.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        sha: await getSHA({
+          ref: prBranchName,
+          path,
+        }),
+        branch: prBranchName,
+        path,
+        message: `feat: add a client file for ${clientName}`,
+        content: fs.readFileSync(path, { encoding: 'base64' }),
+      });
+    }
 
     let pr = await github.pulls.create({
       owner,
