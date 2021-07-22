@@ -189,10 +189,7 @@ module.exports = async ({ github, context }) => {
         path,
       })
       .then(
-        (res) => {
-          console.log(res);
-          return res;
-        },
+        (res) => res.data,
         (err) => null
       );
 

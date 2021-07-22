@@ -65,5 +65,5 @@ module.exports = ({ clientName, realmName, validRedirectUris, environments, publ
     return target;
   });
 
-  return { paths, allPaths: allEnvironments.map((env) => getEnvPath(env) && getEnvPath(env).target) };
+  return { paths, allPaths: allEnvironments.map((env) => getEnvPath(env).target) };
 };
