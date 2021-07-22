@@ -33,16 +33,10 @@ module.exports = async ({ github, context }) => {
 
     const { paths, allPaths } = info;
 
-    const mainRef = await github.git
-      .getRef({
-        owner,
-        repo,
-        ref: `heads/${repository.default_branch}`,
-      })
-      .then(
-        (res) => res.data,
-        (err) => null
-      );
+    const mainRef = await github.git.getRef({ owner, repo, ref: `heads/${repository.default_branch}` }).then(
+      (res) => res.data,
+      (err) => null
+    );
 
     if (!mainRef) {
       console.error('no main branch');
@@ -50,24 +44,12 @@ module.exports = async ({ github, context }) => {
 
     const prBranchName = `request/${clientName}-${new Date().getTime()}`;
 
-    await github.git.createRef({
-      owner,
-      repo,
-      ref: `refs/heads/${prBranchName}`,
-      sha: mainRef.object.sha,
-    });
+    await github.git.createRef({ owner, repo, ref: `refs/heads/${prBranchName}`, sha: mainRef.object.sha });
 
     console.log(allPaths);
 
     // check the number of existing files to check the mode; create, update and delete
-    const allPathSHAs = await Promise.all(
-      allPaths.map((path) =>
-        getSHA({
-          ref: prBranchName,
-          path,
-        })
-      )
-    );
+    const allPathSHAs = await Promise.all(allPaths.map((path) => getSHA({ ref: prBranchName, path })));
 
     console.log(allPathSHAs);
 
@@ -98,10 +80,7 @@ module.exports = async ({ github, context }) => {
         .deleteFile({
           owner,
           repo,
-          sha: await getSHA({
-            ref: prBranchName,
-            path,
-          }),
+          sha: await getSHA({ ref: prBranchName, path }),
           branch: prBranchName,
           path,
           message: `chore: remove a client file for ${clientName}`,
@@ -120,13 +99,10 @@ module.exports = async ({ github, context }) => {
       await github.repos.createOrUpdateFileContents({
         owner,
         repo,
-        sha: await getSHA({
-          ref: prBranchName,
-          path,
-        }),
+        sha: await getSHA({ ref: prBranchName, path }),
         branch: prBranchName,
         path,
-        message: `feat: ${mode} a client file for ${clientName}`,
+        message: `feat: add a client file for ${clientName}`,
         content: fs.readFileSync(path, { encoding: 'base64' }),
       });
     }
@@ -154,48 +130,21 @@ module.exports = async ({ github, context }) => {
     const {
       data: { number },
     } = pr;
-    axios.put(
-      API_URL,
-      {
-        prNumber: number,
-        prSuccess: true,
-        id: requestId,
-        actionNumber: context.runId,
-      },
-      axiosConfig
-    );
+
+    axios.put(API_URL, { prNumber: number, prSuccess: true, id: requestId, actionNumber: context.runId }, axiosConfig);
     return pr;
   } catch (err) {
     console.log(err);
-    axios.put(
-      API_URL,
-      {
-        prNumber: null,
-        prSuccess: false,
-        id: requestId,
-        actionNumber: context.runId,
-      },
-      axiosConfig
-    );
+    axios.put(API_URL, { prNumber: null, prSuccess: false, id: requestId, actionNumber: context.runId }, axiosConfig);
     throw err;
   }
 
   async function getSHA({ ref, path }) {
-    const data = await github.repos
-      .getContent({
-        owner,
-        repo,
-        ref,
-        path,
-      })
-      .then(
-        (res) => res.data,
-        (err) => null
-      );
+    const data = await github.repos.getContent({ owner, repo, ref, path }).then(
+      (res) => res.data,
+      (err) => null
+    );
 
     return data && data.sha;
   }
 };
-
-// draft, submitted, pr, prfailed, planned, planfailed, approved, applied, applyfailed
-// client: draft, submitted, in review, technical issue
