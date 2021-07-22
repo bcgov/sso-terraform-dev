@@ -15,14 +15,22 @@ const allEnvironments = ['dev', 'test', 'prod'];
 module.exports = ({ clientName, realmName, validRedirectUris, environments, publicAccess }) => {
   if (!realms.includes(realmName)) return null;
 
-  const getPath = (env) => path.join(`terraform/keycloak-${env}/realms/${realmName}`);
+  const getEnvPath = (env) => {
+    const outputDir = path.join(`terraform/keycloak-${env}/realms/${realmName}`);
+    const tfFile = `client-${clientName}.tf`;
+    const target = path.join(outputDir, tfFile);
+
+    return {
+      outputDir,
+      tfFile,
+      target,
+    };
+  };
 
   const SEPARATOR = '\n';
 
   const paths = _.map(environments, (env) => {
-    const outputDir = getPath(env);
-    const tfFile = `client-${clientName}.tf`;
-    const target = path.join(outputDir, tfFile);
+    const { outputDir, target } = getEnvPath(env);
 
     const tfg = new TerraformGenerator();
 
@@ -57,5 +65,5 @@ module.exports = ({ clientName, realmName, validRedirectUris, environments, publ
     return target;
   });
 
-  return { paths, allPaths: allEnvironments.map(getPath) };
+  return { paths, allPaths: allEnvironments.map((env) => getEnvPath(env) && getEnvPath(env).target) };
 };

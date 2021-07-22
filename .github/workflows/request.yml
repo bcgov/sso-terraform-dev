@@ -23,7 +23,7 @@ on:
         required: true
 
 jobs:
-  iss:
+  request-client:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
