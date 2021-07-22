@@ -37,7 +37,7 @@ module.exports = async ({ github, context }) => {
       .getRef({
         owner,
         repo,
-        ref: `heads/${repository.default_branch}`,
+        ref: getRef(repository.default_branch),
       })
       .then(
         (res) => res.data,
@@ -48,27 +48,16 @@ module.exports = async ({ github, context }) => {
       console.error('no main branch');
     }
 
-    const prBranchName = `request/${clientName}`;
+    const prBranchName = `request/${clientName}-${new Date().getTime()}`;
 
-    let prRef = await github.git
-      .getRef({
-        owner,
-        repo,
-        ref: `heads/${prBranchName}`,
-      })
-      .then(
-        (res) => res.data,
-        (err) => null
-      );
+    await github.git.createRef({
+      owner,
+      repo,
+      ref: getRef(prBranchName),
+      sha: mainRef.object.sha,
+    });
 
-    if (!prRef) {
-      await github.git.createRef({
-        owner,
-        repo,
-        ref: `refs/heads/${prBranchName}`,
-        sha: mainRef.object.sha,
-      });
-    }
+    console.log(allPaths);
 
     // check the number of existing files to check the mode; create, update and delete
     const allPathSHAs = await Promise.all(
@@ -137,7 +126,7 @@ module.exports = async ({ github, context }) => {
         }),
         branch: prBranchName,
         path,
-        message: `feat: add a client file for ${clientName}`,
+        message: `feat: ${mode} a client file for ${clientName}`,
         content: fs.readFileSync(path, { encoding: 'base64' }),
       });
     }
@@ -171,6 +160,10 @@ module.exports = async ({ github, context }) => {
     console.log(err);
     axios.put(API_URL, { prNumber: null, prSuccess: false, id: requestId, actionNumber: context.runId }, axiosConfig);
     throw err;
+  }
+
+  function getRef(ref) {
+    return `refs/heads/${ref}`;
   }
 
   async function getSHA({ ref, path }) {
