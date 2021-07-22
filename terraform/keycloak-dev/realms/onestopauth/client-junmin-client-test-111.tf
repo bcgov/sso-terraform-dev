@@ -3,7 +3,7 @@ module "client_junmin-client-test-111" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "junmin-client-test-111"
   valid_redirect_uris = [
-    "http://localhost:3003"
+    "http://localhost:3004"
   ]
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
