@@ -37,7 +37,7 @@ module.exports = async ({ github, context }) => {
       .getRef({
         owner,
         repo,
-        ref: getRef(repository.default_branch),
+        ref: `heads/${repository.default_branch}`,
       })
       .then(
         (res) => res.data,
@@ -53,7 +53,7 @@ module.exports = async ({ github, context }) => {
     await github.git.createRef({
       owner,
       repo,
-      ref: getRef(prBranchName),
+      ref: `refs/heads/${prBranchName}`,
       sha: mainRef.object.sha,
     });
 
@@ -154,16 +154,30 @@ module.exports = async ({ github, context }) => {
     const {
       data: { number },
     } = pr;
-    axios.put(API_URL, { prNumber: number, prSuccess: true, id: requestId, actionNumber: context.runId }, axiosConfig);
+    axios.put(
+      API_URL,
+      {
+        prNumber: number,
+        prSuccess: true,
+        id: requestId,
+        actionNumber: context.runId,
+      },
+      axiosConfig
+    );
     return pr;
   } catch (err) {
     console.log(err);
-    axios.put(API_URL, { prNumber: null, prSuccess: false, id: requestId, actionNumber: context.runId }, axiosConfig);
+    axios.put(
+      API_URL,
+      {
+        prNumber: null,
+        prSuccess: false,
+        id: requestId,
+        actionNumber: context.runId,
+      },
+      axiosConfig
+    );
     throw err;
-  }
-
-  function getRef(ref) {
-    return `refs/heads/${ref}`;
   }
 
   async function getSHA({ ref, path }) {
