@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - plan-information
     paths:
       - "terraform/**"
       - ".github/**"
@@ -96,6 +97,15 @@ jobs:
               repo: context.repo.repo,
               body: output
             })
+      - uses: actions/github-script@0.9.0
+        if: github.event_name == 'pull_request'
+        env:
+          PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const script = require('./scripts/terraform-plan.js')
+            console.log(script({github, context}))
 
       # TODO: only trigger for request prs oncec labels are added
       - name: Update Plan Status
