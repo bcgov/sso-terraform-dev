@@ -97,6 +97,15 @@ jobs:
               body: output
             })
 
+      # NPM PACKAGES
+      - uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Yarn dependencies in root
+        run: yarn
+
       - uses: actions/github-script@0.9.0
         if: github.event_name == 'pull_request'
         env:
