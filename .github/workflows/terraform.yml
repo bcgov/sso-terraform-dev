@@ -113,7 +113,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const script = require('./scripts/terraform-plan.js')
+            const script = require('./scripts/generate-client.js')
             console.log(script({github, context}))
 
       # TODO: only trigger for request prs oncec labels are added
