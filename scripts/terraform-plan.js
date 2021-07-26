@@ -6,6 +6,6 @@ module.exports = async ({ github, context }, plan) => {
   const owner = repository.owner.login;
   const repo = repository.name;
 
-  console.log(plan);
+  console.log(process.env.PLAN);
   return null;
 };
