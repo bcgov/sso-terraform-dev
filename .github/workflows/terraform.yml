@@ -71,7 +71,7 @@ jobs:
         working-directory: ./terraform
         continue-on-error: true
 
-      - uses: actions/github-script@0.9.0
+      - uses: actions/github-script@v4
         if: github.event_name == 'pull_request'
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
@@ -106,14 +106,14 @@ jobs:
       - name: Install Yarn dependencies in root
         run: yarn
 
-      - uses: actions/github-script@0.9.0
+      - uses: actions/github-script@v4
         if: github.event_name == 'pull_request'
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const script = require('./scripts/generate-client.js')
+            const script = require('./scripts/terraform-plan.js')
             console.log(script({github, context}))
 
       # TODO: only trigger for request prs oncec labels are added
