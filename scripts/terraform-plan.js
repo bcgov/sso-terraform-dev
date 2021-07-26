@@ -1,11 +1,11 @@
 const axios = require('axios');
 
-module.exports = async ({ github, context }) => {
+module.exports = async ({ github, context }, plan) => {
   const { payload } = context;
   const { inputs, repository } = payload;
   const owner = repository.owner.login;
   const repo = repository.name;
 
-  console.log(JSON.stringify(github, null, 2));
+  console.log(plan);
   return null;
 };
