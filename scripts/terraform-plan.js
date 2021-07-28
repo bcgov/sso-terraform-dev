@@ -25,8 +25,8 @@ module.exports = async ({ github, context }) => {
       const module = modules.filter((module) => resource.includes(`.${module}.`));
       if (module.length > 1) throw new Error('Matched multiple modules');
 
-      const client = resource.match(/module.client_(.*?)(\.)/)[1];
-      const action = resource.match(/will be (.*?)(\n)/)[1];
+      const client = resource.match(/module.client_(.*?)(\.)/) ? resource.match(/module.client_(.*?)(\.)/)[1] : 0;
+      const action = resource.match(/will be (.*?)(\n)/) ? resource.match(/will be (.*?)(\n)/)[1] : 0;
 
       const parsedResource = { module: module[0], client, realm: realm[0], action };
       resources.push(parsedResource);
