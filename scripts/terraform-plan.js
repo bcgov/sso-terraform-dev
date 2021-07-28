@@ -32,8 +32,8 @@ module.exports = async ({ github, context }) => {
       resources.push(parsedResource);
     });
     const tfAdditions = PLAN.match(/Plan: (\d+) to add/) ? PLAN.match(/Plan: (\d+) to add/)[1] : 0;
-    const tfAdditions = PLAN.match(/add, (\d+) to change/) ? PLAN.match(/add, (\d+) to change/)[1] : 0;
-    const tfAdditions = PLAN.match(/change, (\d+) to destroy/) ? PLAN.match(/change, (\d+) to destroy/)[1] : 0;
+    const tfUpdates = PLAN.match(/add, (\d+) to change/) ? PLAN.match(/add, (\d+) to change/)[1] : 0;
+    const tfDeletions = PLAN.match(/change, (\d+) to destroy/) ? PLAN.match(/change, (\d+) to destroy/)[1] : 0;
     const planDetails = {
       changedFiles,
       prAdditions,
