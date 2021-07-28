@@ -111,7 +111,7 @@ jobs:
         env:
           PLAN: "${{ steps.plan.outputs.stdout }}"
           PR_NUMBER: "${{ github.event.number }}"
-          PLAN_OUTCOME: "${{steps.plan.outcome != ''failure''}}"
+          PLAN_OUTCOME: "${{steps.plan.outcome}}"
           AUTHORIZATION: "${{secrets.GH_SECRET}}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

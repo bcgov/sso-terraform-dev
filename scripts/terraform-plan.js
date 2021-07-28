@@ -42,7 +42,7 @@ module.exports = async ({ github, context }) => {
     };
     const data = {
       prNumber: PR_NUMBER,
-      planSuccess: PLAN_OUTCOME,
+      planSuccess: PLAN_OUTCOME !== 'failure',
       planDetails,
     }
     console.log('sending data,', JSON.stringify(data))
