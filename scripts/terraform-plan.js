@@ -18,7 +18,7 @@ module.exports = async ({ github, context }) => {
     const resourceStrings = PLAN.match(moduleMatchRegex);
     const resources = [];
 
-    resourceStrings.forEach((resource) => {
+    resourceStrings && resourceStrings.forEach((resource) => {
       const realm = realms.filter((realm) => resource.includes(`.${realm}.`));
       if (realm.length > 1) throw new Error('Matched multiple realms');
 
