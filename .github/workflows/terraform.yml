@@ -109,7 +109,10 @@ jobs:
       - uses: actions/github-script@v4
         if: github.event_name == 'pull_request'
         env:
-          PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+          PLAN: "${{ steps.plan.outputs.stdout }}"
+          PR_NUMBER: "${{ github.event.number }}"
+          PLAN_OUTCOME: "${{steps.plan.outcome != ''failure''}}"
+          AUTHORIZATION: "${{secrets.GH_SECRET}}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -117,15 +120,6 @@ jobs:
             console.log(script({github, context}))
 
       # TODO: only trigger for request prs oncec labels are added
-      - name: Update Plan Status
-        uses: fjogeleit/http-request-action@master
-        if: github.event_name == 'pull_request'
-        with:
-          url: '${{env.API_URL}}?status=plan'
-          method: 'PUT'
-          data: '{"prNumber": ${{ github.event.number }}, "planSuccess": "${{steps.plan.outcome != ''failure''}}"}'
-          customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
-        continue-on-error: true
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
