@@ -11,6 +11,9 @@ module.exports = async ({ github, context }) => {
     const { changed_files: changedFiles, additions: prAdditions, deletions: prDeletions } = pull_request;
     const { PLAN, API_URL, PR_NUMBER, PLAN_OUTCOME, AUTHORIZATION } = process.env;
 
+    console.log(`plan is ${PLAN}`)
+    console.log('================', API_URL, PLAN_OUTCOME, PR_NUMBER)
+
     const moduleMatchRegex = /# module.(.*?\n)/g;
     const resourceStrings = PLAN.match(moduleMatchRegex);
     const resources = [];
