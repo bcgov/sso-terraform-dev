@@ -71,7 +71,7 @@ jobs:
         working-directory: ./terraform
         continue-on-error: true
 
-      - uses: actions/github-script@0.9.0
+      - uses: actions/github-script@v4
         if: github.event_name == 'pull_request'
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
@@ -97,16 +97,29 @@ jobs:
               body: output
             })
 
-      # TODO: only trigger for request prs oncec labels are added
-      - name: Update Plan Status
-        uses: fjogeleit/http-request-action@master
-        if: github.event_name == 'pull_request'
+      # NPM PACKAGES
+      - uses: actions/cache@v2
         with:
-          url: '${{env.API_URL}}?status=plan'
-          method: 'PUT'
-          data: '{"prNumber": ${{ github.event.number }}, "planSuccess": "${{steps.plan.outcome != ''failure''}}"}'
-          customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
-        continue-on-error: true
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Yarn dependencies in root
+        run: yarn
+
+      - uses: actions/github-script@v4
+        if: github.event_name == 'pull_request'
+        env:
+          PLAN: "${{ steps.plan.outputs.stdout }}"
+          PR_NUMBER: "${{ github.event.number }}"
+          PLAN_OUTCOME: "${{steps.plan.outcome}}"
+          AUTHORIZATION: "${{secrets.GH_SECRET}}"
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const script = require('./scripts/terraform-plan.js')
+            console.log(script({github, context}))
+
+      # TODO: only trigger for request prs oncec labels are added
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
