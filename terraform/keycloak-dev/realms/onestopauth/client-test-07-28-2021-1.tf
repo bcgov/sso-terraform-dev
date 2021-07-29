@@ -4,6 +4,7 @@ module "client_test-07-28-2021-1" {
   client_name = "test-07-28-2021-1"
   valid_redirect_uris = [
     "http://tr",
-    "http://trss"
+    "http://fdfd",
+    "http://trss",
   ]
 }
