@@ -131,6 +131,13 @@ module.exports = async ({ github, context }) => {
       data: { number },
     } = pr;
 
+    await github.issues.addLabels({
+      owner,
+      repo,
+      issue_number: number,
+      labels: ['auto_generated']
+    })
+
     axios.put(API_URL, { prNumber: number, prSuccess: true, id: requestId, actionNumber: context.runId }, axiosConfig);
     return pr;
   } catch (err) {
