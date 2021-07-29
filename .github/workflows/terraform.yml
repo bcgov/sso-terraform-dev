@@ -150,4 +150,3 @@ jobs:
           method: 'PUT'
           data: '{"prNumber": ${{ steps.prNumber.outputs.number }}, "applySuccess": "${{steps.apply.outcome != ''failure''}}"}'
           customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
-        continue-on-error: true
