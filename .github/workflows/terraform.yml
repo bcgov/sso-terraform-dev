@@ -114,7 +114,8 @@ jobs:
       - name: Install Yarn dependencies in root
         run: yarn
 
-      - uses: actions/github-script@v4
+      - name: Save terraform plan event
+        uses: actions/github-script@v4
         if: github.event_name == 'pull_request'
         env:
           PLAN: "${{ steps.plan.outputs.stdout }}"
@@ -158,3 +159,4 @@ jobs:
           method: 'PUT'
           data: '{"prNumber": ${{ steps.prNumber.outputs.number }}, "applySuccess": "${{steps.apply.outcome != ''failure''}}"}'
           customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
+          timeout: '60000'
