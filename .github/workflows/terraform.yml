@@ -144,7 +144,7 @@ jobs:
 
       - name: Update Apply Status
         uses: fjogeleit/http-request-action@master
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && [ -z "${{ steps.prNumber.outputs.labels }}" ]
+        if: ${{github.ref == 'refs/heads/main' && github.event_name == 'push' && steps.prNumber.outputs.labels == 'auto_generated'}}
         with:
           url: '${{env.API_URL}}?status=apply'
           method: 'PUT'
