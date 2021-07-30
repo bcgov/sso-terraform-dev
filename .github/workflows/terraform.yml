@@ -122,13 +122,12 @@ jobs:
           PR_NUMBER: "${{ github.event.number }}"
           PLAN_OUTCOME: "${{steps.plan.outcome}}"
           AUTHORIZATION: "${{secrets.GH_SECRET}}"
+          PR_LABELS: ${{ toJson(github.event.pull_request.labels) }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const script = require('./scripts/terraform-plan.js')
             console.log(script({github, context}))
-
-      # TODO: only trigger for request prs oncec labels are added
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
