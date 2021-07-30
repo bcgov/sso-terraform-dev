@@ -3,7 +3,9 @@ const { result } = require('lodash');
 
 const realms = ['onestopauth', 'onestopauth-basic', 'onestopauth-both', 'onestopauth-business'];
 const modules = ['keycloak_dev', 'keycloak_test', 'keycloak_prod'];
-const TF_ADDITIONS_ALLOWED, TF_DELETIONS_ALLOWED, TF_UPDATES_ALLOWED = 6;
+const TF_ADDITIONS_ALLOWED = 6;
+const TF_DELETIONS_ALLOWED = 6;
+const TF_UPDATES_ALLOWED = 6;
 const FILE_CHANGES_ALLOWED = 3;
 
 const checkChangedResources = (numberChanged, limit, message) => {
