@@ -1,5 +1,4 @@
 const axios = require('axios');
-const { result } = require('lodash');
 
 const realms = ['onestopauth', 'onestopauth-basic', 'onestopauth-both', 'onestopauth-business'];
 const modules = ['keycloak_dev', 'keycloak_test', 'keycloak_prod'];
@@ -86,7 +85,7 @@ module.exports = async ({ github, context }) => {
     };
 
     const [merged, error] = mergeIfValidPlan(data, github, repository);
-    if (!merged) throw new Error(error);
+    if (error) throw new Error(error);
 
     console.log('sending data,', JSON.stringify(data));
     await axios.put(`${API_URL}?status=plan`, data, { headers: { Authorization: AUTHORIZATION } });
