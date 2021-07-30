@@ -122,7 +122,7 @@ jobs:
           PR_NUMBER: "${{ github.event.number }}"
           PLAN_OUTCOME: "${{steps.plan.outcome}}"
           AUTHORIZATION: "${{secrets.GH_SECRET}}"
-          PR_LABELS: ${{ toJson(github.event.pull_request.labels) }}
+          PR_BRANCH: "${{ github.event.pull_request.head.ref }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
