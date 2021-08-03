@@ -4,6 +4,7 @@ module "client_junmin-request-34" {
   client_name = "junmin-request-34"
   valid_redirect_uris = [
     "http://localhost:1000",
-    "http://localhost:1001"
+    "http://localhost:1001",
+    "http://localhost:1010"
   ]
 }
