@@ -3,6 +3,7 @@ module "client_test-08-4-2021-166" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "test-08-4-2021-166"
   valid_redirect_uris = [
+    "http://fdgd.com",
     "http://fdgd.com"
   ]
   access_type                = "PUBLIC"
