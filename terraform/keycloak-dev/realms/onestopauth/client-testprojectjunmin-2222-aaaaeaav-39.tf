@@ -4,6 +4,7 @@ module "client_testprojectjunmin-2222-aaaaeaav-39" {
   client_name = "testprojectjunmin-2222-aaaaeaav-39"
   valid_redirect_uris = [
     "http://localhost:100022",
-    "http://localhost:10011"
+    "http://localhost:10011",
+    "http://localhost:100111"
   ]
 }
