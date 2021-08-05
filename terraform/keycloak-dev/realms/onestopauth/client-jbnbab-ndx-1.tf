@@ -4,7 +4,8 @@ module "client_jbnbab-ndx-1" {
   client_name = "jbnbab-ndx-1"
   valid_redirect_uris = [
     "http://localhost",
-    "http://localhostdddd"
+    "http://localhostdddd",
+    "http://localhostdddddd"
   ]
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
