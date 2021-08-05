@@ -4,6 +4,7 @@ module "client_asdfeeeeeeeee-42" {
   client_name = "asdfeeeeeeeee-42"
   valid_redirect_uris = [
     "http://localhost:1222",
-    "http://localhost:12"
+    "http://localho111",
+    "http://localho111"
   ]
 }
