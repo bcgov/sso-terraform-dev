@@ -107,6 +107,28 @@ module.exports = async ({ github, context }) => {
       });
     }
 
+    const labels = ['auto_generated', clientName];
+
+    // delete all open issues with the target client before creating another one
+    const issuesRes = await github.issues.listForRepo({
+      owner,
+      repo,
+      state: 'open',
+      labels: labels.join(','),
+    });
+
+    await Promise.all(
+      issuesRes.data.map((issue) => {
+        return github.issues.update({
+          owner,
+          repo,
+          issue_number: issue.id,
+          state: 'closed',
+        });
+      }),
+    );
+
+    // create a new pr for the target client
     let pr = await github.pulls.create({
       owner,
       repo,
@@ -135,7 +157,7 @@ module.exports = async ({ github, context }) => {
       owner,
       repo,
       issue_number: number,
-      labels: ['auto_generated'],
+      labels,
     });
 
     const updateStatus = () =>
