@@ -87,6 +87,7 @@ module.exports = async ({ github, context }) => {
 
     data.isAllowedToMerge = isAllowedToMerge(data);
 
+    console.log('sending data,', JSON.stringify(data));
     const updateStatus = () => axios.put(`${API_URL}?status=plan`, data, { headers: { Authorization: AUTHORIZATION } });
 
     let success = false;
