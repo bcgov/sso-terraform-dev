@@ -35,7 +35,7 @@ module.exports = async ({ github, context }) => {
 
     const mainRef = await github.git.getRef({ owner, repo, ref: `heads/${repository.default_branch}` }).then(
       (res) => res.data,
-      (err) => null
+      (err) => null,
     );
 
     if (!mainRef) {
@@ -87,7 +87,7 @@ module.exports = async ({ github, context }) => {
         })
         .then(
           (res) => res.data,
-          (err) => null
+          (err) => null,
         );
     }
 
@@ -120,9 +120,9 @@ module.exports = async ({ github, context }) => {
   ${environments.map(
     (env) => `<details><summary>Show Details for ${env}</summary>
   \`\`\`<ul>✔️Valid Redirect Urls${(validRedirectUris[env] || validRedirectUris || []).map(
-    (url) => `<li>${url}</li>`
+    (url) => `<li>${url}</li>`,
   )}</ul>\`\`\`
-  </details>`
+  </details>`,
   )}`,
       maintainer_can_modify: false,
     });
@@ -135,10 +135,27 @@ module.exports = async ({ github, context }) => {
       owner,
       repo,
       issue_number: number,
-      labels: ['auto_generated']
-    })
+      labels: ['auto_generated'],
+    });
 
-    axios.put(API_URL, { prNumber: number, prSuccess: true, id: requestId, actionNumber: context.runId }, axiosConfig);
+    const updateStatus = () =>
+      axios.put(
+        API_URL,
+        { prNumber: number, prSuccess: true, id: requestId, actionNumber: context.runId },
+        axiosConfig,
+      );
+
+    let success = false;
+    for (let x = 0; x < 5; x++) {
+      await updateStatus().then(
+        () => (success = true),
+        () => (success = false),
+      );
+      if (success) break;
+    }
+
+    if (!success) throw Error('failed to update the pr status');
+
     return pr;
   } catch (err) {
     console.log(err);
@@ -149,7 +166,7 @@ module.exports = async ({ github, context }) => {
   async function getSHA({ ref, path }) {
     const data = await github.repos.getContent({ owner, repo, ref, path }).then(
       (res) => res.data,
-      (err) => null
+      (err) => null,
     );
 
     return data && data.sha;
