@@ -115,13 +115,14 @@ jobs:
         run: yarn
 
       - name: Save terraform plan event
+        if: github.event_name == 'pull_request'
         uses: bcgov/sso-requests-actions/plan@v0.2.0
         with:
           github-token: ${{ secrets.GH_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
           api-url: "${{env.API_URL}}"
           auth-secret: ${{ secrets.GH_SECRET }}
           plan-output: "${{ steps.plan.outputs.stdout }}"
-          plan-result: "${{steps.plan.outcome}}"
+          plan-result: "${{ steps.plan.outcome }}"
           pr-number: "${{ github.event.number }}"
           pr-branch: "${{ github.event.pull_request.head.ref }}"
           allowed-additions: "21"
