@@ -163,3 +163,7 @@ jobs:
           data: '{"prNumber": ${{ steps.prNumber.outputs.number }}, "applySuccess": "${{steps.apply.outcome != ''failure''}}"}'
           customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
           timeout: "60000"
+
+      - name: Fail action if apply failed
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && steps.prNumber.outputs.botLabel == '"auto_generated"' && steps.apply.outcome == 'failure'
+        run: exit 1
