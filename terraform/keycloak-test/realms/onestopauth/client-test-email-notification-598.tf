@@ -1,5 +1,5 @@
 module "client_test-email-notification-598" {
-  source      = "../../../modules/openid-client"
+  source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
   realm_id    = data.keycloak_realm.this.id
   client_name = "test-email-notification-598"
   valid_redirect_uris = [
