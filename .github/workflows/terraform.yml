@@ -79,10 +79,18 @@ jobs:
         working-directory: ./terraform
         continue-on-error: true
 
+      - name: Truncate Terraform Plan
+        id: planTruncate
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const output = `\`${{ steps.plan.outputs.stdout }}\``;
+            core.setOutput('tfPlan', output.substr(-60000));
+
       - uses: actions/github-script@v4
         if: github.event_name == 'pull_request'
         env:
-          PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+          PLAN: "terraform\n${{ steps.planTruncate.outputs.tfPlan }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -121,7 +129,7 @@ jobs:
           github-token: ${{ secrets.GH_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
           api-url: "${{env.API_URL}}"
           auth-secret: ${{ secrets.GH_SECRET }}
-          plan-output: "${{ steps.plan.outputs.stdout }}"
+          plan-output: "${{ steps.planTruncate.outputs.tfPlan }}"
           plan-result: "${{ steps.plan.outcome }}"
           pr-number: "${{ github.event.number }}"
           pr-branch: "${{ github.event.pull_request.head.ref }}"
