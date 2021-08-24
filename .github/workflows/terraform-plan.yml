@@ -74,7 +74,7 @@ jobs:
 
       - name: Truncate Terraform Plan
         run: |
-          plan=$(tail -n 1000 <<'EOF'
+          plan=$(tail -n 500 <<'EOF'
           ${{ format('{0}', steps.plan.outputs.stdout) }}
           EOF
           )
