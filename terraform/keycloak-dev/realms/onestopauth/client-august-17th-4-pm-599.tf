@@ -1,5 +1,5 @@
 module "client_august-17th-4-pm-599" {
-  source      = "../../../modules/openid-client"
+  source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
   realm_id    = data.keycloak_realm.this.id
   client_name = "august-17th-4-pm-599"
   valid_redirect_uris = [
