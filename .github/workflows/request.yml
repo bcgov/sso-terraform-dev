@@ -62,3 +62,4 @@ jobs:
           github-token: ${{ secrets.GH_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
           api-url: "https://gcp9dahm4c.execute-api.ca-central-1.amazonaws.com/test/actions?status=create"
           auth-secret: ${{ secrets.GH_SECRET }}
+          tf-module-ref: dev
