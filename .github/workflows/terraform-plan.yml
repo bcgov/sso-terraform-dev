@@ -74,8 +74,8 @@ jobs:
 
       - name: Truncate Terraform Plan
         run: |
-          plan=$(tail -n 500 <<'EOF'
-          ${{ format('{0}', steps.plan.outputs.stdout) }}
+          plan=$(tail -n 1000 <<'EOF'
+          ${{ steps.plan.outputs.stdout }}
           EOF
           )
           echo "PLAN<<EOF" >> $GITHUB_ENV
