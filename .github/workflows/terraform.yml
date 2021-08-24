@@ -84,8 +84,8 @@ jobs:
         uses: actions/github-script@v4
         with:
           script: |
-            const output = `\`${{ steps.plan.outputs.stdout }}\``;
-            core.setOutput('tfPlan', output.substr(-60000));
+            const output = '${{ steps.plan.outputs.stdout }}';
+            core.setOutput('tfPlan', output.substr(-10000));
 
       - uses: actions/github-script@v4
         if: github.event_name == 'pull_request'
