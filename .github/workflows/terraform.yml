@@ -82,7 +82,9 @@ jobs:
       - name: View context attributes
         uses: actions/github-script@v4
         with:
-          script: console.log(context)
+          script: |
+            const output = `\`${{ steps.plan.outputs.stdout }}\``;
+            console.log(output);
 
       # - uses: actions/github-script@v4
       #   if: github.event_name == 'pull_request'
