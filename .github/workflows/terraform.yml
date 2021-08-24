@@ -80,16 +80,17 @@ jobs:
         continue-on-error: true
 
       - name: Truncate Terraform Plan
-        id: planTruncate
-        uses: actions/github-script@v4
-        with:
-          script: |
-            const output = `${{ steps.plan.outputs.stdout }}`;
+        run: |
+          plan=$(tail -n 100 <<'EOF'
+          ${{ format('{0}', steps.plan.outputs.stdout) }}
+          EOF
+          )
+          echo "PLAN<<EOF" >> $GITHUB_ENV
+          echo "${plan:0:65536}" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - uses: actions/github-script@v4
         if: github.event_name == 'pull_request'
-        env:
-          PLAN: "terraform\n${{ steps.planTruncate.outputs.tfPlan }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -126,9 +127,9 @@ jobs:
         uses: bcgov/sso-requests-actions/plan@v0.3.0
         with:
           github-token: ${{ secrets.GH_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
-          api-url: "${{env.API_URL}}"
+          api-url: "${{ env.API_URL }}"
           auth-secret: ${{ secrets.GH_SECRET }}
-          plan-output: "${{ steps.planTruncate.outputs.tfPlan }}"
+          plan-output: "${{ env.PLAN }}"
           plan-result: "${{ steps.plan.outcome }}"
           pr-number: "${{ github.event.number }}"
           pr-branch: "${{ github.event.pull_request.head.ref }}"
