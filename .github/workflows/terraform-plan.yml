@@ -78,9 +78,7 @@ jobs:
           ${{ steps.plan.outputs.stdout }}
           EOF
           )
-          echo "PLAN<<EOF" >> $GITHUB_ENV
-          echo "${plan:0:65536}" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          echo "PLAN=${plan}" >> $GITHUB_ENV
 
       - uses: actions/github-script@v4
         with:
