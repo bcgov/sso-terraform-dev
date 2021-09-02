@@ -3,7 +3,7 @@ module "client_testemailss-1421" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "testemailss-1421"
   valid_redirect_uris = [
-    "http://localhost:1000"
+    "http://localhost:3000"
   ]
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
