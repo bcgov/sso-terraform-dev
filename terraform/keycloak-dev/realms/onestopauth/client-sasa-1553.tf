@@ -3,7 +3,7 @@ module "client_sasa-1553" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "sasa-1553"
   valid_redirect_uris = [
-    "http://a"
+    "http://localhost:1000"
   ]
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
