@@ -3,7 +3,7 @@ module "client_test-09-10-2021-1688" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "test-09-10-2021-1688"
   valid_redirect_uris = [
-    "http://test"
+    "http://test1"
   ]
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
