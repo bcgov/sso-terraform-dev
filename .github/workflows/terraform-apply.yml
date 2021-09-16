@@ -14,6 +14,7 @@ env:
 jobs:
   terraform:
     runs-on: ubuntu-18.04
+    timeout-minutes: 30
     env:
       API_URL: "https://gcp9dahm4c.execute-api.ca-central-1.amazonaws.com/test/actions/"
     steps:
@@ -80,7 +81,11 @@ jobs:
       - name: Terraform Apply
         id: apply
         if: github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve
+        run: |
+          until terraform apply -auto-approve || false;
+          do echo retrying in 30 seconds...
+          sleep 30
+          done
         working-directory: ./terraform
         continue-on-error: true
 
