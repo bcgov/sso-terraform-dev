@@ -3,7 +3,8 @@ module "client_cypress-test-2114" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "cypress-test-2114"
   valid_redirect_uris = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "http://localhost:3000/*"
   ]
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
