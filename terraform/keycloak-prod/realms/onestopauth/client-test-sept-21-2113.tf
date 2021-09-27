@@ -5,4 +5,9 @@ module "client_test-sept-21-2113" {
   valid_redirect_uris = [
     "http://c"
   ]
+  access_type                = "PUBLIC"
+  pkce_code_challenge_method = "S256"
+  web_origins = [
+    "+"
+  ]
 }
