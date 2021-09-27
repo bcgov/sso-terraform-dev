@@ -3,6 +3,7 @@ module "client_sprint-demo-1882" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "sprint-demo-1882"
   valid_redirect_uris = [
-    "http://a"
+    "http://localhost:3000",
+    "http://localhost:3000/*"
   ]
 }
