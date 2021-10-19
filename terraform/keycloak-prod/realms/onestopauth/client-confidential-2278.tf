@@ -5,4 +5,5 @@ module "client_confidential-2278" {
   valid_redirect_uris = [
     "http://c"
   ]
+  description = "CSS App Created"
 }
