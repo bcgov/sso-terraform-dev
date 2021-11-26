@@ -6,7 +6,7 @@ module "client_aet-1981" {
     "http://b"
   ]
   description                 = "CSS App Created"
-  browser_authentication_flow = "IDIR redirector"
+  browser_authentication_flow = "IDIR Redirector"
   access_type                 = "PUBLIC"
   pkce_code_challenge_method  = "S256"
   web_origins = [
