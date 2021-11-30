@@ -10,6 +10,4 @@ module "client_2-test-for-v-1-237" {
   web_origins = [
     "+"
   ]
-  override_authentication_flow = true
-  browser_authentication_flow  = "IDIR redirector"
 }
