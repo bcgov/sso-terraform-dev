@@ -7,8 +7,7 @@ module "client_aet-1981" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "aet-1981"
   valid_redirect_uris = [
-    "http://a",
-    "http://b"
+    "http://a"
   ]
   description                  = "CSS App Created"
   override_authentication_flow = true
