@@ -3,8 +3,7 @@ module "client_bceidbasic-idir-dev-test-3566" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "bceidbasic-idir-dev-test-3566"
   valid_redirect_uris = [
-    "https://www.test.ca/dev"
+    "https://www.test.ca/devChanged"
   ]
-  description                 = "CSS App Created"
-  browser_authentication_flow = "null"
+  description = "CSS App Created"
 }
