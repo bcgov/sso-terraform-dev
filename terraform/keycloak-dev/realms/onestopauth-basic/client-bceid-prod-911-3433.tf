@@ -3,7 +3,8 @@ module "client_bceid-prod-911-3433" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "bceid-prod-911-3433"
   valid_redirect_uris = [
-    "http://dev"
+    "http://dev",
+    "http://newthing"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
