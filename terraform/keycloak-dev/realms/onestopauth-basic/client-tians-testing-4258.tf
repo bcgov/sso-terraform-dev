@@ -3,7 +3,7 @@ module "client_tians-testing-4258" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "tians-testing-4258"
   valid_redirect_uris = [
-    "http://example.cca"
+    "http://example.ccaa"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
