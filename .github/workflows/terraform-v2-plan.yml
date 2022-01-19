@@ -61,9 +61,9 @@ jobs:
           dev_keycloak_url="${{ env.KEYCLOAK_V2_DEV_URL }}"
           test_keycloak_url="${{ env.KEYCLOAK_V2_TEST_URL }}"
           prod_keycloak_url="${{ env.KEYCLOAK_V2_PROD_URL }}"
-          dev_client_secret="${{ secrets.KEYCLOAK_DEV_CLIENT_SECRET }}"
-          test_client_secret="${{ secrets.KEYCLOAK_TEST_CLIENT_SECRET }}"
-          prod_client_secret="${{ secrets.KEYCLOAK_PROD_CLIENT_SECRET }}"
+          dev_client_secret="${{ secrets.KEYCLOAK_V2_DEV_CLIENT_SECRET }}"
+          test_client_secret="${{ secrets.KEYCLOAK_V2_TEST_CLIENT_SECRET }}"
+          prod_client_secret="${{ secrets.KEYCLOAK_V2_PROD_CLIENT_SECRET }}"
           EOF
         working-directory: ./terraform-v2
 

@@ -6,17 +6,17 @@ variable "dev_client_id" {
 
 variable "dev_client_secret" {
   description = "The client_secret for the Keycloak client"
-  default     = ""
+  default     = "<dev_client_secret>"
 }
 
 variable "dev_username" {
   description = "The username of the user used by the provider for authentication via the password grant"
-  default     = ""
+  default     = "<dev_username>"
 }
 
 variable "dev_password" {
   description = "The password of the user used by the provider for authentication via the password grant"
-  default     = ""
+  default     = "<dev_password>"
 }
 
 variable "dev_keycloak_url" {
@@ -32,17 +32,17 @@ variable "test_client_id" {
 
 variable "test_client_secret" {
   description = "The client_secret for the Keycloak client"
-  default     = ""
+  default     = "<test_client_secret>"
 }
 
 variable "test_username" {
   description = "The username of the user used by the provider for authentication via the password grant"
-  default     = ""
+  default     = "<test_username>"
 }
 
 variable "test_password" {
   description = "The password of the user used by the provider for authentication via the password grant"
-  default     = ""
+  default     = "<test_password>"
 }
 
 variable "test_keycloak_url" {
@@ -58,17 +58,17 @@ variable "prod_client_id" {
 
 variable "prod_client_secret" {
   description = "The client_secret for the Keycloak client"
-  default     = ""
+  default     = "<prod_client_secret>"
 }
 
 variable "prod_username" {
   description = "The username of the user used by the provider for authentication via the password grant"
-  default     = ""
+  default     = "<prod_username>"
 }
 
 variable "prod_password" {
   description = "The password of the user used by the provider for authentication via the password grant"
-  default     = ""
+  default     = "<prod_password>"
 }
 
 variable "prod_keycloak_url" {
