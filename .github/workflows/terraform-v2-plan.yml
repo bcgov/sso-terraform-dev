@@ -24,13 +24,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # - name: Wake Up API
-      #   uses: fjogeleit/http-request-action@master
-      #   with:
-      #     url: "${{env.API_URL}}"
-      #     method: "GET"
-      #     customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
-      #   continue-on-error: true
+      - name: Wake Up API
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: "${{env.API_URL}}"
+          method: "GET"
+          customHeaders: '{"Authorization": "${{secrets.GH_SECRET}}"}'
+        continue-on-error: true
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
