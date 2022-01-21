@@ -9,6 +9,7 @@ resource "keycloak_realm" "this" {
 
   login_theme = "bcgov-idp-stopper"
 
+  revoke_refresh_token                     = true
   sso_session_idle_timeout                 = "30m"  # SSO Session Idle
   sso_session_max_lifespan                 = "10h"  # SSO Session Max
   offline_session_idle_timeout             = "720h" # Offline Session Idle
@@ -23,6 +24,6 @@ resource "keycloak_realm" "this" {
 }
 
 module "idp_auth_flow" {
-  source   = "../idp-auth-flow"
+  source   = "../auth-browser-standard"
   realm_id = keycloak_realm.this.id
 }
