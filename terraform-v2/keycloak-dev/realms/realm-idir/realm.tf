@@ -7,6 +7,9 @@ resource "keycloak_realm" "this" {
   login_with_email_allowed = false
   duplicate_emails_allowed = true
 
+  login_theme = "bcgov"
+
+  revoke_refresh_token                     = true
   sso_session_idle_timeout                 = "30m"  # SSO Session Idle
   sso_session_max_lifespan                 = "10h"  # SSO Session Max
   offline_session_idle_timeout             = "720h" # Offline Session Idle
@@ -25,4 +28,19 @@ resource "keycloak_openid_client_scope" "idp_scope" {
   name                   = var.realm_name
   description            = "${var.realm_name} idp client scope"
   include_in_token_scope = false
+}
+
+data "keycloak_authentication_execution" "browser_identity_provider_redirector" {
+  realm_id          = keycloak_realm.this.id
+  parent_flow_alias = "browser"
+  provider_id       = "identity-provider-redirector"
+}
+
+resource "keycloak_authentication_execution_config" "browser_identity_provider_redirector_config" {
+  realm_id     = keycloak_realm.this.id
+  execution_id = data.keycloak_authentication_execution.browser_identity_provider_redirector.id
+  alias        = var.realm_name
+  config = {
+    defaultProvider = var.realm_name
+  }
 }
