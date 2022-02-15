@@ -3,13 +3,13 @@ module "client_feb-4-test-4-h-5019" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "feb-4-test-4-h-5019"
   valid_redirect_uris = [
-    "https:///www.test.ca/devChange"
+    "https:///www.test.ca/devChange123"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
   web_origins = [
-    "https:///www.test.ca/devChange",
+    "https:///www.test.ca/devChange123",
     "+"
   ]
 }
