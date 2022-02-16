@@ -3,13 +3,13 @@ module "client_newkeycloakdeploy-2311" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "newkeycloakdeploy-2311"
   valid_redirect_uris = [
-    "http://localhost:1000"
+    "http://localhost:10004"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
   web_origins = [
-    "http://localhost:1000",
+    "http://localhost:10004",
     "+"
   ]
 }
