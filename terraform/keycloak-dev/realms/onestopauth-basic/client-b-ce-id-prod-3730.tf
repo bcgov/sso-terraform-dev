@@ -9,6 +9,7 @@ module "client_b-ce-id-prod-3730" {
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
   web_origins = [
+    "https://.",
     "+"
   ]
 }
