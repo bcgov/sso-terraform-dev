@@ -3,13 +3,15 @@ module "client_tians-testing-single-2-25-5710" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "tians-testing-single-2-25-5710"
   valid_redirect_uris = [
-    "https://example"
+    "https://example",
+    "https://www.test.ca/devChanged2"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
   web_origins = [
     "https://example",
+    "https://www.test.ca/devChanged2",
     "+"
   ]
 }
