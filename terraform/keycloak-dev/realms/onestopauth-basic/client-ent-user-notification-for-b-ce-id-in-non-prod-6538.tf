@@ -3,13 +3,13 @@ module "client_ent-user-notification-for-b-ce-id-in-non-prod-6538" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "ent-user-notification-for-b-ce-id-in-non-prod-6538"
   valid_redirect_uris = [
-    "http://dev.com"
+    "http://devchange.com"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
   web_origins = [
-    "http://dev.com",
+    "http://devchange.com",
     "+"
   ]
 }
