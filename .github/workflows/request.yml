@@ -29,6 +29,7 @@ jobs:
   request-client:
     runs-on: ubuntu-18.04
     steps:
+      - uses: hmarr/debug-action@v2
       - uses: actions/checkout@v2
 
       # NPM PACKAGES
