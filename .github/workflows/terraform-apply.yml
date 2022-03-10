@@ -37,6 +37,7 @@ jobs:
         id: count
         run: |
           count=$(jq length <<< ${{ steps.requests.outputs.response }})
+          echo "$count"
           echo "::set-output name=count::$count"
 
       - name: Setup Terraform
@@ -47,13 +48,13 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TFC_TEAM_TOKEN }}
 
       - name: Terraform Format
-        if: steps.requests.outputs.count != '0'
+        if: steps.count.outputs.count != '0'
         id: fmt
         run: terraform fmt -check
         working-directory: ./terraform
 
       - name: Terraform Variables
-        if: steps.requests.outputs.count != '0'
+        if: steps.count.outputs.count != '0'
         run: |
           cat >"versions.tf" <<EOF
           terraform {
@@ -78,7 +79,7 @@ jobs:
         working-directory: ./terraform
 
       - name: Terraform Init
-        if: steps.requests.outputs.count != '0'
+        if: steps.count.outputs.count != '0'
         id: init
         run: terraform init
         working-directory: ./terraform
@@ -93,7 +94,7 @@ jobs:
         run: yarn
 
       - name: Terraform Apply
-        if: steps.requests.outputs.count != '0'
+        if: steps.count.outputs.count != '0'
         id: apply
         run: |
           terraform apply -auto-approve
@@ -101,7 +102,7 @@ jobs:
         continue-on-error: true
 
       - name: Update Requests Status
-        if: steps.requests.outputs.count != '0'
+        if: steps.count.outputs.count != '0'
         uses: fjogeleit/http-request-action@master
         with:
           url: "${{ env.API_URL }}/batch/items"
