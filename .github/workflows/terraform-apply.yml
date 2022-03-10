@@ -18,9 +18,10 @@ jobs:
       - name: Check if Action Runs Already
         id: action
         run: |
-          name=$(echo ${{github.workflow}} | cut -d/ -f3)
-          echo "https://api.github.com/repos/${{github.repository.full_name}}/actions/workflows/${{name}}/runs?status=in_progress"
-          runs=$(curl -H "Accept: application/vnd.github.groot-preview+json" https://api.github.com/repos/${{github.repository.full_name}}/actions/workflows/${{name}}/runs?status=in_progress)
+          workflow=$(echo ".github/workflows/terraform-apply.yml" | cut -d/ -f3)
+          workflow=$(echo "${{ github.workflow }}" | cut -d/ -f3)
+          echo "https://api.github.com/repos/${{github.repository.full_name}}/actions/workflows/${{workflow}}/runs?status=in_progress"
+          runs=$(curl -H "Accept: application/vnd.github.groot-preview+json" https://api.github.com/repos/${{github.repository.full_name}}/actions/workflows/${{workflow}}/runs?status=in_progress)
           count=$(jq ".[0].total_count" <<< "$runs")
           echo "$count"
           echo "::set-output name=count::$count"
