@@ -1,10 +1,6 @@
 name: "Terraform V2 Plan"
 
-on:
-  pull_request:
-    paths:
-      - "terraform-v2/**"
-      - ".github/workflows/terraform-v2-plan.yml"
+on: workflow_dispatch
 
 env:
   TF_VERSION: 1.0.7
@@ -18,7 +14,7 @@ jobs:
     runs-on: ubuntu-18.04
     timeout-minutes: 30
     env:
-      API_URL: "https://gcp9dahm4c.execute-api.ca-central-1.amazonaws.com/test/actions/"
+      API_URL: ${{secrets.WEBAPP_API_URL}}
     steps:
       - uses: hmarr/debug-action@v2
       - name: Checkout
