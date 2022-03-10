@@ -17,8 +17,7 @@ jobs:
       API_URL: ${{secrets.WEBAPP_API_URL}}
     steps:
       - uses: hmarr/debug-action@v2
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Wake Up API
         uses: fjogeleit/http-request-action@master
