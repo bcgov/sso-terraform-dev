@@ -3,13 +3,13 @@ module "client_tians-testing-on-davids-case-6535" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "tians-testing-on-davids-case-6535"
   valid_redirect_uris = [
-    "https://exampledfsasd"
+    "https://exampleChangeWithoutRequester"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
   web_origins = [
-    "https://exampledfsasd",
+    "https://exampleChangeWithoutRequester",
     "+"
   ]
 }
