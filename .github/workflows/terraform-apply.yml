@@ -18,6 +18,8 @@ jobs:
       - name: Check if Action Runs Already
         id: action
         run: |
+          releaseDate=$(date '+%B-%-d-%Y' | tr '[:upper:]' '[:lower:]')
+          echo $releaseDate
           workflow=$(echo ".github/workflows/terraform-apply.yml" | cut -d/ -f3)
           workflow=$(echo "${{ github.workflow }}" | cut -d/ -f3)
           echo "https://api.github.com/repos/${{github.repository.full_name}}/actions/workflows/${{workflow}}/runs?status=in_progress"
