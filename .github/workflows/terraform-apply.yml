@@ -15,18 +15,18 @@ jobs:
       - uses: hmarr/debug-action@v2
       - uses: actions/checkout@v2
 
-      - name: Check if Action Runs Already
-        id: action
-        run: |
-          releaseDate=$(date '+%B-%-d-%Y' | tr '[:upper:]' '[:lower:]')
-          echo $releaseDate
-          workflow=$(echo ".github/workflows/terraform-apply.yml" | cut -d/ -f3)
-          workflow=$(echo "${{ github.workflow }}" | cut -d/ -f3)
-          echo "https://api.github.com/repos/${{github.repository.full_name}}/actions/workflows/${{workflow}}/runs?status=in_progress"
-          runs=$(curl -H "Accept: application/vnd.github.groot-preview+json" https://api.github.com/repos/${{github.repository.full_name}}/actions/workflows/${{workflow}}/runs?status=in_progress)
-          count=$(jq ".[0].total_count" <<< "$runs")
-          echo "$count"
-          echo "::set-output name=count::$count"
+      # - name: Check if Action Runs Already
+      #   id: action
+      #   run: |
+      #     releaseDate=$(date '+%B-%-d-%Y' | tr '[:upper:]' '[:lower:]')
+      #     echo $releaseDate
+      #     workflow=$(echo ".github/workflows/terraform-apply.yml" | cut -d/ -f3)
+      #     workflow=$(echo "${{ github.workflow }}" | cut -d/ -f3)
+      #     echo "https://api.github.com/repos/${{github.repository.full_name}}/actions/workflows/${{workflow}}/runs?status=in_progress"
+      #     runs=$(curl -H "Accept: application/vnd.github.groot-preview+json" https://api.github.com/repos/${{github.repository.full_name}}/actions/workflows/${{workflow}}/runs?status=in_progress)
+      #     count=$(jq ".[0].total_count" <<< "$runs")
+      #     echo "$count"
+      #     echo "::set-output name=count::$count"
 
       - name: Wake Up API
         if: steps.action.outputs.count == '1'
