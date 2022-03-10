@@ -34,13 +34,13 @@ jobs:
           timeout: "60000"
 
       - name: Get Requests Count
-        id: requests
+        id: count
         run: |
           count=$(jq length <<< ${{ steps.requests.outputs.response }})
           echo "::set-output name=count::$count"
 
       - name: Setup Terraform
-        if: steps.requests.outputs.count != '0'
+        if: steps.count.outputs.count != '0'
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ env.TF_VERSION }}
