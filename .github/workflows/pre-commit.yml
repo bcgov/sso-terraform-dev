@@ -1,4 +1,4 @@
-name: Check code/commit conventions
+name: Check Code/Commit Conventions
 
 on: pull_request
 
@@ -6,7 +6,9 @@ jobs:
   pre-commit:
     runs-on: ubuntu-18.04
     steps:
+      - uses: hmarr/debug-action@v2
       - uses: actions/checkout@v2
+
       - name: Install asdf
         uses: asdf-vm/actions/setup@v1
       - name: Cache tools
