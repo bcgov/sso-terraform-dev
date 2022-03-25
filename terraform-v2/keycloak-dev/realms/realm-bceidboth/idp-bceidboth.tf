@@ -7,18 +7,19 @@ resource "keycloak_saml_identity_provider" "bceidboth" {
   enabled     = true
   store_token = false
   trust_email = false
-  sync_mode   = "FORCE"
+  sync_mode   = "IMPORT"
 
-  entity_id                  = "${var.keycloak_url}/auth/realms/${var.realm_name}"
+  entity_id                  = "https://dev.loginproxy.gov.bc.ca/auth/realms/_bceidbasicbusiness/"
   single_sign_on_service_url = "https://sfstest7.gov.bc.ca/affwebservices/public/saml2sso"
-  single_logout_service_url  = "https://sfstest7.gov.bc.ca/affwebservices/public/saml2slo"
+  single_logout_service_url  = ""
 
   name_id_policy_format = "Persistent"
+  principal_type        = "SUBJECT"
 
   backchannel_supported      = false
   post_binding_response      = true
   post_binding_authn_request = true
-  post_binding_logout        = true
+  post_binding_logout        = false
 
   force_authn         = true
   validate_signature  = true
@@ -43,7 +44,7 @@ resource "keycloak_custom_identity_provider_mapper" "bceidboth_displayname" {
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "displayname"
+    "attribute.name" = "displayName"
     "user.attribute" = "display_name"
   }
 }
@@ -61,9 +62,9 @@ resource "keycloak_custom_identity_provider_mapper" "bceidboth_email" {
   }
 }
 
-resource "keycloak_custom_identity_provider_mapper" "bceidboth_bceid_user_guid1" {
+resource "keycloak_custom_identity_provider_mapper" "bceidboth_bceid_user_guid" {
   realm                    = keycloak_realm.this.id
-  name                     = "bceid_user_guid1"
+  name                     = "bceid_user_guid"
   identity_provider_alias  = keycloak_saml_identity_provider.bceidboth.alias
   identity_provider_mapper = "saml-user-attribute-idp-mapper"
 
@@ -74,29 +75,16 @@ resource "keycloak_custom_identity_provider_mapper" "bceidboth_bceid_user_guid1"
   }
 }
 
-resource "keycloak_custom_identity_provider_mapper" "bceidboth_bceid_user_guid2" {
+resource "keycloak_custom_identity_provider_mapper" "bceidboth_bceid_username" {
   realm                    = keycloak_realm.this.id
-  name                     = "bceid_user_guid2"
+  name                     = "bceid_username"
   identity_provider_alias  = keycloak_saml_identity_provider.bceidboth.alias
   identity_provider_mapper = "saml-user-attribute-idp-mapper"
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "SMGOV_USERGUID"
-    "user.attribute" = "bceid_user_guid"
-  }
-}
-
-resource "keycloak_custom_identity_provider_mapper" "bceidboth_bceid_user_name" {
-  realm                    = keycloak_realm.this.id
-  name                     = "bceid_user_name"
-  identity_provider_alias  = keycloak_saml_identity_provider.bceidboth.alias
-  identity_provider_mapper = "saml-user-attribute-idp-mapper"
-
-  extra_config = {
-    syncMode         = "INHERIT"
-    "attribute.name" = "SMGOV_USERDISPLAYNAME"
-    "user.attribute" = "bceid_user_name"
+    "attribute.name" = "username"
+    "user.attribute" = "bceid_username"
   }
 }
 
