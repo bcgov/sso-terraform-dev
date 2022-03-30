@@ -78,7 +78,7 @@ jobs:
               hostname     = "app.terraform.io"
               organization = "bcgov"
               workspaces {
-                name = "${{ secrets.TFC_WORKSPACE }}"
+                name = "${{ env.TFC_WORKSPACE }}"
               }
             }
           }
