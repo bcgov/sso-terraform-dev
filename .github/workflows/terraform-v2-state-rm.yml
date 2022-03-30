@@ -65,5 +65,7 @@ jobs:
       - name: Terraform Destroy
         id: destroy
         run: |
-          terraform state rm '${{ inputs.resource_address }}'
+          address=${{ inputs.resource_address }}
+          echo "$address"
+          terraform state rm "$address"
         working-directory: ./terraform-v2
