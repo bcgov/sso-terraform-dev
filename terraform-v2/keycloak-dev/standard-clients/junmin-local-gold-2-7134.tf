@@ -3,7 +3,7 @@ module "junmin-local-gold-2-7134" {
   realm_id    = var.standard_realm_id
   client_name = "junmin-local-gold-2-7134"
   valid_redirect_uris = [
-    "http://localhost:3000"
+    "http://localhost:3011"
   ]
   idps = [
     "idir"
@@ -12,7 +12,7 @@ module "junmin-local-gold-2-7134" {
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
   web_origins = [
-    "http://localhost:3000",
+    "http://localhost:3011",
     "+"
   ]
 }
