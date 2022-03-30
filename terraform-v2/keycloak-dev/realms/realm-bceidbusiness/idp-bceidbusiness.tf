@@ -7,18 +7,19 @@ resource "keycloak_saml_identity_provider" "bceidbusiness" {
   enabled     = true
   store_token = false
   trust_email = false
-  sync_mode   = "FORCE"
+  sync_mode   = "IMPORT"
 
-  entity_id                  = "${var.keycloak_url}/auth/realms/${var.realm_name}"
+  entity_id                  = "https://dev.loginproxy.gov.bc.ca/auth/realms/_bceidbusiness/"
   single_sign_on_service_url = "https://sfstest7.gov.bc.ca/affwebservices/public/saml2sso"
-  single_logout_service_url  = "https://sfstest7.gov.bc.ca/affwebservices/public/saml2slo"
+  single_logout_service_url  = ""
 
   name_id_policy_format = "Persistent"
+  principal_type        = "SUBJECT"
 
   backchannel_supported      = false
   post_binding_response      = true
   post_binding_authn_request = true
-  post_binding_logout        = true
+  post_binding_logout        = false
 
   force_authn         = true
   validate_signature  = true
@@ -97,6 +98,19 @@ resource "keycloak_custom_identity_provider_mapper" "bceidbusiness_bceid_busines
     syncMode         = "INHERIT"
     "attribute.name" = "SMGOV_BUSINESSLEGALNAME"
     "user.attribute" = "bceid_business_name"
+  }
+}
+
+resource "keycloak_custom_identity_provider_mapper" "bceidbusiness_bceid_username" {
+  realm                    = keycloak_realm.this.id
+  name                     = "bceid_username"
+  identity_provider_alias  = keycloak_saml_identity_provider.bceidbusiness.alias
+  identity_provider_mapper = "saml-user-attribute-idp-mapper"
+
+  extra_config = {
+    syncMode         = "INHERIT"
+    "attribute.name" = "username"
+    "user.attribute" = "bceid_username"
   }
 }
 
