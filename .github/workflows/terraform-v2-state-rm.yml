@@ -65,7 +65,7 @@ jobs:
       - name: Terraform Destroy
         id: destroy
         run: |
-          address=${{ inputs.resource_address }}
+          address=${{ github.event.inputs.resource_address }}
           echo "$address"
           terraform state rm "$address"
         working-directory: ./terraform-v2
