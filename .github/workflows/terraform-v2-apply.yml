@@ -128,5 +128,5 @@ jobs:
           timeout: "60000"
 
       - name: Set Failure Code
-        if: steps.apply.outcome != ''failure''
+        if: steps.apply.outcome == 'failure'
         run: exit 1
