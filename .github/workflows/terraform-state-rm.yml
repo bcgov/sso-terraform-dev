@@ -1,6 +1,11 @@
-name: Terraform Plan
+name: Terraform State Remove
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      resource_address:
+        description: Resource Address
+        required: true
 
 env:
   TF_VERSION: 1.1.4
@@ -12,7 +17,6 @@ env:
 jobs:
   terraform:
     runs-on: ubuntu-18.04
-    timeout-minutes: 30
     steps:
       - uses: hmarr/debug-action@v2
       - uses: actions/checkout@v2
@@ -26,7 +30,7 @@ jobs:
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
-        working-directory: ./terraform
+        working-directory: ./terraform-v2
 
       - name: Terraform Variables
         run: |
@@ -50,14 +54,18 @@ jobs:
           test_client_secret="${{ secrets.KEYCLOAK_TEST_CLIENT_SECRET }}"
           prod_client_secret="${{ secrets.KEYCLOAK_PROD_CLIENT_SECRET }}"
           EOF
-        working-directory: ./terraform
+        working-directory: ./terraform-v2
 
       - name: Terraform Init
         id: init
         run: terraform init
-        working-directory: ./terraform
+        working-directory: ./terraform-v2
 
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan -no-color
-        working-directory: ./terraform
+        # see https://www.terraform.io/cli/commands/state/rm
+      - name: Terraform State Remove
+        id: destroy
+        run: |
+          address=${{ github.event.inputs.resource_address }}
+          echo "$address"
+          terraform state rm "$address"
+        working-directory: ./terraform-v2

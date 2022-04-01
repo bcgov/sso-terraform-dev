@@ -3,7 +3,11 @@ name: "Manual Terraform Run"
 on: workflow_dispatch
 
 env:
-  TF_VERSION: 0.15.3
+  TF_VERSION: 1.1.4
+  TFC_WORKSPACE: xgr00q-dev-keycloak_dev
+  KEYCLOAK_DEV_URL: https://sso-keycloak-1-b861c7-test.apps.silver.devops.gov.bc.ca
+  KEYCLOAK_TEST_URL: https://sso-keycloak-2-b861c7-test.apps.silver.devops.gov.bc.ca
+  KEYCLOAK_PROD_URL: https://sso-keycloak-3-b861c7-test.apps.silver.devops.gov.bc.ca
 
 jobs:
   terraform:
@@ -31,16 +35,16 @@ jobs:
               hostname     = "app.terraform.io"
               organization = "bcgov"
               workspaces {
-                name = "${{ secrets.TFC_WORKSPACE }}"
+                name = "${{ env.TFC_WORKSPACE }}"
               }
             }
           }
           EOF
 
           cat >"ci.auto.tfvars" <<EOF
-          dev_keycloak_url="${{ secrets.KEYCLOAK_DEV_URL }}"
-          test_keycloak_url="${{ secrets.KEYCLOAK_TEST_URL }}"
-          prod_keycloak_url="${{ secrets.KEYCLOAK_PROD_URL }}"
+          dev_keycloak_url="${{ env.KEYCLOAK_DEV_URL }}"
+          test_keycloak_url="${{ env.KEYCLOAK_TEST_URL }}"
+          prod_keycloak_url="${{ env.KEYCLOAK_PROD_URL }}"
           dev_client_secret="${{ secrets.KEYCLOAK_DEV_CLIENT_SECRET }}"
           test_client_secret="${{ secrets.KEYCLOAK_TEST_CLIENT_SECRET }}"
           prod_client_secret="${{ secrets.KEYCLOAK_PROD_CLIENT_SECRET }}"
