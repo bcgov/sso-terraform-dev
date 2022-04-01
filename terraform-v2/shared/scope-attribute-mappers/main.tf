@@ -2,7 +2,7 @@ resource "keycloak_openid_client_scope" "scope" {
   realm_id               = var.realm_id
   name                   = var.scope_name
   description            = "${var.scope_name} idp client scope"
-  include_in_token_scope = false
+  include_in_token_scope = true
 }
 
 resource "keycloak_generic_client_protocol_mapper" "client_standard_mappers" {

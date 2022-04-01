@@ -93,7 +93,7 @@ jobs:
       - name: Terraform Init
         if: steps.action.outputs.count == '1' && steps.count.outputs.count != '0'
         id: init
-        run: terraform init
+        run: terraform init -upgrade
         working-directory: ./terraform
 
       # NPM PACKAGES
@@ -122,3 +122,7 @@ jobs:
           data: '{"ids": ${{ steps.requests.outputs.response }}, "success": "${{ steps.apply.outcome != ''failure'' }}"}'
           customHeaders: '{"Authorization": "${{ secrets.GH_SECRET }}"}'
           timeout: "60000"
+
+      - name: Set Failure Code
+        if: steps.apply.outcome == 'failure'
+        run: exit 1
