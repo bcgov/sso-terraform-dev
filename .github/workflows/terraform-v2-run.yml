@@ -1,11 +1,6 @@
-name: Terraform V2 State Remove
+name: Terraform V2 Run
 
-on:
-  workflow_dispatch:
-    inputs:
-      resource_address:
-        description: Resource Address
-        required: true
+on: workflow_dispatch
 
 env:
   TF_VERSION: 1.1.4
@@ -58,14 +53,10 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: terraform init -upgrade
         working-directory: ./terraform-v2
 
-        # see https://www.terraform.io/cli/commands/state/rm
-      - name: Terraform State Remove
-        id: destroy
-        run: |
-          address=${{ github.event.inputs.resource_address }}
-          echo "$address"
-          terraform state rm "$address"
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve
         working-directory: ./terraform-v2
