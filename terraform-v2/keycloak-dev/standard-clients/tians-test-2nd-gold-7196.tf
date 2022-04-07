@@ -6,12 +6,17 @@ module "tians-test-2nd-gold-7196" {
     "https://exampleddd1",
     "https://exampleddd2"
   ]
+  roles = [
+    "role 1",
+    "role 2"
+  ]
   idps = [
     "idir",
     "bceidboth",
     "azureidir",
     "bceidbusiness",
-    "bceidbasic"
+    "bceidbasic",
+    "common"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"

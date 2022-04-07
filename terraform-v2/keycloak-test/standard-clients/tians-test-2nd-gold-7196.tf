@@ -10,7 +10,8 @@ module "tians-test-2nd-gold-7196" {
     "bceidboth",
     "azureidir",
     "bceidbusiness",
-    "bceidbasic"
+    "bceidbasic",
+    "common"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
