@@ -5,8 +5,12 @@ module "april-6-testing-teams-2-7204" {
   valid_redirect_uris = [
     "localhost://dev"
   ]
+  roles = [
+    "TEST Role April 7"
+  ]
   idps = [
-    "idir"
+    "idir",
+    "common"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
