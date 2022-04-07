@@ -5,8 +5,14 @@ module "junmin-gold-test-7167" {
   valid_redirect_uris = [
     "http://localhost:3000"
   ]
+  roles = [
+    "admin",
+    "manager",
+    "user"
+  ]
   idps = [
-    "idir"
+    "idir",
+    "common"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
