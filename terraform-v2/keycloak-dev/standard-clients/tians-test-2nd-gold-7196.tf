@@ -6,10 +6,11 @@ module "tians-test-2nd-gold-7196" {
     "https://exampleddd1",
     "https://exampleddd2"
   ]
-  roles = [
-    "role 1",
-    "role 2"
-  ]
+  access_token_lifespan               = ""
+  client_session_idle_timeout         = ""
+  client_session_max_lifespan         = ""
+  client_offline_session_idle_timeout = ""
+  client_offline_session_max_lifespan = ""
   idps = [
     "idir",
     "bceidboth",

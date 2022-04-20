@@ -7,6 +7,11 @@ module "tians-test-2nd-gold-7196" {
     "https://exampleProd2",
     "https://exampleProd3"
   ]
+  access_token_lifespan               = ""
+  client_session_idle_timeout         = ""
+  client_session_max_lifespan         = ""
+  client_offline_session_idle_timeout = ""
+  client_offline_session_max_lifespan = ""
   idps = [
     "idir",
     "bceidboth",
