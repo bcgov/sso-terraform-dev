@@ -6,19 +6,6 @@ module "tians-testing-third-gold-7327" {
     "https://example",
     "https://example1"
   ]
-  roles = [
-    "Role A",
-    "Role B",
-    "Role C",
-    "Role D",
-    "Role E",
-    "Role F",
-    "Role G",
-    "Role H",
-    "Role I",
-    "Role J",
-    "Role K"
-  ]
   access_token_lifespan               = 1800
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = 2700
