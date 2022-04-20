@@ -60,6 +60,7 @@ jobs:
 
       - name: Setup Terraform
         if: steps.action.outputs.running == 'false' && steps.count.outputs.count != '0'
+        id: tf
         uses: ./.github/actions/setup-terraform
         with:
           context: ./terraform
@@ -72,6 +73,8 @@ jobs:
           kc-dev-secret: ${{ secrets.KEYCLOAK_DEV_CLIENT_SECRET }}
           kc-test-secret: ${{ secrets.KEYCLOAK_TEST_CLIENT_SECRET }}
           kc-prod-secret: ${{ secrets.KEYCLOAK_PROD_CLIENT_SECRET }}
+          apply: true
+        continue-on-error: true
 
       # NPM PACKAGES
       - uses: actions/cache@v2
@@ -82,24 +85,16 @@ jobs:
       - name: Install Yarn dependencies in root
         run: yarn
 
-      - name: Terraform Apply
-        if: steps.action.outputs.running == 'false' && steps.count.outputs.count != '0'
-        id: apply
-        run: |
-          terraform apply -auto-approve
-        working-directory: ./terraform
-        continue-on-error: true
-
       - name: Update Requests Status
         if: steps.action.outputs.running == 'false' && steps.count.outputs.count != '0'
         uses: fjogeleit/http-request-action@master
         with:
           url: "${{ env.API_URL }}/batch/items"
           method: "PUT"
-          data: '{"ids": ${{ steps.requests.outputs.response }}, "success": "${{ steps.apply.outcome != ''failure'' }}"}'
+          data: '{"ids": ${{ steps.requests.outputs.response }}, "success": "${{ steps.tf.outputs.apply != ''failure'' }}"}'
           customHeaders: '{"Authorization": "${{ secrets.GH_SECRET }}"}'
           timeout: "60000"
 
       - name: Set Failure Code
-        if: steps.apply.outcome == 'failure'
+        if: steps.tf.outputs.apply == 'failure'
         run: exit 1
