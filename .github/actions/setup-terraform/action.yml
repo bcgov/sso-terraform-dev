@@ -41,6 +41,10 @@ inputs:
     description: "Whether to run Terraform apply"
     required: false
     default: "false"
+  state-rm:
+    description: "Resource address to remove the state"
+    required: false
+    default: ""
 
 outputs:
   init:
@@ -113,5 +117,16 @@ runs:
       if: inputs.apply == 'true'
       id: apply
       run: terraform apply -auto-approve
+      shell: bash
+      working-directory: ${{ inputs.context }}
+
+    # see https://www.terraform.io/cli/commands/state/rm
+    - name: Terraform State Remove
+      if: inputs.state-rm != ''
+      id: remove
+      run: |
+        address=${{ inputs.state-rm }}
+        echo "$address"
+        terraform state rm "$address"
       shell: bash
       working-directory: ${{ inputs.context }}
