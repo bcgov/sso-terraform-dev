@@ -77,13 +77,8 @@ jobs:
         continue-on-error: true
 
       # NPM PACKAGES
-      - uses: actions/cache@v2
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install Yarn dependencies in root
-        run: yarn
+      - name: Setup NPM Packages
+        uses: ./.github/actions/setup-yarn
 
       - name: Update Requests Status
         if: steps.action.outputs.running == 'false' && steps.count.outputs.count != '0'
