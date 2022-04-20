@@ -29,6 +29,7 @@ jobs:
           kc-dev-secret: ${{ secrets.KEYCLOAK_DEV_CLIENT_SECRET }}
           kc-test-secret: ${{ secrets.KEYCLOAK_TEST_CLIENT_SECRET }}
           kc-prod-secret: ${{ secrets.KEYCLOAK_PROD_CLIENT_SECRET }}
+          plan: true
 
       - name: Terraform Apply
         id: apply
