@@ -5,11 +5,17 @@ module "tians-test-1st-gold-7162" {
   valid_redirect_uris = [
     "https://exampleProd"
   ]
+  access_token_lifespan               = ""
+  client_session_idle_timeout         = ""
+  client_session_max_lifespan         = ""
+  client_offline_session_idle_timeout = ""
+  client_offline_session_max_lifespan = ""
   idps = [
     "idir",
     "azureidir",
     "bceidbusiness",
-    "bceidboth"
+    "bceidboth",
+    "common"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
