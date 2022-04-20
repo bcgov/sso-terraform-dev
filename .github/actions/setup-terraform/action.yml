@@ -1,0 +1,81 @@
+name: "Setup Terraform"
+description: "Setup SSO Terraform workspace"
+
+inputs:
+  context:
+    description: "Terraform workspace directory"
+    required: true
+    default: .
+  tf-version:
+    description: "Terraform version"
+    required: true
+  tf-team-token:
+    description: "Terraform cloud team token"
+    required: true
+  tf-workspace:
+    description: "Terraform cloud workspace ID"
+    required: true
+  kc-dev-url:
+    description: "Keycloak url in customer dev environment"
+    required: true
+  kc-test-url:
+    description: "Keycloak url in customer test environment"
+    required: true
+  kc-prod-url:
+    description: "Keycloak url in customer prod environment"
+    required: true
+  kc-dev-secret:
+    description: "Keycloak client secret in customer dev environment"
+    required: true
+  kc-test-secret:
+    description: "Keycloak client secret in customer test environment"
+    required: true
+  kc-prod-secret:
+    description: "Keycloak client secret in customer prod environment"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: ${{ inputs.tf-version }}
+        cli_config_credentials_token: ${{ inputs.tf-team-token }}
+
+    - name: Terraform Format
+      id: fmt
+      run: terraform fmt -check
+      shell: bash
+      working-directory: ${{ inputs.context }}
+
+    - name: Terraform Variables
+      run: |
+        cat >"versions.tf" <<EOF
+        terraform {
+          backend "remote" {
+            hostname     = "app.terraform.io"
+            organization = "bcgov"
+            workspaces {
+              name = "${{ inputs.tf-workspace }}"
+            }
+          }
+        }
+        EOF
+
+        cat >"ci.auto.tfvars" <<EOF
+        dev_keycloak_url="${{ inputs.kc-dev-url }}"
+        test_keycloak_url="${{ inputs.kc-test-url }}"
+        prod_keycloak_url="${{ inputs.kc-prod-url }}"
+        dev_client_secret="${{ inputs.kc-dev-secret }}"
+        test_client_secret="${{ inputs.kc-test-secret }}"
+        prod_client_secret="${{ inputs.kc-prod-secret }}"
+        EOF
+      shell: bash
+      working-directory: ${{ inputs.context }}
+
+    - name: Terraform Init
+      id: init
+      run: terraform init
+      shell: bash
+      working-directory: ${{ inputs.context }}
