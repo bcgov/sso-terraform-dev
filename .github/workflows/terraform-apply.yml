@@ -17,44 +17,18 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: ./.github/actions/setup-terraform
         with:
-          terraform_version: ${{ env.TF_VERSION }}
-          cli_config_credentials_token: ${{ secrets.TFC_TEAM_TOKEN }}
-
-      - name: Terraform Format
-        id: fmt
-        run: terraform fmt -check
-        working-directory: ./terraform
-
-      - name: Terraform Variables
-        run: |
-          cat >"versions.tf" <<EOF
-          terraform {
-            backend "remote" {
-              hostname     = "app.terraform.io"
-              organization = "bcgov"
-              workspaces {
-                name = "${{ env.TFC_WORKSPACE }}"
-              }
-            }
-          }
-          EOF
-
-          cat >"ci.auto.tfvars" <<EOF
-          dev_keycloak_url="${{ env.KEYCLOAK_DEV_URL }}"
-          test_keycloak_url="${{ env.KEYCLOAK_TEST_URL }}"
-          prod_keycloak_url="${{ env.KEYCLOAK_PROD_URL }}"
-          dev_client_secret="${{ secrets.KEYCLOAK_DEV_CLIENT_SECRET }}"
-          test_client_secret="${{ secrets.KEYCLOAK_TEST_CLIENT_SECRET }}"
-          prod_client_secret="${{ secrets.KEYCLOAK_PROD_CLIENT_SECRET }}"
-          EOF
-        working-directory: ./terraform
-
-      - name: Terraform Init
-        id: init
-        run: terraform init
-        working-directory: ./terraform
+          context: ./terraform
+          tf-version: ${{ env.TF_VERSION }}
+          tf-team-token: ${{ secrets.TFC_TEAM_TOKEN }}
+          tf-workspace: ${{ env.TFC_WORKSPACE }}
+          kc-dev-url: ${{ env.KEYCLOAK_DEV_URL }}
+          kc-test-url: ${{ env.KEYCLOAK_TEST_URL }}
+          kc-prod-url: ${{ env.KEYCLOAK_PROD_URL }}
+          kc-dev-secret: ${{ secrets.KEYCLOAK_DEV_CLIENT_SECRET }}
+          kc-test-secret: ${{ secrets.KEYCLOAK_TEST_CLIENT_SECRET }}
+          kc-prod-secret: ${{ secrets.KEYCLOAK_PROD_CLIENT_SECRET }}
 
       - name: Terraform Apply
         id: apply
