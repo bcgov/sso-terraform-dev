@@ -3,7 +3,7 @@ module "client_tians-testing-silver-in-silver-7372" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "tians-testing-silver-in-silver-7372"
   valid_redirect_uris = [
-    "https://example"
+    "https://exampleTest"
   ]
   description = "CSS App Created"
 }
