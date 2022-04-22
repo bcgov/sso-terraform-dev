@@ -13,6 +13,7 @@ module "tian-second-gold-7370" {
   idps = [
     "idir",
     "azureidir",
+    "bceidbusiness",
     "common"
   ]
   description = "CSS App Created"
