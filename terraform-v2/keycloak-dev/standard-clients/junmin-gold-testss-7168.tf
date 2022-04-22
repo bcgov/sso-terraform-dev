@@ -5,7 +5,7 @@ module "junmin-gold-testss-7168" {
   valid_redirect_uris = [
     "http://localhost:3003"
   ]
-  access_token_lifespan               = 60
+  access_token_lifespan               = 120
   client_session_idle_timeout         = 7200
   client_session_max_lifespan         = 259200
   client_offline_session_idle_timeout = 345600
