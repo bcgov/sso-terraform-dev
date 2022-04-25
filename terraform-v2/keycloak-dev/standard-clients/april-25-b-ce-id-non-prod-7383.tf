@@ -3,7 +3,8 @@ module "april-25-b-ce-id-non-prod-7383" {
   realm_id    = var.standard_realm_id
   client_name = "april-25-b-ce-id-non-prod-7383"
   valid_redirect_uris = [
-    "https:///www.test.ca/devChange"
+    "https:///www.test.ca/devChange",
+    "https:///www.test.ca/devChange56"
   ]
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
@@ -19,6 +20,7 @@ module "april-25-b-ce-id-non-prod-7383" {
   pkce_code_challenge_method = "S256"
   web_origins = [
     "https:///www.test.ca/devChange",
+    "https:///www.test.ca/devChange56",
     "+"
   ]
 }
