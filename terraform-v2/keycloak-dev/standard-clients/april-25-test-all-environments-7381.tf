@@ -12,7 +12,6 @@ module "april-25-test-all-environments-7381" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
-    "bceidbasic",
     "common"
   ]
   description                = "CSS App Created"
