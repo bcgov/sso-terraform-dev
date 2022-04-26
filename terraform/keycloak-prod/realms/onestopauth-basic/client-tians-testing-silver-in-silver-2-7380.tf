@@ -5,11 +5,5 @@ module "client_tians-testing-silver-in-silver-2-7380" {
   valid_redirect_uris = [
     "https://exampleProd"
   ]
-  description                = "CSS App Created"
-  access_type                = "PUBLIC"
-  pkce_code_challenge_method = "S256"
-  web_origins = [
-    "https://exampleProd",
-    "+"
-  ]
+  description = "CSS App Created"
 }
