@@ -11,7 +11,7 @@ module "tians-testing-third-gold-7373" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
-    "idir",
+    "bceidbasic",
     "common"
   ]
   description                = "CSS App Created"
