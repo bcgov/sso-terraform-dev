@@ -3,6 +3,7 @@ module "test-april-25-draft-project-7387" {
   realm_id    = var.standard_realm_id
   client_name = "test-april-25-draft-project-7387"
   valid_redirect_uris = [
+    "http://localhost:6000",
     "https:///www.test.ca/devChange2"
   ]
   access_token_lifespan               = ""
