@@ -1,3 +1,7 @@
+data "keycloak_authentication_flow" "tians_testing_7371_browserflow" {
+  realm_id = var.standard_realm_id
+  alias    = "idp stopper"
+}
 module "tians-testing-7371" {
   source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
   realm_id    = var.standard_realm_id
@@ -14,5 +18,7 @@ module "tians-testing-7371" {
     "bceidbasic",
     "common"
   ]
-  description = "CSS App Created"
+  description                  = "CSS App Created"
+  override_authentication_flow = true
+  browser_authentication_flow  = data.keycloak_authentication_flow.tians_testing_7371_browserflow.id
 }
