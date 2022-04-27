@@ -1,3 +1,7 @@
+data "keycloak_authentication_flow" "tian_first_gold_7361_browserflow" {
+  realm_id = var.standard_realm_id
+  alias    = "idp stopper"
+}
 module "tian-first-gold-7361" {
   source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
   realm_id    = var.standard_realm_id
@@ -18,9 +22,11 @@ module "tian-first-gold-7361" {
     "bceidboth",
     "common"
   ]
-  description                = "CSS App Created"
-  access_type                = "PUBLIC"
-  pkce_code_challenge_method = "S256"
+  description                  = "CSS App Created"
+  override_authentication_flow = true
+  browser_authentication_flow  = data.keycloak_authentication_flow.tian_first_gold_7361_browserflow.id
+  access_type                  = "PUBLIC"
+  pkce_code_challenge_method   = "S256"
   web_origins = [
     "https://example",
     "+"
