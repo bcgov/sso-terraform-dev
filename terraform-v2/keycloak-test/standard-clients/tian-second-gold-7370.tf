@@ -1,3 +1,7 @@
+data "keycloak_authentication_flow" "tian_second_gold_7370_browserflow" {
+  realm_id = var.standard_realm_id
+  alias    = "idp stopper"
+}
 module "tian-second-gold-7370" {
   source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
   realm_id    = var.standard_realm_id
@@ -16,5 +20,7 @@ module "tian-second-gold-7370" {
     "bceidbusiness",
     "common"
   ]
-  description = "CSS App Created"
+  description                  = "CSS App Created"
+  override_authentication_flow = true
+  browser_authentication_flow  = data.keycloak_authentication_flow.tian_second_gold_7370_browserflow.id
 }

@@ -7,11 +7,11 @@ module "tian-second-gold-7370" {
   realm_id    = var.standard_realm_id
   client_name = "tian-second-gold-7370"
   valid_redirect_uris = [
-    "https://exampleddd"
+    "https://exampleProd"
   ]
-  access_token_lifespan               = 900
+  access_token_lifespan               = ""
   client_session_idle_timeout         = ""
-  client_session_max_lifespan         = 1320
+  client_session_max_lifespan         = ""
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
