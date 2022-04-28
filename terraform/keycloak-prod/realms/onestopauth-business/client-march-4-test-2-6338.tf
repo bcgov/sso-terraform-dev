@@ -3,13 +3,13 @@ module "client_march-4-test-2-6338" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "march-4-test-2-6338"
   valid_redirect_uris = [
-    "https://localhost:8080"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
   web_origins = [
-    "https://localhost:8080",
+    "https://bcgov.github.io/keycloak-example-apps/*",
     "+"
   ]
 }
