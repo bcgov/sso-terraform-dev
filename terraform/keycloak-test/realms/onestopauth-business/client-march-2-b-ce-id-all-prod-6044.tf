@@ -3,7 +3,7 @@ module "client_march-2-b-ce-id-all-prod-6044" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "march-2-b-ce-id-all-prod-6044"
   valid_redirect_uris = [
-    "https://www.test.ca/testCHANGED"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
   description = "CSS App Created"
 }
