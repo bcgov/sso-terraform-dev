@@ -3,7 +3,7 @@ module "client_march-2-b-ce-id-non-prod-to-prod-6043" {
   realm_id    = data.keycloak_realm.this.id
   client_name = "march-2-b-ce-id-non-prod-to-prod-6043"
   valid_redirect_uris = [
-    "http://localhost:10004"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
   description = "CSS App Created"
 }
