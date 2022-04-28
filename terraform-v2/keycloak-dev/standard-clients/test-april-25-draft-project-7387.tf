@@ -1,10 +1,14 @@
+data "keycloak_authentication_flow" "test_april_25_draft_project_7387_browserflow" {
+  realm_id = var.standard_realm_id
+  alias    = "idp stopper"
+}
 module "test-april-25-draft-project-7387" {
   source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
   realm_id    = var.standard_realm_id
   client_name = "test-april-25-draft-project-7387"
   valid_redirect_uris = [
     "http://localhost:6000",
-    "https:///www.test.ca/devChange2"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
@@ -12,8 +16,10 @@ module "test-april-25-draft-project-7387" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
-    "idir",
+    "bceidboth",
     "common"
   ]
-  description = "CSS App Created"
+  description                  = "CSS App Created"
+  override_authentication_flow = true
+  browser_authentication_flow  = data.keycloak_authentication_flow.test_april_25_draft_project_7387_browserflow.id
 }
