@@ -19,7 +19,7 @@ jobs:
 
       - name: Setup Tools
         if: steps.pr.outputs.botLabel != '"auto_generated"'
-        uses: ./.github/actions/setup-tools
+        uses: bcgov/sso-requests-actions/actions/setup-tools@v0.27.0
 
       - name: Rerun Pre-Commit Hooks on CI
         if: steps.pr.outputs.botLabel != '"auto_generated"'

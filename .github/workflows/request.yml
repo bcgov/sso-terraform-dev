@@ -15,10 +15,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup Tools
-        uses: ./.github/actions/setup-tools
+        uses: bcgov/sso-requests-actions/actions/setup-tools@v0.27.0
 
       - name: Setup NPM Packages
-        uses: ./.github/actions/setup-yarn
+        uses: bcgov/sso-requests-actions/actions/setup-yarn@v0.27.0
 
       - uses: bcgov/sso-requests-actions/request@v0.23.0
         with:
