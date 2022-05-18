@@ -1,7 +1,12 @@
+data "keycloak_authentication_flow" "junmin_test_integration_7375_browserflow" {
+  realm_id = var.standard_realm_id
+  alias    = "idp stopper"
+}
 module "junmin-test-integration-7375" {
-  source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id    = var.standard_realm_id
-  client_name = "junmin-test-integration-7375"
+  client_id   = "junmin-test-integration-7375"
+  client_name = "dev login page"
   valid_redirect_uris = [
     "http://localhost:3999"
   ]
@@ -14,9 +19,11 @@ module "junmin-test-integration-7375" {
     "idir",
     "common"
   ]
-  description                = "CSS App Created"
-  access_type                = "PUBLIC"
-  pkce_code_challenge_method = "S256"
+  description                  = "CSS App Created"
+  override_authentication_flow = true
+  browser_authentication_flow  = data.keycloak_authentication_flow.junmin_test_integration_7375_browserflow.id
+  access_type                  = "PUBLIC"
+  pkce_code_challenge_method   = "S256"
   web_origins = [
     "http://localhost:3999",
     "+"
