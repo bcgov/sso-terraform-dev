@@ -8,7 +8,7 @@ module "tians-testing-gold-3-7524" {
   client_id   = "tians-testing-gold-3-7524"
   client_name = "Tian's Testing - gold 3"
   valid_redirect_uris = [
-    "https://exampleddd"
+    "https://exampleProd"
   ]
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
@@ -25,7 +25,7 @@ module "tians-testing-gold-3-7524" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "https://exampleddd",
+    "https://exampleProd",
     "+"
   ]
 }
