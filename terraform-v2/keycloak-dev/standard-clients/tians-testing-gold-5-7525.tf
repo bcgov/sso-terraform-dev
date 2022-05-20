@@ -8,7 +8,7 @@ module "tians-testing-gold-5-7525" {
   client_id   = "tians-testing-gold-5-7525"
   client_name = ""
   valid_redirect_uris = [
-    "https://exampleddd"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
@@ -25,7 +25,7 @@ module "tians-testing-gold-5-7525" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "https://exampleddd",
+    "https://bcgov.github.io/keycloak-example-apps/*",
     "+"
   ]
 }
