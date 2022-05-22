@@ -6,7 +6,7 @@ module "junmin-test-integration-7375" {
   source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id    = var.standard_realm_id
   client_id   = "junmin-test-integration-7375"
-  client_name = "dev login page"
+  client_name = ""
   valid_redirect_uris = [
     "http://localhost:3999"
   ]
