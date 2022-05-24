@@ -6,7 +6,7 @@ module "tians-testing-gold-5-7525" {
   source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id    = var.standard_realm_id
   client_id   = "tians-testing-gold-5-7525"
-  client_name = "Tian's Testing - gold 5"
+  client_name = "Tian's Testing - gold rush"
   valid_redirect_uris = [
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]
