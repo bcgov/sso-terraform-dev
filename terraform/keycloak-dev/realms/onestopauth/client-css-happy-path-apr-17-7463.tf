@@ -1,6 +1,7 @@
 module "client_css-happy-path-apr-17-7463" {
   source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
   realm_id    = data.keycloak_realm.this.id
+  client_id   = "css-happy-path-apr-17-7463"
   client_name = "css-happy-path-apr-17-7463"
   valid_redirect_uris = [
     "https://localhost:3000"
