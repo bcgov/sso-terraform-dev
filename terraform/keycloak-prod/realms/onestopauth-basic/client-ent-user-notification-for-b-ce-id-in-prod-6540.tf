@@ -4,13 +4,13 @@ module "client_ent-user-notification-for-b-ce-id-in-prod-6540" {
   client_id   = "ent-user-notification-for-b-ce-id-in-prod-6540"
   client_name = "ent-user-notification-for-b-ce-id-in-prod-6540"
   valid_redirect_uris = [
-    "http://dev.com"
+    "http://prod.com"
   ]
   description                = "CSS App Created"
   access_type                = "PUBLIC"
   pkce_code_challenge_method = "S256"
   web_origins = [
-    "http://dev.com",
+    "http://prod.com",
     "+"
   ]
 }
