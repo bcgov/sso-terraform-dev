@@ -1,6 +1,7 @@
 module "client_ent-part-2-user-notification-for-b-ce-id-in-non-prod-6601" {
   source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
   realm_id    = data.keycloak_realm.this.id
+  client_id   = "ent-part-2-user-notification-for-b-ce-id-in-non-prod-6601"
   client_name = "ent-part-2-user-notification-for-b-ce-id-in-non-prod-6601"
   valid_redirect_uris = [
     "http://test.com"
