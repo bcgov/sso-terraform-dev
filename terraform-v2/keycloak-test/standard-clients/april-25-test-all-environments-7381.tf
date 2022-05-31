@@ -1,7 +1,7 @@
 module "april-25-test-all-environments-7381" {
-  source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
-  realm_id    = var.standard_realm_id
-  client_name = "april-25-test-all-environments-7381"
+  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  realm_id  = var.standard_realm_id
+  client_id = "april-25-test-all-environments-7381"
   valid_redirect_uris = [
     "http://localhost:3000/*"
   ]

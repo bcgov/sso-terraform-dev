@@ -1,7 +1,7 @@
 module "tians-testing-third-gold-7327" {
-  source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
-  realm_id    = var.standard_realm_id
-  client_name = "tians-testing-third-gold-7327"
+  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  realm_id  = var.standard_realm_id
+  client_id = "tians-testing-third-gold-7327"
   valid_redirect_uris = [
     "http://prod1.com"
   ]

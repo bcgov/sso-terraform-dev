@@ -1,7 +1,7 @@
 module "kuro-testing-2-7170" {
-  source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
-  realm_id    = var.standard_realm_id
-  client_name = "kuro-testing-2-7170"
+  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  realm_id  = var.standard_realm_id
+  client_id = "kuro-testing-2-7170"
   valid_redirect_uris = [
     "http://test.com"
   ]

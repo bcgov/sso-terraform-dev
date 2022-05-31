@@ -3,9 +3,9 @@ data "keycloak_authentication_flow" "may_11_test_zorin_7467_browserflow" {
   alias    = "idp stopper"
 }
 module "may-11-test-zorin-7467" {
-  source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
-  realm_id    = var.standard_realm_id
-  client_name = "may-11-test-zorin-7467"
+  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  realm_id  = var.standard_realm_id
+  client_id = "may-11-test-zorin-7467"
   valid_redirect_uris = [
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]

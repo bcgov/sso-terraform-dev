@@ -3,9 +3,9 @@ data "keycloak_authentication_flow" "tians_testing_7371_browserflow" {
   alias    = "idp stopper"
 }
 module "tians-testing-7371" {
-  source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
-  realm_id    = var.standard_realm_id
-  client_name = "tians-testing-7371"
+  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  realm_id  = var.standard_realm_id
+  client_id = "tians-testing-7371"
   valid_redirect_uris = [
     "https://exampleProd"
   ]

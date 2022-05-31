@@ -3,9 +3,9 @@ data "keycloak_authentication_flow" "css_happy_path_end_2_end_gold_7500_browserf
   alias    = "idp stopper"
 }
 module "css-happy-path-end-2-end-gold-7500" {
-  source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
-  realm_id    = var.standard_realm_id
-  client_name = "css-happy-path-end-2-end-gold-7500"
+  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  realm_id  = var.standard_realm_id
+  client_id = "css-happy-path-end-2-end-gold-7500"
   valid_redirect_uris = [
     "https://localhost:3000"
   ]
