@@ -3,7 +3,7 @@ data "keycloak_authentication_flow" "jaffer_first_test_9_7492_browserflow" {
   alias    = "idp stopper"
 }
 module "jaffer-first-test-9-7492" {
-  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  source    = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id  = var.standard_realm_id
   client_id = "jaffer-first-test-9-7492"
   valid_redirect_uris = [

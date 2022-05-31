@@ -1,5 +1,5 @@
 module "tians-test-2nd-gold-7196" {
-  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  source    = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id  = var.standard_realm_id
   client_id = "tians-test-2nd-gold-7196"
   valid_redirect_uris = [

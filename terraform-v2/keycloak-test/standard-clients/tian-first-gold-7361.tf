@@ -3,7 +3,7 @@ data "keycloak_authentication_flow" "tian_first_gold_7361_browserflow" {
   alias    = "idp stopper"
 }
 module "tian-first-gold-7361" {
-  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  source    = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id  = var.standard_realm_id
   client_id = "tian-first-gold-7361"
   valid_redirect_uris = [

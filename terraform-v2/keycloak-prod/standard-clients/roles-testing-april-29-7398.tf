@@ -3,7 +3,7 @@ data "keycloak_authentication_flow" "roles_testing_april_29_7398_browserflow" {
   alias    = "idp stopper"
 }
 module "roles-testing-april-29-7398" {
-  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  source    = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id  = var.standard_realm_id
   client_id = "roles-testing-april-29-7398"
   valid_redirect_uris = [

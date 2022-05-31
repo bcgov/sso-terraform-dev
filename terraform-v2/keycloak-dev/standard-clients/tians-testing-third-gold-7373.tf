@@ -3,7 +3,7 @@ data "keycloak_authentication_flow" "tians_testing_third_gold_7373_browserflow" 
   alias    = "idp stopper"
 }
 module "tians-testing-third-gold-7373" {
-  source    = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
+  source    = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id  = var.standard_realm_id
   client_id = "tians-testing-third-gold-7373"
   valid_redirect_uris = [
