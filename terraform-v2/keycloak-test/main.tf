@@ -71,3 +71,8 @@ module "standard_clients" {
   source            = "./standard-clients"
   standard_realm_id = module.standard.realm_id
 }
+
+module "standard_service_clients" {
+  source            = "./standard-service-accounts"
+  standard_realm_id = module.standard.realm_id
+}
