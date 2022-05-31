@@ -3,9 +3,9 @@ data "keycloak_authentication_flow" "april_25_test_b_ce_id_all_environments_7382
   alias    = "idp stopper"
 }
 module "april-25-test-b-ce-id-all-environments-7382" {
-  source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
-  realm_id    = var.standard_realm_id
-  client_name = "april-25-test-b-ce-id-all-environments-7382"
+  source    = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
+  realm_id  = var.standard_realm_id
+  client_id = "april-25-test-b-ce-id-all-environments-7382"
   valid_redirect_uris = [
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]
