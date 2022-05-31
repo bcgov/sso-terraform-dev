@@ -18,6 +18,7 @@ module "junmin-test-integration-7375" {
   idps = [
     "idir",
     "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
