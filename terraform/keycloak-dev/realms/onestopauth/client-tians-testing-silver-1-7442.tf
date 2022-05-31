@@ -1,6 +1,7 @@
 module "client_tians-testing-silver-1-7442" {
   source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
   realm_id    = data.keycloak_realm.this.id
+  client_id   = "tians-testing-silver-1-7442"
   client_name = "tians-testing-silver-1-7442"
   valid_redirect_uris = [
     "https://example"

@@ -6,7 +6,7 @@ module "junmin-test-integration-7375" {
   source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id    = var.standard_realm_id
   client_id   = "junmin-test-integration-7375"
-  client_name = ""
+  client_name = "my login page"
   valid_redirect_uris = [
     "http://localhost:3999"
   ]
@@ -17,6 +17,7 @@ module "junmin-test-integration-7375" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
