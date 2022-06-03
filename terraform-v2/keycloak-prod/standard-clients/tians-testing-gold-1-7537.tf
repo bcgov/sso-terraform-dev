@@ -17,6 +17,8 @@ module "tians-testing-gold-1-7537" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
