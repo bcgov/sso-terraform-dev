@@ -8,7 +8,7 @@ module "may-19-zorin-test-idir-only-7468" {
   client_id   = "may-19-zorin-test-idir-only-7468"
   client_name = "Default"
   valid_redirect_uris = [
-    "https:///www.test.ca/prod2"
+    "http://localhost:3000"
   ]
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
@@ -25,7 +25,7 @@ module "may-19-zorin-test-idir-only-7468" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "https:///www.test.ca/prod2",
+    "http://localhost:3000",
     "+"
   ]
 }

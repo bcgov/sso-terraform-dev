@@ -8,6 +8,7 @@ module "may-19-zorin-test-idir-only-7468" {
   client_id   = "may-19-zorin-test-idir-only-7468"
   client_name = "Default"
   valid_redirect_uris = [
+    "http://localhost:3000",
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]
   access_token_lifespan               = ""
@@ -25,6 +26,7 @@ module "may-19-zorin-test-idir-only-7468" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
+    "http://localhost:3000",
     "https://bcgov.github.io/keycloak-example-apps/*",
     "+"
   ]
