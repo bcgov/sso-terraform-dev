@@ -8,7 +8,8 @@ module "may-30-test-demo-7539" {
   client_id   = "may-30-test-demo-7539"
   client_name = "May 30 Test Demo"
   valid_redirect_uris = [
-    "http://localhost:10004"
+    "http://localhost:10004",
+    "https://www.test.ca/devChanged2"
   ]
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
@@ -28,6 +29,7 @@ module "may-30-test-demo-7539" {
   pkce_code_challenge_method   = "S256"
   web_origins = [
     "http://localhost:10004",
+    "https://www.test.ca/devChanged2",
     "+"
   ]
 }
