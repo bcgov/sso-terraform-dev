@@ -8,6 +8,7 @@ module "june-20-test-non-prod-to-prod-7693" {
   client_id   = "june-20-test-non-prod-to-prod-7693"
   client_name = "June 20: Test Non Prod to Prod"
   valid_redirect_uris = [
+    "http://localhost:3000/*",
     "https:///www.test.ca/devChange2"
   ]
   access_token_lifespan               = ""
@@ -26,6 +27,7 @@ module "june-20-test-non-prod-to-prod-7693" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
+    "http://localhost:3000/*",
     "https:///www.test.ca/devChange2",
     "+"
   ]
