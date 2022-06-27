@@ -1,6 +1,7 @@
 module "client_march-4-test-2-6338" {
   source      = "github.com/bcgov/sso-terraform-keycloak-client?ref=dev"
   realm_id    = data.keycloak_realm.this.id
+  client_id   = "march-4-test-2-6338"
   client_name = "march-4-test-2-6338"
   valid_redirect_uris = [
     "https://localhost:8080"
