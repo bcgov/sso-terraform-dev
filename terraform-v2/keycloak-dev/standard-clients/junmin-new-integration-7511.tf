@@ -17,6 +17,7 @@ module "junmin-new-integration-7511" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
@@ -28,4 +29,6 @@ module "junmin-new-integration-7511" {
     "http://localhost:8080",
     "+"
   ]
+  standard_flow_enabled    = true
+  service_accounts_enabled = false
 }
