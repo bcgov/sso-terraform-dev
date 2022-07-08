@@ -3,13 +3,10 @@ data "keycloak_authentication_flow" "tians_testing_bceid_add_prod_later_7702_bro
   alias    = "idp stopper"
 }
 module "tians-testing-bceid-add-prod-later-7702" {
-  source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
-  realm_id    = var.standard_realm_id
-  client_id   = "tians-testing-bceid-add-prod-later-7702"
-  client_name = "Tian's Testing bceid add prod later"
-  valid_redirect_uris = [
-    "https://exampleProd"
-  ]
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
+  realm_id                            = var.standard_realm_id
+  client_id                           = "tians-testing-bceid-add-prod-later-7702"
+  client_name                         = "Tian's Testing bceid add prod later"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
@@ -27,5 +24,10 @@ module "tians-testing-bceid-add-prod-later-7702" {
   web_origins = [
     "https://exampleProd",
     "+"
+  ]
+  standard_flow_enabled    = true
+  service_accounts_enabled = false
+  valid_redirect_uris = [
+    "https://exampleProd"
   ]
 }
