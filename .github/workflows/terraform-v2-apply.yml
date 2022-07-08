@@ -11,12 +11,13 @@ env:
 jobs:
   terraform:
     runs-on: ubuntu-18.04
+    timeout-minutes: 30
     steps:
       - uses: hmarr/debug-action@v2
       - uses: actions/checkout@v2
 
       - name: Setup Terraform
-        uses: bcgov/sso-requests-actions/actions/setup-terraform@v0.33.0
+        uses: bcgov/sso-requests-actions/actions/setup-terraform@v0.34.0
         with:
           context: ./terraform-v2
           tf-version: ${{ env.TF_VERSION }}
@@ -32,3 +33,13 @@ jobs:
           kc-test-secret: ${{ secrets.KEYCLOAK_V2_TEST_CLIENT_SECRET }}
           kc-prod-secret: ${{ secrets.KEYCLOAK_V2_PROD_CLIENT_SECRET }}
           apply: true
+
+      - uses: bcgov/sso-requests-actions/keycloak@v0.34.0
+        with:
+          dev-keycloak-url: ${{ env.KEYCLOAK_V2_DEV_URL }}
+          test-keycloak-url: ${{ env.KEYCLOAK_V2_TEST_URL }}
+          prod-keycloak-url: ${{ env.KEYCLOAK_V2_PROD_URL }}
+          dev-client-secret: ${{ secrets.KEYCLOAK_V2_DEV_CLIENT_SECRET }}
+          test-client-secret: ${{ secrets.KEYCLOAK_V2_TEST_CLIENT_SECRET }}
+          prod-client-secret: ${{ secrets.KEYCLOAK_V2_PROD_CLIENT_SECRET }}
+          tasks: "update-review-profile-config enforce-browser-conditional-otp"
