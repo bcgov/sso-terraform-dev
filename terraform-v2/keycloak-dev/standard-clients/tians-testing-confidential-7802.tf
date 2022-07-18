@@ -22,6 +22,6 @@ module "tians-testing-confidential-7802" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
-    "https://example"
+    "http://localhost:3000/"
   ]
 }
