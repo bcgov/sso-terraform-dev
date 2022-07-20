@@ -3,13 +3,10 @@ data "keycloak_authentication_flow" "tians_testing_gold_4_7640_browserflow" {
   alias    = "idp stopper"
 }
 module "tians-testing-gold-4-7640" {
-  source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
-  realm_id    = var.standard_realm_id
-  client_id   = "tians-testing-gold-4-7640"
-  client_name = "Tian's Testing - gold 4"
-  valid_redirect_uris = [
-    "https://example"
-  ]
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=undefined/modules/standard-client"
+  realm_id                            = var.standard_realm_id
+  client_id                           = "tians-testing-gold-4-7640"
+  client_name                         = "Tian's Testing - gold 4"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
@@ -28,5 +25,10 @@ module "tians-testing-gold-4-7640" {
   web_origins = [
     "https://example",
     "+"
+  ]
+  standard_flow_enabled    = true
+  service_accounts_enabled = false
+  valid_redirect_uris = [
+    "https://example"
   ]
 }
