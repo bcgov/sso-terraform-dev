@@ -15,6 +15,7 @@ module "junmin-integration-7821" {
   idps = [
     "idir",
     "azureidir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
