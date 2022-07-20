@@ -3,7 +3,7 @@ data "keycloak_authentication_flow" "tians_testing_b_ce_id_idir_with_prod_7809_b
   alias    = "idp stopper"
 }
 module "tians-testing-b-ce-id-idir-with-prod-7809" {
-  source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=undefined/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "tians-testing-b-ce-id-idir-with-prod-7809"
   client_name                         = "Tian's Testing - BCeID + IDIR with Prod"
@@ -14,6 +14,8 @@ module "tians-testing-b-ce-id-idir-with-prod-7809" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
