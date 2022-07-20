@@ -13,9 +13,6 @@ module "tians-testing-b-ce-id-prod-approval-7823" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
-    "idir",
-    "bceidbasic",
-    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
