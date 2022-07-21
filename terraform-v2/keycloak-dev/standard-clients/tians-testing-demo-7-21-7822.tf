@@ -3,7 +3,7 @@ data "keycloak_authentication_flow" "tians_testing_demo_7_21_7822_browserflow" {
   alias    = "idp stopper"
 }
 module "tians-testing-demo-7-21-7822" {
-  source                              = "github.com/bcgov/sso-terraform-modules?ref=undefined/modules/standard-client"
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "tians-testing-demo-7-21-7822"
   client_name                         = "Tian's Testing - Demo"

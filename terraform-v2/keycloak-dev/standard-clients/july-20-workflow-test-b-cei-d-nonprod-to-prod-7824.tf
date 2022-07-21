@@ -3,7 +3,7 @@ data "keycloak_authentication_flow" "july_20_workflow_test_b_cei_d_nonprod_to_pr
   alias    = "idp stopper"
 }
 module "july-20-workflow-test-b-cei-d-nonprod-to-prod-7824" {
-  source                              = "github.com/bcgov/sso-terraform-modules?ref=undefined/modules/standard-client"
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "july-20-workflow-test-b-cei-d-nonprod-to-prod-7824"
   client_name                         = "July 20 - Workflow Test BCeiD nonprod to prod"
