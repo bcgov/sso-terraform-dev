@@ -3,7 +3,7 @@ data "keycloak_authentication_flow" "mynewproject_7362_browserflow" {
   alias    = "idp stopper"
 }
 module "mynewproject-7362" {
-  source                              = "github.com/bcgov/sso-terraform-modules?ref=undefined/modules/standard-client"
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "mynewproject-7362"
   client_name                         = ""

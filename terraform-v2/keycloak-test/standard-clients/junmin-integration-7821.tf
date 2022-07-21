@@ -3,7 +3,7 @@ data "keycloak_authentication_flow" "junmin_integration_7821_browserflow" {
   alias    = "idp stopper"
 }
 module "junmin-integration-7821" {
-  source                              = "github.com/bcgov/sso-terraform-modules?ref=undefined/modules/standard-client"
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "junmin-integration-7821"
   client_name                         = "junmin integration"

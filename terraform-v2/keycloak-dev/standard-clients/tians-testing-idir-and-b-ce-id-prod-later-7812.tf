@@ -3,7 +3,7 @@ data "keycloak_authentication_flow" "tians_testing_idir_and_b_ce_id_prod_later_7
   alias    = "idp stopper"
 }
 module "tians-testing-idir-and-b-ce-id-prod-later-7812" {
-  source                              = "github.com/bcgov/sso-terraform-modules?ref=undefined/modules/standard-client"
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "tians-testing-idir-and-b-ce-id-prod-later-7812"
   client_name                         = "Tian's Testing - IDIR and BCeID - prod later"
