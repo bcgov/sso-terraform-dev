@@ -13,6 +13,7 @@ module "july-20-workflow-test-b-cei-d-nonprod-to-prod-7824" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
