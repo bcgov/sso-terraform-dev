@@ -13,6 +13,7 @@ module "tians-another-test-7831" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "idir",
     "bceidbasic",
     "common"
   ]
