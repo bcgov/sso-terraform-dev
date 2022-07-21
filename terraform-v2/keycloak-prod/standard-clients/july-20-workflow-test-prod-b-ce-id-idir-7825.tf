@@ -14,6 +14,7 @@ module "july-20-workflow-test-prod-b-ce-id-idir-7825" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
