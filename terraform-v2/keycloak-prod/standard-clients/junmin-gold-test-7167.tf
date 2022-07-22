@@ -15,7 +15,6 @@ module "junmin-gold-test-7167" {
   idps = [
     "idir",
     "azureidir",
-    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
