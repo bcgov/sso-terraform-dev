@@ -6,7 +6,7 @@ module "junmin-integration-7821" {
   source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "junmin-integration-7821"
-  client_name                         = "junmin integration"
+  client_name                         = "junmin integration2"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
