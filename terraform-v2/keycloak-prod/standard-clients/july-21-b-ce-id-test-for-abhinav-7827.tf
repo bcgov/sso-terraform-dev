@@ -13,7 +13,6 @@ module "july-21-b-ce-id-test-for-abhinav-7827" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
-    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
