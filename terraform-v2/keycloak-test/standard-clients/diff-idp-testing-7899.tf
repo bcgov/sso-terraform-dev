@@ -14,6 +14,7 @@ module "diff-idp-testing-7899" {
   client_offline_session_max_lifespan = ""
   idps = [
     "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
