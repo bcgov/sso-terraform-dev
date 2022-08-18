@@ -15,6 +15,8 @@ module "tians-testing-8-17-b-ce-id-add-both-7928" {
   idps = [
     "idir",
     "azureidir",
+    "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
