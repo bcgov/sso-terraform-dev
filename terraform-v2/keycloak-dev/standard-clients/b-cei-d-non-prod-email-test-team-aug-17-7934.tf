@@ -24,11 +24,13 @@ module "b-cei-d-non-prod-email-test-team-aug-17-7934" {
   pkce_code_challenge_method   = "S256"
   web_origins = [
     "https://bcgov.github.io/keycloak-example-apps/*",
+    "https://www.test.ca/devChanged2",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "https://bcgov.github.io/keycloak-example-apps/*"
+    "https://bcgov.github.io/keycloak-example-apps/*",
+    "https://www.test.ca/devChanged2"
   ]
 }
