@@ -13,6 +13,8 @@ module "b-ce-id-prod-email-test-user-aug-17-7932" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
