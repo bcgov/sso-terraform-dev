@@ -3,13 +3,10 @@ data "keycloak_authentication_flow" "abhinav_integration_test_7756_browserflow" 
   alias    = "idp stopper"
 }
 module "abhinav-integration-test-7756" {
-  source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
-  realm_id    = var.standard_realm_id
-  client_id   = "abhinav-integration-test-7756"
-  client_name = "Abhinav Integration test"
-  valid_redirect_uris = [
-    "https://testingAbhinav.com"
-  ]
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
+  realm_id                            = var.standard_realm_id
+  client_id                           = "abhinav-integration-test-7756"
+  client_name                         = "Abhinav Integration test"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
@@ -27,5 +24,10 @@ module "abhinav-integration-test-7756" {
   web_origins = [
     "https://testingAbhinav.com",
     "+"
+  ]
+  standard_flow_enabled    = true
+  service_accounts_enabled = false
+  valid_redirect_uris = [
+    "https://testingAbhinav.com"
   ]
 }
