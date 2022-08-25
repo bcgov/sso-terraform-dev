@@ -21,20 +21,20 @@ jobs:
       - name: Wake Up API
         uses: fjogeleit/http-request-action@master
         with:
-          url: '${{ env.API_URL }}/heartbeat'
-          method: 'GET'
+          url: "${{ env.API_URL }}/heartbeat"
+          method: "GET"
           customHeaders: '{"Authorization": "${{ secrets.GH_SECRET }}"}'
-          timeout: '60000'
+          timeout: "60000"
         continue-on-error: true
 
       - name: Fetch Requests Count
         id: requests
         uses: fjogeleit/http-request-action@master
         with:
-          url: '${{ env.API_URL }}/batch/items/gold'
-          method: 'GET'
+          url: "${{ env.API_URL }}/batch/items/gold"
+          method: "GET"
           customHeaders: '{"Authorization": "${{ secrets.GH_SECRET }}"}'
-          timeout: '60000'
+          timeout: "60000"
 
       - name: Get Requests Count
         id: count
@@ -55,8 +55,8 @@ jobs:
         with:
           context: ./terraform-v2
           tf-version: ${{ env.TF_VERSION }}
-          tf-s3-bucket: 'xgr00q-dev-keycloak'
-          tf-s3-bucket-key: 'keycloak/gold'
+          tf-s3-bucket: "xgr00q-dev-keycloak"
+          tf-s3-bucket-key: "keycloak/gold"
           tf-s3-access-key: ${{ secrets.TF_S3_ACCESS_KEY }}
           tf-s3-secret-key: ${{ secrets.TF_S3_SECRET_KEY }}
           tf-s3-role-arn: ${{ secrets.TF_S3_ROLE_ARN }}
@@ -77,11 +77,11 @@ jobs:
         if: steps.count.outputs.count != '0'
         uses: fjogeleit/http-request-action@master
         with:
-          url: '${{ env.API_URL }}/batch/items'
-          method: 'PUT'
+          url: "${{ env.API_URL }}/batch/items"
+          method: "PUT"
           data: '{"ids": ${{ steps.requests.outputs.response }}, "success": "${{ steps.tf.outputs.apply != ''failure'' }}"}'
           customHeaders: '{"Authorization": "${{ secrets.GH_SECRET }}"}'
-          timeout: '60000'
+          timeout: "60000"
 
       - name: Set Failure Code
         if: steps.tf.outputs.apply == 'failure'
