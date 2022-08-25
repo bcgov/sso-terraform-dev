@@ -3,13 +3,10 @@ data "keycloak_authentication_flow" "junmin_test_integration_7375_browserflow" {
   alias    = "idp stopper"
 }
 module "junmin-test-integration-7375" {
-  source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
-  realm_id    = var.standard_realm_id
-  client_id   = "junmin-test-integration-7375"
-  client_name = ""
-  valid_redirect_uris = [
-    "http://localhost:3999"
-  ]
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
+  realm_id                            = var.standard_realm_id
+  client_id                           = "junmin-test-integration-7375"
+  client_name                         = "TESTTEST"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
@@ -29,5 +26,10 @@ module "junmin-test-integration-7375" {
   web_origins = [
     "http://localhost:3999",
     "+"
+  ]
+  standard_flow_enabled    = true
+  service_accounts_enabled = false
+  valid_redirect_uris = [
+    "http://localhost:3999"
   ]
 }
