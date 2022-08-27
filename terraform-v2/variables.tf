@@ -21,7 +21,7 @@ variable "dev_password" {
 
 variable "dev_keycloak_url" {
   description = "The URL of the Keycloak instance"
-  default     = "https://sso-keycloak-c6af30-dev.apps.gold.devops.gov.bc.ca"
+  default     = "https://sso-keycloak-4-b861c7-test.apps.silver.devops.gov.bc.ca"
 }
 
 # KEYCLOAK_TEST
@@ -47,7 +47,7 @@ variable "test_password" {
 
 variable "test_keycloak_url" {
   description = "The URL of the Keycloak instance"
-  default     = "https://sso-keycloak-c6af30-test.apps.gold.devops.gov.bc.ca"
+  default     = "https://sso-keycloak-5-b861c7-test.apps.silver.devops.gov.bc.ca"
 }
 
 # KEYCLOAK_PROD
@@ -73,5 +73,5 @@ variable "prod_password" {
 
 variable "prod_keycloak_url" {
   description = "The URL of the Keycloak instance"
-  default     = "https://sso-keycloak-c6af30-prod.apps.gold.devops.gov.bc.ca"
+  default     = "https://sso-keycloak-6-b861c7-test.apps.silver.devops.gov.bc.ca"
 }
