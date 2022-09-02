@@ -120,4 +120,8 @@ resource "keycloak_realm_events" "master_events" {
 
   admin_events_enabled         = true
   admin_events_details_enabled = true
+
+  events_listeners = [
+    "jboss-logging"
+  ]
 }
