@@ -75,3 +75,13 @@ variable "prod_keycloak_url" {
   description = "The URL of the Keycloak instance"
   default     = "https://sso-keycloak-6-b861c7-test.apps.silver.devops.gov.bc.ca"
 }
+
+variable "github_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "github_client_secret" {
+  type      = string
+  sensitive = true
+}

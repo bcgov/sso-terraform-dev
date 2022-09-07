@@ -82,6 +82,15 @@ module "bceidboth" {
   signing_certificate        = var.siteminder_signing_certificate
 }
 
+module "github" {
+  source              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-github"
+  keycloak_url        = var.keycloak_url
+  realm_name          = local.github_realm_name
+  standard_realm_name = local.standard_realm_name
+  client_id           = var.github_client_id
+  client_secret       = var.github_client_secret
+}
+
 module "standard_clients" {
   source            = "./standard-clients"
   standard_realm_id = module.standard.realm_id
