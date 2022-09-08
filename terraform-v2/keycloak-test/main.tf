@@ -29,6 +29,8 @@ module "standard" {
   bceidbusiness_client_secret = module.bceidbusiness.standard_client_secret
   bceidboth_client_id         = module.bceidboth.standard_client_id
   bceidboth_client_secret     = module.bceidboth.standard_client_secret
+  github_client_id            = module.github.standard_client_id
+  github_client_secret        = module.github.standard_client_secret
 }
 
 module "idir" {
