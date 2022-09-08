@@ -5,6 +5,7 @@ locals {
   bceidbasic_realm_name                 = "bceidbasic"
   bceidbusiness_realm_name              = "bceidbusiness"
   bceidboth_realm_name                  = "bceidboth"
+  github_realm_name                     = "github"
   siteminder_single_sign_on_service_url = "https://sfs7.gov.bc.ca/affwebservices/public/saml2sso"
 }
 
@@ -18,6 +19,7 @@ module "standard" {
   bceidbasic_realm_name    = local.bceidbasic_realm_name
   bceidbusiness_realm_name = local.bceidbusiness_realm_name
   bceidboth_realm_name     = local.bceidboth_realm_name
+  github_realm_name        = local.github_realm_name
 
   idir_client_id              = module.idir.standard_client_id
   idir_client_secret          = module.idir.standard_client_secret
