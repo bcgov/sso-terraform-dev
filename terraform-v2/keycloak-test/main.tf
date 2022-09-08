@@ -5,6 +5,7 @@ locals {
   bceidbasic_realm_name                 = "bceidbasic"
   bceidbusiness_realm_name              = "bceidbusiness"
   bceidboth_realm_name                  = "bceidboth"
+  github_realm_name                     = "github"
   siteminder_single_sign_on_service_url = "https://sfstest7.gov.bc.ca/affwebservices/public/saml2sso"
 }
 
