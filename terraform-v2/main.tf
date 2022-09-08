@@ -10,6 +10,8 @@ module "keycloak_dev" {
   azureidir_tenant_id            = "azureidir_tenant_id"
   azureidir_client_id            = "azureidir_client_id"
   azureidir_client_secret        = "azureidir_client_secret"
+  github_client_id               = var.dev_github_client_id
+  github_client_secret           = var.dev_github_client_secret
 }
 
 module "keycloak_test" {
@@ -24,6 +26,8 @@ module "keycloak_test" {
   azureidir_tenant_id            = "azureidir_tenant_id"
   azureidir_client_id            = "azureidir_client_id"
   azureidir_client_secret        = "azureidir_client_secret"
+  github_client_id               = var.test_github_client_id
+  github_client_secret           = var.test_github_client_secret
 }
 
 module "keycloak_prod" {
@@ -38,4 +42,6 @@ module "keycloak_prod" {
   azureidir_tenant_id            = "azureidir_tenant_id"
   azureidir_client_id            = "azureidir_client_id"
   azureidir_client_secret        = "azureidir_client_secret"
+  github_client_id               = var.prod_github_client_id
+  github_client_secret           = var.prod_github_client_secret
 }
