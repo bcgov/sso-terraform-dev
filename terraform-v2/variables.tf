@@ -76,12 +76,32 @@ variable "prod_keycloak_url" {
   default     = "https://sso-keycloak-6-b861c7-test.apps.silver.devops.gov.bc.ca"
 }
 
-variable "github_client_id" {
+variable "dev_github_client_id" {
   type      = string
   sensitive = true
 }
 
-variable "github_client_secret" {
+variable "dev_github_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_github_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_github_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_github_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_github_client_secret" {
   type      = string
   sensitive = true
 }
