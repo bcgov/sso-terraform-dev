@@ -93,6 +93,7 @@ module "github" {
   standard_realm_name = local.standard_realm_name
   client_id           = var.github_client_id
   client_secret       = var.github_client_secret
+  github_org          = "bcgov-sso"
 }
 
 module "standard_clients" {
