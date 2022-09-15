@@ -15,6 +15,7 @@ module "tians-testing-oidc-both-8049" {
   idps = [
     "idir",
     "azureidir",
+    "github",
     "common"
   ]
   description                  = "CSS App Created"
