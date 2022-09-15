@@ -15,6 +15,7 @@ module "tians-testing-github-saml-8045" {
     "idir",
     "azureidir",
     "bceidboth",
+    "github",
     "common"
   ]
   description                  = "CSS App Created"
