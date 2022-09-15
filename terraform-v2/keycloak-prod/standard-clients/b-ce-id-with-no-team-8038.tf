@@ -13,6 +13,7 @@ module "b-ce-id-with-no-team-8038" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
