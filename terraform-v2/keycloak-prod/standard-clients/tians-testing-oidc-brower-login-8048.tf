@@ -15,6 +15,8 @@ module "tians-testing-oidc-brower-login-8048" {
   idps = [
     "idir",
     "azureidir",
+    "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
