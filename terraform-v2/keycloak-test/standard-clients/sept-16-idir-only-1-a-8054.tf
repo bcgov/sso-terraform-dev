@@ -22,12 +22,14 @@ module "sept-16-idir-only-1-a-8054" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
+    "http://localhost/*",
     "https://bcgov.github.io/keycloak-example-apps/*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
+    "http://localhost/*",
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
