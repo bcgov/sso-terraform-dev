@@ -22,6 +22,7 @@ module "sept-16-idir-only-1-b-8055" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
+    "http://localhost:3000/*",
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
