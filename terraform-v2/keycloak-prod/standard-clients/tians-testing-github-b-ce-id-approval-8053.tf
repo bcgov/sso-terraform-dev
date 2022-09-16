@@ -15,6 +15,7 @@ module "tians-testing-github-b-ce-id-approval-8053" {
   idps = [
     "idir",
     "azureidir",
+    "bceidboth",
     "common"
   ]
   description                  = "CSS App Created"
