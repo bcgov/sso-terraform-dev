@@ -14,6 +14,7 @@ module "nk-test-gh-prod-8062" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "github",
     "common"
   ]
   description                  = "CSS App Created"
