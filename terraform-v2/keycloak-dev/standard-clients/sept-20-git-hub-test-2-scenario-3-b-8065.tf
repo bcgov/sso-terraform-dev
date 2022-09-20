@@ -22,12 +22,14 @@ module "sept-20-git-hub-test-2-scenario-3-b-8065" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
+    "http://localhost:6000",
     "https://bcgov.github.io/keycloak-example-apps/*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
+    "http://localhost:6000",
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
