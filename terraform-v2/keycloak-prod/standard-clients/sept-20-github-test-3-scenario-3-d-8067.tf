@@ -13,6 +13,7 @@ module "sept-20-github-test-3-scenario-3-d-8067" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "github",
     "common"
   ]
   description                  = "CSS App Created"
