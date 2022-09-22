@@ -13,6 +13,7 @@ module "githun-dev-test-prod-no-team-and-prod-approve-8096" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "github",
     "common"
   ]
   description                  = "CSS App Created"
