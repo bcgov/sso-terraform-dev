@@ -2,7 +2,7 @@ module "junmin-bceid-github-8082" {
   source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "junmin-bceid-github-8082"
-  client_name                         = "junmin bceid github"
+  client_name                         = "junmin bceid github2"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
