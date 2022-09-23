@@ -20,11 +20,13 @@ module "s-ept-23-redirect-updates-bceid-prod-8101" {
   pkce_code_challenge_method   = "S256"
   web_origins = [
     "https://bcgov.github.io/keycloak-example-apps/*",
+    "https://www.test.ca/devChanged2",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "https://bcgov.github.io/keycloak-example-apps/*"
+    "https://bcgov.github.io/keycloak-example-apps/*",
+    "https://www.test.ca/devChanged2"
   ]
 }
