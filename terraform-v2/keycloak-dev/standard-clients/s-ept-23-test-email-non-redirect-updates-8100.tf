@@ -10,6 +10,7 @@ module "s-ept-23-test-email-non-redirect-updates-8100" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
