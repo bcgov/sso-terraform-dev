@@ -2,7 +2,7 @@ module "s-ept-23-test-email-non-redirect-updates-8100" {
   source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "s-ept-23-test-email-non-redirect-updates-8100"
-  client_name                         = "SEpt 23 Test email non redirects"
+  client_name                         = "SEpt 23 Test email non redirectsv2"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
