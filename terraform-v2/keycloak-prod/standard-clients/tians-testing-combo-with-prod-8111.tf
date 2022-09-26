@@ -13,6 +13,7 @@ module "tians-testing-combo-with-prod-8111" {
     "azureidir",
     "bceidbasic",
     "bceidbusiness",
+    "github",
     "common"
   ]
   description                  = "CSS App Created"
