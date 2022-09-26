@@ -10,6 +10,7 @@ module "idir-with-github-no-prod-approve-8105" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "github",
     "common"
   ]
   description                  = "CSS App Created"
