@@ -9,6 +9,7 @@ module "b-ce-id-git-hub-prod-with-b-ce-id-approve-8116" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
