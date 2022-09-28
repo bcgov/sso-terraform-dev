@@ -10,6 +10,7 @@ module "b-ce-id-and-github-prod-approve-8121" {
   client_offline_session_max_lifespan = ""
   idps = [
     "bceidbasic",
+    "github",
     "common"
   ]
   description                  = "CSS App Created"
