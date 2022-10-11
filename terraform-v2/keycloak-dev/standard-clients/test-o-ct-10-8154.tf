@@ -19,12 +19,12 @@ module "test-o-ct-10-8154" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "https://bcgov.github.io/sso-requests-test/request/8154?step=1#",
+    "https://bcgov.github.io/sso-requests-test/request/8154?step=1",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "https://bcgov.github.io/sso-requests-test/request/8154?step=1#"
+    "https://bcgov.github.io/sso-requests-test/request/8154?step=1"
   ]
 }
