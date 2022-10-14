@@ -80,7 +80,7 @@ jobs:
       working-directory: ./terraform-v2-custom
       continue-on-error: true
 
-    - uses: actions/github-script@0.9.0
+    - uses: actions/github-script@v6
       if: github.event_name == 'pull_request'
       env:
         PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
@@ -113,3 +113,14 @@ jobs:
       if: github.event_name == 'push'
       run: terraform apply -auto-approve
       working-directory: ./terraform-v2-custom
+
+    - uses: bcgov/sso-requests-actions/keycloak@v0.50.0
+      if: github.event_name == 'push'
+      with:
+        dev-keycloak-url: ${{ env.KEYCLOAK_V2_DEV_URL }}
+        test-keycloak-url: ${{ env.KEYCLOAK_V2_TEST_URL }}
+        prod-keycloak-url: ${{ env.KEYCLOAK_V2_PROD_URL }}
+        dev-client-secret: ${{ secrets.KEYCLOAK_V2_DEV_CLIENT_SECRET }}
+        test-client-secret: ${{ secrets.KEYCLOAK_V2_TEST_CLIENT_SECRET }}
+        prod-client-secret: ${{ secrets.KEYCLOAK_V2_PROD_CLIENT_SECRET }}
+        tasks: update-review-profile-config delete-unused-client-scopes
