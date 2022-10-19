@@ -10,6 +10,7 @@ module "oct-19-test-3-idir-8153" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidboth",
     "common"
   ]
   description                  = "CSS App Created"
