@@ -21,13 +21,13 @@ module "junmin-project-8185" {
   pkce_code_challenge_method   = "S256"
   web_origins = [
     "https://bcgov.github.io/keycloak-example-apps/*",
-    "https://logon7.gov.bc.ca/clp-cgi/logoff.cgi*",
+    "https://logon7.gov.bc.ca/clp-cgi/logoff.cgi",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
     "https://bcgov.github.io/keycloak-example-apps/*",
-    "https://logon7.gov.bc.ca/clp-cgi/logoff.cgi*"
+    "https://logon7.gov.bc.ca/clp-cgi/logoff.cgi"
   ]
 }
