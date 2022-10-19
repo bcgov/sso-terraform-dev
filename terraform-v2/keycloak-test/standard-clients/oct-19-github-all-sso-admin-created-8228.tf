@@ -9,6 +9,7 @@ module "oct-19-github-all-sso-admin-created-8228" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "idir",
     "githuball",
     "common"
   ]
