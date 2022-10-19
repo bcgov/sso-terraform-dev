@@ -10,6 +10,7 @@ module "test-o-ct-10-8154" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidboth",
     "common"
   ]
   description                  = "CSS App Created"
