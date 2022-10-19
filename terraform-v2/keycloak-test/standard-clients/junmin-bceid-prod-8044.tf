@@ -20,12 +20,12 @@ module "junmin-bceid-prod-8044" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "http://localohost:300",
+    "http://localohost:3001",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "http://localohost:300"
+    "http://localohost:3001"
   ]
 }
