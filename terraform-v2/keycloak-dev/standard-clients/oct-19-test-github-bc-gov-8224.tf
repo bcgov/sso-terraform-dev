@@ -9,6 +9,7 @@ module "oct-19-test-github-bc-gov-8224" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "idir",
     "github",
     "common"
   ]
