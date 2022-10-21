@@ -5,7 +5,7 @@ module "tians-testing-8253" {
   client_name        = "Tian's Testing"
   assertion_lifespan = ""
   valid_redirect_uris = [
-    "https://exampleTest"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
   idps = [
     "idir",
