@@ -10,6 +10,7 @@ module "oct-21-idir-non-prods-and-then-bceid-non-prods-8259" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidboth",
     "common"
   ]
   description                  = "CSS App Created"
