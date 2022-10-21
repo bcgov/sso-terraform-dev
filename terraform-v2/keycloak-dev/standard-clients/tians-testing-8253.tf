@@ -9,6 +9,7 @@ module "tians-testing-8253" {
   ]
   idps = [
     "idir",
+    "azureidir",
     "githubbcgov",
     "common"
   ]
