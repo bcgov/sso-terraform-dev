@@ -11,6 +11,7 @@ module "kuro-email-usecase-8261" {
   idps = [
     "idir",
     "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
