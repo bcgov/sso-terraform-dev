@@ -3,7 +3,7 @@ module "tians-testing-10-28-service-account-email-8275" {
   realm_id                            = var.standard_realm_id
   client_id                           = "tians-testing-10-28-service-account-email-8275"
   client_name                         = "Tian's Testing - 10/28 Service Account Email"
-  access_token_lifespan               = ""
+  access_token_lifespan               = 360
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
   client_offline_session_idle_timeout = ""
