@@ -10,6 +10,7 @@ module "tians-testing-10-28-mixed-account-email-8276" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
