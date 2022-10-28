@@ -4,7 +4,7 @@ module "tians-testing-10-28-mixed-account-email-8276" {
   client_id                           = "tians-testing-10-28-mixed-account-email-8276"
   client_name                         = "Tian's Testing - 10/28 mixed account email"
   access_token_lifespan               = ""
-  client_session_idle_timeout         = ""
+  client_session_idle_timeout         = 480
   client_session_max_lifespan         = ""
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
