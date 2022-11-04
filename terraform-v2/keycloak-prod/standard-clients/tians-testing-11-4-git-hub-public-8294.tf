@@ -9,6 +9,7 @@ module "tians-testing-11-4-git-hub-public-8294" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "githubpublic",
     "common"
   ]
   description                  = "CSS App Created"
