@@ -8,6 +8,7 @@ module "tians-testing-11-4-git-hub-saml-8295" {
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]
   idps = [
+    "idir",
     "githubpublic",
     "common"
   ]
