@@ -9,6 +9,7 @@ module "tians-testing-new-b-ce-id-git-hub-8300" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "bceidbusiness",
     "githubpublic",
     "common"
   ]
