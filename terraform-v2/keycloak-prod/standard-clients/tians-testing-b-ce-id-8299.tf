@@ -10,6 +10,7 @@ module "tians-testing-b-ce-id-8299" {
   client_offline_session_max_lifespan = ""
   idps = [
     "bceidbasic",
+    "bceidbusiness",
     "githubpublic",
     "common"
   ]
