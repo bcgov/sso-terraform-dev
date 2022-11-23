@@ -10,8 +10,7 @@ module "tians-testing-11-22-b-ce-id-client-role-search-8313" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
-    "bceidbasic",
-    "bceidbusiness",
+    "bceidboth",
     "common"
   ]
   description                  = "CSS App Created"
