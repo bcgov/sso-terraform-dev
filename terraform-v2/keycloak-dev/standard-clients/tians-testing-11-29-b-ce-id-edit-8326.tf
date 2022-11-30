@@ -10,7 +10,8 @@ module "tians-testing-11-29-b-ce-id-edit-8326" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
-    "bceidboth",
+    "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
