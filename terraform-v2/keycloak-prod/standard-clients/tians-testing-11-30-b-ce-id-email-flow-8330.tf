@@ -10,6 +10,8 @@ module "tians-testing-11-30-b-ce-id-email-flow-8330" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
