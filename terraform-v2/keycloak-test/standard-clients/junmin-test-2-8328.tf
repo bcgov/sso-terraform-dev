@@ -2,7 +2,7 @@ module "junmin-test-2-8328" {
   source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "junmin-test-2-8328"
-  client_name                         = "junmin-test-2"
+  client_name                         = "junmin-test-222"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
@@ -14,6 +14,7 @@ module "junmin-test-2-8328" {
   ]
   description                  = "CSS App Created"
   additional_role_attribute    = ""
+  login_theme                  = ""
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
   access_type                  = "PUBLIC"
