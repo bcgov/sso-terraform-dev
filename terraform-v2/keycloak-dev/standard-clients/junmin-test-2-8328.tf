@@ -20,12 +20,12 @@ module "junmin-test-2-8328" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "http://localhost:8081",
+    "http://localhost:8089",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "http://localhost:8081"
+    "http://localhost:8089"
   ]
 }
