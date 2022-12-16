@@ -6,8 +6,9 @@ locals {
   bceidbusiness_realm_name              = "bceidbusiness"
   bceidboth_realm_name                  = "bceidboth"
   github_realm_name                     = "github"
-  siteminder_single_sign_on_service_url = "https://sfs7.gov.bc.ca/affwebservices/public/saml2sso"
+  siteminder_single_sign_on_service_url = "https://loginproxy.gov.bc.ca/auth/realms/idir/protocol/saml"
   sandbox_client_redirect_uri           = "https://sso-keycloak-6-b861c7-test.apps.silver.devops.gov.bc.ca/*"
+  saml_entity_id                        = "sandbox-client"
 }
 
 module "standard" {
@@ -41,7 +42,7 @@ module "idir" {
   keycloak_url                = var.keycloak_url
   realm_name                  = local.idir_realm_name
   standard_realm_name         = local.standard_realm_name
-  saml_entity_id              = "https://loginproxy.gov.bc.ca/auth/realms/_idir/"
+  saml_entity_id              = local.saml_entity_id
   single_sign_on_service_url  = local.siteminder_single_sign_on_service_url
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
@@ -53,6 +54,11 @@ module "azureidir" {
   keycloak_url                = var.keycloak_url
   realm_name                  = local.azureidir_realm_name
   standard_realm_name         = local.standard_realm_name
+  authorization_url           = "https://loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/auth"
+  token_url                   = "https://loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/token"
+  user_info_url               = "https://loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/userinfo"
+  jwks_url                    = "https://loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/certs"
+  logout_url                  = "https://loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/logout"
   azure_tenant_id             = var.azureidir_tenant_id
   azure_client_id             = var.azureidir_client_id
   azure_client_secret         = var.azureidir_client_secret
@@ -65,7 +71,7 @@ module "bceidbasic" {
   keycloak_url                = var.keycloak_url
   realm_name                  = local.bceidbasic_realm_name
   standard_realm_name         = local.standard_realm_name
-  saml_entity_id              = "https://loginproxy.gov.bc.ca/auth/realms/_bceidbasic/"
+  saml_entity_id              = local.saml_entity_id
   single_sign_on_service_url  = local.siteminder_single_sign_on_service_url
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
@@ -78,7 +84,7 @@ module "bceidbusiness" {
   keycloak_url                = var.keycloak_url
   realm_name                  = local.bceidbusiness_realm_name
   standard_realm_name         = local.standard_realm_name
-  saml_entity_id              = "https://loginproxy.gov.bc.ca/auth/realms/_bceidbusiness/"
+  saml_entity_id              = local.saml_entity_id
   single_sign_on_service_url  = local.siteminder_single_sign_on_service_url
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
@@ -90,7 +96,7 @@ module "bceidboth" {
   keycloak_url                = var.keycloak_url
   realm_name                  = local.bceidboth_realm_name
   standard_realm_name         = local.standard_realm_name
-  saml_entity_id              = "https://loginproxy.gov.bc.ca/auth/realms/_bceidbasicbusiness/"
+  saml_entity_id              = local.saml_entity_id
   single_sign_on_service_url  = local.siteminder_single_sign_on_service_url
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
