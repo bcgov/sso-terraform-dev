@@ -22,6 +22,6 @@ module "test-gs-attempt-1-8350" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
-    "https://exampletest"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
