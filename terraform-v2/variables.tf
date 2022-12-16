@@ -105,3 +105,43 @@ variable "prod_github_client_secret" {
   type      = string
   sensitive = true
 }
+
+variable "test_siteminder_signing_certificate" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_siteminder_signing_certificate" {
+  type      = string
+  sensitive = true
+}
+
+variable "dev_azureidir_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "dev_azureidir_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_azureidir_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_azureidir_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_azureidir_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_azureidir_client_secret" {
+  type      = string
+  sensitive = true
+}
