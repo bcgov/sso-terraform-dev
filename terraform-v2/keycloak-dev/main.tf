@@ -46,6 +46,7 @@ module "idir" {
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
+  validate_signature          = false
 }
 
 module "azureidir" {
@@ -75,6 +76,7 @@ module "bceidbasic" {
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
+  validate_signature          = false
 }
 
 
@@ -88,6 +90,7 @@ module "bceidbusiness" {
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
+  validate_signature          = false
 }
 
 module "bceidboth" {
@@ -100,6 +103,7 @@ module "bceidboth" {
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
+  validate_signature          = false
 }
 
 module "github" {
