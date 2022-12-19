@@ -11,6 +11,7 @@ module "tians-testing-12-19-sandbox-login-8383" {
   idps = [
     "idir",
     "azureidir",
+    "bceidboth",
     "common"
   ]
   description                  = "CSS App Created"
