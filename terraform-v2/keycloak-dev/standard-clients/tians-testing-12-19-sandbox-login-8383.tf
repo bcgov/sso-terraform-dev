@@ -11,8 +11,7 @@ module "tians-testing-12-19-sandbox-login-8383" {
   idps = [
     "idir",
     "azureidir",
-    "bceidbasic",
-    "bceidbusiness",
+    "bceidboth",
     "githubbcgov",
     "common"
   ]
