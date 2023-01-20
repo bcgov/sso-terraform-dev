@@ -16,7 +16,7 @@ module "tians-testing-12-19-sandbox-login-8383" {
     "common"
   ]
   description                  = "CSS App Created"
-  additional_role_attribute    = ""
+  additional_role_attribute    = " sub"
   login_theme                  = ""
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
