@@ -13,7 +13,7 @@ module "test-presrvd-claims-nk-8426" {
     "common"
   ]
   description                  = "CSS App Created"
-  additional_role_attribute    = "aud1"
+  additional_role_attribute    = "aud1111"
   login_theme                  = ""
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
