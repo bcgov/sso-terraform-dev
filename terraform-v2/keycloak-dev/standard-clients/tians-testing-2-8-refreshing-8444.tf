@@ -10,6 +10,7 @@ module "tians-testing-2-8-refreshing-8444" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "azureidir",
     "common"
   ]
   description                  = "CSS App Created"
