@@ -21,12 +21,12 @@ module "test-client-nk-8446" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "http://example",
+    "*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "http://example"
+    "*"
   ]
 }
