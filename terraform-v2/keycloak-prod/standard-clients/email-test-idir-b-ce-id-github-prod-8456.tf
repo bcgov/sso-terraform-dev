@@ -11,6 +11,7 @@ module "email-test-idir-b-ce-id-github-prod-8456" {
   idps = [
     "idir",
     "azureidir",
+    "bceidboth",
     "common"
   ]
   description                  = "CSS App Created"
