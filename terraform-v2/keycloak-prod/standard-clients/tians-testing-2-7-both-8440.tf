@@ -10,7 +10,6 @@ module "tians-testing-2-7-both-8440" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
-    "githubpublic",
     "common"
   ]
   description                  = "CSS App Created"
