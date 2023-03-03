@@ -20,6 +20,6 @@ module "test-service-account-browser-8517" {
   standard_flow_enabled        = true
   service_accounts_enabled     = true
   valid_redirect_uris = [
-    "https://bcgov.github.io/keycloak-example-apps/"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
