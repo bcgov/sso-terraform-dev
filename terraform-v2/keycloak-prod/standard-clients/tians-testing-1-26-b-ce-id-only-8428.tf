@@ -9,6 +9,7 @@ module "tians-testing-1-26-b-ce-id-only-8428" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
