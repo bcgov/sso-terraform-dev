@@ -11,7 +11,7 @@ module "ui-testing-my-teams-panel-8442" {
   idps = [
     "idir",
     "bceidbasic",
-    "githubpublic",
+    "githubbcgov",
     "common"
   ]
   description                  = "CSS App Created"
