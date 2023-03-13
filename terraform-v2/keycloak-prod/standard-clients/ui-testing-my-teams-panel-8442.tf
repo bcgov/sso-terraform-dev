@@ -10,8 +10,6 @@ module "ui-testing-my-teams-panel-8442" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
-    "bceidbasic",
-    "githubpublic",
     "common"
   ]
   description                  = "CSS App Created"
@@ -22,6 +20,6 @@ module "ui-testing-my-teams-panel-8442" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
-    "http://test.com"
+    "http://localhost:3000"
   ]
 }
