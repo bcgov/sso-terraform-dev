@@ -10,6 +10,7 @@ module "ui-testing-my-teams-panel-8442" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
