@@ -5,7 +5,7 @@ module "tians-testing-3-23-saml-8556" {
   client_name        = "Tian's Testing 3/23 saml"
   assertion_lifespan = ""
   valid_redirect_uris = [
-    "https://example"
+    "http://localhost:8080/*"
   ]
   idps = [
     "bceidboth",
