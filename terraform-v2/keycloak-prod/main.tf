@@ -6,7 +6,7 @@ locals {
   bceidbusiness_realm_name    = "bceidbusiness"
   bceidboth_realm_name        = "bceidboth"
   github_realm_name           = "github"
-  sandbox_client_redirect_uri = "https://sso-keycloak-6-b861c7-test.apps.silver.devops.gov.bc.ca/*"
+  sandbox_client_redirect_uri = "https://sso-keycloak-e4ca1d-prod.apps.gold.devops.gov.bc.ca/*"
   saml_entity_id              = "sandbox-client"
 }
 
