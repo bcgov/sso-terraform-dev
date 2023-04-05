@@ -20,6 +20,6 @@ module "test-sandbox-confidential-idir-8566" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
-    "https://test.loginproxy.gov.bc.ca/auth/realms/master/*"
+    "https://test.sandbox.loginproxy.gov.bc.ca/auth/realms/master/*"
   ]
 }
