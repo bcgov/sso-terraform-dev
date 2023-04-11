@@ -23,14 +23,12 @@ module "oct-21-idir-non-prods-and-then-bceid-non-prods-8259" {
   web_origins = [
     "http://localhost:3000",
     "https://bcgov.github.io/keycloak-example-apps/*",
-    "https://logon7.gov.bc.ca/clp-cgi/logoff.cgi*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
     "http://localhost:3000",
-    "https://bcgov.github.io/keycloak-example-apps/*",
-    "https://logon7.gov.bc.ca/clp-cgi/logoff.cgi*"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
