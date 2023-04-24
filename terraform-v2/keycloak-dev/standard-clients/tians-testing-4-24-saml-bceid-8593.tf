@@ -13,7 +13,7 @@ module "tians-testing-4-24-saml-bceid-8593" {
   ]
   description                  = "CSS App Created"
   additional_role_attribute    = ""
-  logout_post_binding_url      = ""
+  logout_post_binding_url      = "http://localhost:8080/logout/callback"
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
 }
