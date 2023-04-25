@@ -8,7 +8,7 @@ module "tians-testing-4-24-saml-bceid-8593" {
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]
   idps = [
-    "bceidbasic",
+    "idir",
     "common"
   ]
   description                  = "CSS App Created"
