@@ -1,7 +1,7 @@
 module "test-cstm-clnt-id-1-8594" {
   source             = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client-saml"
   realm_id           = var.standard_realm_id
-  client_id          = "http://test-url/aws/idir"
+  client_id          = "http://test-url/aws/bceid"
   client_name        = "test-cstm-clnt-id1"
   assertion_lifespan = ""
   valid_redirect_uris = [
