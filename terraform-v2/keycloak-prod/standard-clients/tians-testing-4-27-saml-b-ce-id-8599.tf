@@ -8,6 +8,7 @@ module "tians-testing-4-27-saml-b-ce-id-8599" {
     "http://localhost:8080/*"
   ]
   idps = [
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
