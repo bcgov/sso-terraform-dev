@@ -1,7 +1,7 @@
 module "tians-testing-4-27-saml-b-ce-id-8599" {
   source             = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client-saml"
   realm_id           = var.standard_realm_id
-  client_id          = "tians-testing-4-27-saml-b-ce-id-8599"
+  client_id          = "Tian-BCeID-SAML-427"
   client_name        = "Tian's Testing 4/27 SAML BCeID"
   assertion_lifespan = ""
   valid_redirect_uris = [
