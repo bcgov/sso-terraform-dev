@@ -1,7 +1,7 @@
 module "may-1-saml-test-8604" {
   source             = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client-saml"
   realm_id           = var.standard_realm_id
-  client_id          = "may-1-saml-test-8604"
+  client_id          = "zorinchangedmay1-1300hrs"
   client_name        = "May 1 SAML Test"
   assertion_lifespan = ""
   valid_redirect_uris = [
