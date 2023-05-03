@@ -1,7 +1,7 @@
 module "tians-testing-5-3-saml-8680" {
   source             = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client-saml"
   realm_id           = var.standard_realm_id
-  client_id          = "tians-testing-5-3-saml-8680"
+  client_id          = "tians-testing-5-3-saml777"
   client_name        = "Tian's Testing 5/3 saml"
   assertion_lifespan = ""
   valid_redirect_uris = [
