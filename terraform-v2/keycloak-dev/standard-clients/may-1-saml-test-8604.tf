@@ -5,7 +5,8 @@ module "may-1-saml-test-8604" {
   client_name        = "May 1 SAML Test"
   assertion_lifespan = ""
   valid_redirect_uris = [
-    "https://bcgov.github.io/keycloak-example-apps/"
+    "https://bcgov.github.io/keycloak-example-apps/",
+    "https://localhost:3000/*"
   ]
   idps = [
     "idir",
