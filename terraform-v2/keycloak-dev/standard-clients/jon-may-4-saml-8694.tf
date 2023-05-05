@@ -8,7 +8,7 @@ module "jon-may-4-saml-8694" {
     "http://localhost:3000/oauth/cognito"
   ]
   idps = [
-    "azureidir",
+    "githubpublic",
     "common"
   ]
   description                  = "CSS App Created"
