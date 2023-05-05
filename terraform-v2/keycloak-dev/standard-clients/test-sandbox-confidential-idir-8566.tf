@@ -20,6 +20,7 @@ module "test-sandbox-confidential-idir-8566" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
+    "http://localhost:3000/*",
     "https://test.sandbox.loginproxy.gov.bc.ca/auth/realms/master/*"
   ]
 }
