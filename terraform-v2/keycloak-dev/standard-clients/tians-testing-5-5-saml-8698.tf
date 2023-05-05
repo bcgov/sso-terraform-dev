@@ -8,7 +8,7 @@ module "tians-testing-5-5-saml-8698" {
     "https://example"
   ]
   idps = [
-    "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
