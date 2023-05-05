@@ -22,11 +22,13 @@ module "tians-testing-5-5-after-name-blocker-8697" {
   pkce_code_challenge_method   = "S256"
   web_origins = [
     "https://example",
+    "https://example*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "https://example"
+    "https://example",
+    "https://example*"
   ]
 }
