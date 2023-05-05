@@ -5,10 +5,10 @@ module "jon-may-4-saml-8694" {
   client_name        = "Jon May 4 Saml"
   assertion_lifespan = ""
   valid_redirect_uris = [
-    "http://localhost:3000/oauth/cognito"
+    "http://localhost:3000/oauth/cognito2"
   ]
   idps = [
-    "githubpublic",
+    "idir",
     "common"
   ]
   description                  = "CSS App Created"
