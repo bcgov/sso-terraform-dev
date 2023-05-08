@@ -5,6 +5,7 @@ module "may-4-saml-zorin-c-8690" {
   client_name        = "May 4 OIDC Zorin"
   assertion_lifespan = ""
   valid_redirect_uris = [
+    "http://localhost:3000/*",
     "https://bcgov.github.io/keycloak-example-apps/"
   ]
   idps = [
