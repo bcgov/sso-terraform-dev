@@ -23,12 +23,14 @@ module "tians-testing-5-16-browser-8704" {
   web_origins = [
     "http://localhost:8000",
     "https://bcgov.github.io/keycloak-example-apps/*",
+    "https://example.com",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
     "http://localhost:8000",
-    "https://bcgov.github.io/keycloak-example-apps/*"
+    "https://bcgov.github.io/keycloak-example-apps/*",
+    "https://example.com"
   ]
 }
