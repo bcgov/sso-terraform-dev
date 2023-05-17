@@ -10,7 +10,6 @@ module "tians-testing-5-17-email-update-8708" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
-    "githubbcgov",
     "common"
   ]
   description                  = "CSS App Created"
@@ -21,12 +20,12 @@ module "tians-testing-5-17-email-update-8708" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "https://example",
+    "https://bcgov.github.io/keycloak-example-apps/*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "https://example"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
