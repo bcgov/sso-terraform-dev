@@ -10,6 +10,7 @@ module "kuro-email-test-integ-8707" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
