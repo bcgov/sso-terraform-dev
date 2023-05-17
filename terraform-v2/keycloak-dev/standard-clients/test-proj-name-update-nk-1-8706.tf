@@ -20,12 +20,12 @@ module "test-proj-name-update-nk-1-8706" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "*",
+    "https://example.com/*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "*"
+    "https://example.com/*"
   ]
 }
