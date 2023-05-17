@@ -1,7 +1,7 @@
 module "test-saml-nk-8682" {
   source             = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client-saml"
   realm_id           = var.standard_realm_id
-  client_id          = "test-saml-nk-1"
+  client_id          = "test-saml-nk-11"
   client_name        = "test-saml-nk"
   assertion_lifespan = ""
   valid_redirect_uris = [
