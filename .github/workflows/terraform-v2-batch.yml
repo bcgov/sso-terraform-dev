@@ -92,5 +92,5 @@ jobs:
         timeout: '60000'
 
     - name: Set Failure Code
-      if: steps.tf.outputs.apply == 'failure'
+      if: steps.tf.outputs.init == 'failure' || steps.tf.outputs.apply == 'failure'
       run: exit 1
