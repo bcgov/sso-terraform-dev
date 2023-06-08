@@ -16,6 +16,18 @@ jobs:
       API_URL: ${{ secrets.WEBAPP_API_URL }}
     steps:
     - uses: hmarr/debug-action@v2
+
+    - name: Checkout Terraform Modules
+      uses: actions/checkout@v3
+      with:
+        repository: bcgov/sso-terraform-modules
+        ref: dev
+
+    - id: tf-modules
+      name: Get Terraform Modules Latest SHA
+      run: echo "latest-sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      shell: bash
+
     - uses: actions/checkout@v2
 
     - name: Wake Up API
@@ -41,7 +53,7 @@ jobs:
       run: |
         count=$(jq length <<< ${{ steps.requests.outputs.response }})
         echo "$count"
-        echo "::set-output name=count::$count"
+        echo "count=$count" >> $GITHUB_OUTPUT
 
     - name: Pull the main branch again
       if: steps.count.outputs.count != '0'
@@ -75,7 +87,7 @@ jobs:
         prod-github-client-id: ${{ secrets.PROD_GITHUB_CLIENT_ID }}
         prod-github-client-secret: ${{ secrets.PROD_GITHUB_CLIENT_SECRET }}
         apply: true
-        tf-modules-ref: dev
+        tf-modules-cache-key: ${{ steps.tf-modules.outputs.latest-sha }}
       continue-on-error: true
 
     - name: Setup NPM Packages
