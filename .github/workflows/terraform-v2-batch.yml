@@ -17,19 +17,6 @@ jobs:
     steps:
     - uses: hmarr/debug-action@v2
 
-    - name: Checkout Terraform Modules
-      uses: actions/checkout@v3
-      with:
-        repository: bcgov/sso-terraform-modules
-        ref: dev
-
-    - id: tf-modules
-      name: Get Terraform Modules Latest SHA
-      run: echo "latest-sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      shell: bash
-
-    - uses: actions/checkout@v2
-
     - name: Wake Up API
       uses: fjogeleit/http-request-action@master
       with:
@@ -54,6 +41,21 @@ jobs:
         count=$(jq length <<< ${{ steps.requests.outputs.response }})
         echo "$count"
         echo "count=$count" >> $GITHUB_OUTPUT
+
+    - name: Checkout Terraform Modules
+      if: steps.count.outputs.count != '0'
+      uses: actions/checkout@v3
+      with:
+        repository: bcgov/sso-terraform-modules
+        ref: dev
+
+    - id: tf-modules
+      if: steps.count.outputs.count != '0'
+      name: Get Terraform Modules Latest SHA
+      run: echo "latest-sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - uses: actions/checkout@v2
 
     - name: Pull the main branch again
       if: steps.count.outputs.count != '0'
