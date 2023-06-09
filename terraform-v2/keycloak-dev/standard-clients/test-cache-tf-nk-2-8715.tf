@@ -1,8 +1,8 @@
-module "test-cache-tf-nk-1-8714" {
+module "test-cache-tf-nk-2-8715" {
   source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
-  client_id                           = "test-cache-tf-nk-1-8714"
-  client_name                         = "test-cache-tf--nk-1"
+  client_id                           = "test-cache-tf-nk-2-8715"
+  client_name                         = "test-cache-tf--nk-2"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
