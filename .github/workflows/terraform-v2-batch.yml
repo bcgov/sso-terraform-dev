@@ -88,6 +88,12 @@ jobs:
         test-github-client-secret: ${{ secrets.TEST_GITHUB_CLIENT_SECRET }}
         prod-github-client-id: ${{ secrets.PROD_GITHUB_CLIENT_ID }}
         prod-github-client-secret: ${{ secrets.PROD_GITHUB_CLIENT_SECRET }}
+        dev-azureidir-client-id: ${{ secrets.DEV_AZUREIDIR_CLIENT_ID }}
+        dev-azureidir-client-secret: ${{ secrets.DEV_AZUREIDIR_CLIENT_SECRET }}
+        test-azureidir-client-id: ${{ secrets.TEST_AZUREIDIR_CLIENT_ID }}
+        test-azureidir-client-secret: ${{ secrets.TEST_AZUREIDIR_CLIENT_SECRET }}
+        prod-azureidir-client-id: ${{ secrets.PROD_AZUREIDIR_CLIENT_ID }}
+        prod-azureidir-client-secret: ${{ secrets.PROD_AZUREIDIR_CLIENT_SECRET }}
         apply: true
         tf-modules-cache-key: ${{ steps.tf-modules.outputs.latest-sha }}
       continue-on-error: true
