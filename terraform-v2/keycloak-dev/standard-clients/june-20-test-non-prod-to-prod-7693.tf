@@ -22,13 +22,15 @@ module "june-20-test-non-prod-to-prod-7693" {
   pkce_code_challenge_method   = "S256"
   web_origins = [
     "http://localhost:3000/*",
-    "https:///www.test.ca/devChange2",
+    "https://bcgov.github.io/keycloak-example-apps/*",
+    "https://sso-keycloak-e4ca1d-dev.apps.gold.devops.gov.bc.ca/auth/realms/test-realm/*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
     "http://localhost:3000/*",
-    "https:///www.test.ca/devChange2"
+    "https://bcgov.github.io/keycloak-example-apps/*",
+    "https://sso-keycloak-e4ca1d-dev.apps.gold.devops.gov.bc.ca/auth/realms/test-realm/*"
   ]
 }
