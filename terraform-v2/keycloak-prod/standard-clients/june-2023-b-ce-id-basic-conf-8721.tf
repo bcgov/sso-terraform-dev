@@ -9,6 +9,7 @@ module "june-2023-b-ce-id-basic-conf-8721" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
