@@ -23,6 +23,6 @@ module "oct-21-idir-non-prods-and-then-bceid-non-prods-8259" {
   valid_redirect_uris = [
     "http://localhost:3000/*",
     "https://bcgov.github.io/keycloak-example-apps/*",
-    "ttps://sso-keycloak-e4ca1d-dev.apps.gold.devops.gov.bc.ca/auth/realms/testing-nk/*"
+    "https://sso-keycloak-e4ca1d-dev.apps.gold.devops.gov.bc.ca/auth/realms/testing-nk/*"
   ]
 }
