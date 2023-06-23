@@ -10,6 +10,8 @@ module "tians-testing-6-23-multiple-idps-8722" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
