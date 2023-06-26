@@ -10,6 +10,7 @@ module "kuro-bceid-idp-removal-test-8723" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
