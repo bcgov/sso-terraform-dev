@@ -1,7 +1,3 @@
-data "keycloak_authentication_flow" "b_cei_d_non_prod_email_test_user_aug_17_7931_browserflow" {
-  realm_id = var.standard_realm_id
-  alias    = "idp stopper"
-}
 module "b-cei-d-non-prod-email-test-user-aug-17-7931" {
   source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
@@ -16,8 +12,10 @@ module "b-cei-d-non-prod-email-test-user-aug-17-7931" {
     "common"
   ]
   description                  = "CSS App Created"
+  additional_role_attribute    = ""
+  login_theme                  = ""
   override_authentication_flow = true
-  browser_authentication_flow  = data.keycloak_authentication_flow.b_cei_d_non_prod_email_test_user_aug_17_7931_browserflow.id
+  browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
