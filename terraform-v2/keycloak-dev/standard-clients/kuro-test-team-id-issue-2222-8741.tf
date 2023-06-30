@@ -10,6 +10,7 @@ module "kuro-test-team-id-issue-2222-8741" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
