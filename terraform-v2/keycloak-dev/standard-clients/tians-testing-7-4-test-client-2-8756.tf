@@ -9,7 +9,6 @@ module "tians-testing-7-4-test-client-2-8756" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
-    "idir",
     "azureidir",
     "bceidbasic",
     "bceidbusiness",
