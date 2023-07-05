@@ -13,7 +13,7 @@ module "all-idps-public-june-2023-8763" {
     "azureidir",
     "bceidbasic",
     "bceidbusiness",
-    "githubbcgov",
+    "githubpublic",
     "common"
   ]
   description                  = "CSS App Created"
