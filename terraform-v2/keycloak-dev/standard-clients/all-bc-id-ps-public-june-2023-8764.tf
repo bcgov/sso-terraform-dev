@@ -13,7 +13,7 @@ module "all-bc-id-ps-public-june-2023-8764" {
     "azureidir",
     "bceidbasic",
     "bceidbusiness",
-    "githubpublic",
+    "githubbcgov",
     "common"
   ]
   description                  = "CSS App Created"
