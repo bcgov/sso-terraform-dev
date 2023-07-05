@@ -23,6 +23,7 @@ module "business-public-june-2023-8761" {
     "http://bcgov.github.io/keycloak-example-apps/*",
     "http://localhost:1000/*",
     "http://localhost:3000/*",
+    "http://localhost:3500/*",
     "+"
   ]
   standard_flow_enabled    = true
@@ -30,6 +31,7 @@ module "business-public-june-2023-8761" {
   valid_redirect_uris = [
     "http://bcgov.github.io/keycloak-example-apps/*",
     "http://localhost:1000/*",
-    "http://localhost:3000/*"
+    "http://localhost:3000/*",
+    "http://localhost:3500/*"
   ]
 }
