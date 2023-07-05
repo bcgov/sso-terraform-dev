@@ -21,11 +21,13 @@ module "april-25-test-all-environments-7381" {
   pkce_code_challenge_method   = "S256"
   web_origins = [
     "http://localhost:3000/*",
+    "http://localhost:3500/*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "http://localhost:3000/*"
+    "http://localhost:3000/*",
+    "http://localhost:3500/*"
   ]
 }
