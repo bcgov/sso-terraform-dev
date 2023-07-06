@@ -22,6 +22,7 @@ module "business-conf-june-2023-8762" {
   valid_redirect_uris = [
     "http://localhost:1000/*",
     "http://localhost:3000/*",
-    "https://bcgov.github.io/keycloak-example-apps/*"
+    "https://bcgov.github.io/keycloak-example-apps/*",
+    "https://sso-keycloak-e4ca1d-dev.apps.gold.devops.gov.bc.ca/auth/realms/test-realm-3/*"
   ]
 }
