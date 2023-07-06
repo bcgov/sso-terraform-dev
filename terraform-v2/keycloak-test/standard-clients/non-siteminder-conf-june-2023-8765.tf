@@ -24,6 +24,6 @@ module "non-siteminder-conf-june-2023-8765" {
     "http://localhost:3000/*",
     "http://localhost:3500/*",
     "https://bcgov.github.io/keycloak-example-apps/*",
-    "https://sso-keycloak-e4ca1d-dev.apps.gold.devops.gov.bc.ca/auth/realms/test-realm/*"
+    "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/auth/realms/test-realm/*"
   ]
 }
