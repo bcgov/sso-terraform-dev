@@ -25,12 +25,14 @@ module "tians-testing-7-4-test-client-2-8756" {
   web_origins = [
     "http://localhost:3000/*",
     "http://localhost:3500/*",
+    "https://bcgov.github.io/keycloak-example-apps/*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
     "http://localhost:3000/*",
-    "http://localhost:3500/*"
+    "http://localhost:3500/*",
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
