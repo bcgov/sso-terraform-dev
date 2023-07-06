@@ -20,8 +20,8 @@ module "azure-idir-conf-june-2023-8729" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
-    "https://bcgov.github.io/keycloak-example-apps/",
-    "https://localhost:3000/*",
-    "https://localhost:3500/*"
+    "http://localhost:3000/*",
+    "http://localhost:3500/*",
+    "https://bcgov.github.io/keycloak-example-apps/"
   ]
 }

@@ -22,6 +22,6 @@ module "azure-idir-conf-june-2023-8729" {
   valid_redirect_uris = [
     "http://localhost:3000/*",
     "http://localhost:3500/*",
-    "https://bcgov.github.io/keycloak-example-apps/"
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
