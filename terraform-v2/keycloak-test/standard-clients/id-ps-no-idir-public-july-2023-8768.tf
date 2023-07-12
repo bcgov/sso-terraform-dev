@@ -12,7 +12,6 @@ module "id-ps-no-idir-public-july-2023-8768" {
     "azureidir",
     "bceidbasic",
     "bceidbusiness",
-    "githubpublic",
     "common"
   ]
   description                  = "CSS App Created"
