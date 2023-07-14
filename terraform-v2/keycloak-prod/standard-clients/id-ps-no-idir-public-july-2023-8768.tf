@@ -9,7 +9,6 @@ module "id-ps-no-idir-public-july-2023-8768" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
-    "azureidir",
     "common"
   ]
   description                  = "CSS App Created"
