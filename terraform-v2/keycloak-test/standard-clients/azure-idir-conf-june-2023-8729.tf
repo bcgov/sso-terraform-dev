@@ -23,6 +23,7 @@ module "azure-idir-conf-june-2023-8729" {
     "http://localhost:3000/*",
     "http://localhost:3500/*",
     "https://bcgov.github.io/keycloak-example-apps/*",
-    "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/auth/realms/test-realm-2/*"
+    "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/auth/realms/test-realm-2/*",
+    "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/auth/realms/test-realm-single-nonsiteminder/*"
   ]
 }
