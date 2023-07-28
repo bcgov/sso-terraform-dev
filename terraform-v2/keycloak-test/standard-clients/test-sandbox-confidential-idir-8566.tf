@@ -20,6 +20,8 @@ module "test-sandbox-confidential-idir-8566" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
+    "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/auth/realms/test-realm-single-siteminder-2/*",
+    "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/auth/realms/test-realm-single-siteminder/*",
     "https://test.sandbox.loginproxy.gov.bc.ca/auth/realms/master/*"
   ]
 }
