@@ -24,6 +24,7 @@ module "all-idps-conf-july-2023-8777" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
-    "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/auth/realms/test-realm-multiple-nonsiteminder-2/*"
+    "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/auth/realms/test-realm-multiple-nonsiteminder-2/*",
+    "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/auth/realms/test-realm-multiple-siteminder-2/*"
   ]
 }
