@@ -22,6 +22,7 @@ module "all-siteminder-id-ps-conf-july-2023-8778" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
+    "http://localhost:3000/*",
     "https://bcgov.github.io/keycloak-example-apps/"
   ]
 }
