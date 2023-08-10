@@ -10,6 +10,7 @@ module "test-int-nk-03-8816" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
