@@ -11,6 +11,7 @@ module "test-int-nk-03-8816" {
   idps = [
     "idir",
     "bceidbasic",
+    "githubpublic",
     "common"
   ]
   description                  = "CSS App Created"
