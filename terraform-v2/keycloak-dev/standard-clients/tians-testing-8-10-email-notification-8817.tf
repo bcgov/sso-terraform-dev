@@ -11,6 +11,7 @@ module "tians-testing-8-10-email-notification-8817" {
   idps = [
     "idir",
     "azureidir",
+    "bceidbasic",
     "githubpublic",
     "common"
   ]
