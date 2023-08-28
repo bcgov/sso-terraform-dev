@@ -8,7 +8,7 @@ module "tians-testing-8-28-saml-8858" {
     "http://localhost:8080/*"
   ]
   idps = [
-    "idir",
+    "githubbcgov",
     "common"
   ]
   description                  = "CSS App Created"
