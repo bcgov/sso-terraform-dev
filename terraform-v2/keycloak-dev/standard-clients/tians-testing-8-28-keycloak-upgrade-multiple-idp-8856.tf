@@ -13,6 +13,7 @@ module "tians-testing-8-28-keycloak-upgrade-multiple-idp-8856" {
     "azureidir",
     "bceidbasic",
     "bceidbusiness",
+    "githubbcgov",
     "common"
   ]
   description                  = "CSS App Created"
