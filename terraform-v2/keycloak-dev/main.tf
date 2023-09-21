@@ -119,7 +119,7 @@ module "github" {
 }
 
 module "verifiablecredential" {
-  source              = "github.com/bcgov/sso-terraform-modules?ref=main/modules/base-realms/realm-verifiablecredential"
+  source              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-verifiablecredential"
   keycloak_url        = var.keycloak_url
   realm_name          = local.verifiablecredential_realm_name
   standard_realm_name = local.standard_realm_name
