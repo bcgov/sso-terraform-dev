@@ -94,6 +94,12 @@ jobs:
         test-azureidir-client-secret: ${{ secrets.TEST_AZUREIDIR_CLIENT_SECRET }}
         prod-azureidir-client-id: ${{ secrets.PROD_AZUREIDIR_CLIENT_ID }}
         prod-azureidir-client-secret: ${{ secrets.PROD_AZUREIDIR_CLIENT_SECRET }}
+        dev-verifiablecredential-client-id: ${{ secrets.DEV_VERIFIABLECREDENTIAL_CLIENT_ID }}
+        dev-verifiablecredential-client-secret: ${{ secrets.DEV_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
+        test-verifiablecredential-client-id: ${{ secrets.TEST_VERIFIABLECREDENTIAL_CLIENT_ID }}
+        test-verifiablecredential-client-secret: ${{ secrets.TEST_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
+        prod-verifiablecredential-client-id: ${{ secrets.PROD_VERIFIABLECREDENTIAL_CLIENT_ID }}
+        prod-verifiablecredential-client-secret: ${{ secrets.PROD_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
         apply: true
         tf-modules-cache-key: ${{ steps.tf-modules.outputs.latest-sha }}
       continue-on-error: true
