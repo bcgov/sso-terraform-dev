@@ -40,4 +40,10 @@ jobs:
         test-github-client-secret: ${{ secrets.TEST_GITHUB_CLIENT_SECRET }}
         prod-github-client-id: ${{ secrets.PROD_GITHUB_CLIENT_ID }}
         prod-github-client-secret: ${{ secrets.PROD_GITHUB_CLIENT_SECRET }}
+        dev-verifiablecredential-client-id: ${{ secrets.DEV_VERIFIABLECREDENTIAL_CLIENT_ID }}
+        dev-verifiablecredential-client-secret: ${{ secrets.DEV_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
+        test-verifiablecredential-client-id: ${{ secrets.TEST_VERIFIABLECREDENTIAL_CLIENT_ID }}
+        test-verifiablecredential-client-secret: ${{ secrets.TEST_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
+        prod-verifiablecredential-client-id: ${{ secrets.PROD_VERIFIABLECREDENTIAL_CLIENT_ID }}
+        prod-verifiablecredential-client-secret: ${{ secrets.PROD_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
         plan: true
