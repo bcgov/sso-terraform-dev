@@ -46,14 +46,20 @@ jobs:
         dev-github-client-secret: ${{ secrets.DEV_GITHUB_CLIENT_SECRET }}
         dev-verifiablecredential-client-id: ${{ secrets.DEV_VERIFIABLECREDENTIAL_CLIENT_ID }}
         dev-verifiablecredential-client-secret: ${{ secrets.DEV_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
+        dev-verifiablecredential-authorization-url: ${{ secrets.DEV_VERIFIABLECREDENTIAL_AUTHORIZATION_URL }}
+        dev-verifiablecredential-token-url: ${{ secrets.DEV_VERIFIABLECREDENTIAL_TOKEN_URL }}
         test-github-client-id: ${{ secrets.TEST_GITHUB_CLIENT_ID }}
         test-github-client-secret: ${{ secrets.TEST_GITHUB_CLIENT_SECRET }}
         test-verifiablecredential-client-id: ${{ secrets.TEST_VERIFIABLECREDENTIAL_CLIENT_ID }}
         test-verifiablecredential-client-secret: ${{ secrets.TEST_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
+        test-verifiablecredential-authorization-url: ${{ secrets.TEST_VERIFIABLECREDENTIAL_AUTHORIZATION_URL }}
+        test-verifiablecredential-token-url: ${{ secrets.TEST_VERIFIABLECREDENTIAL_TOKEN_URL }}
         prod-github-client-id: ${{ secrets.PROD_GITHUB_CLIENT_ID }}
         prod-github-client-secret: ${{ secrets.PROD_GITHUB_CLIENT_SECRET }}
         prod-verifiablecredential-client-id: ${{ secrets.PROD_VERIFIABLECREDENTIAL_CLIENT_ID }}
         prod-verifiablecredential-client-secret: ${{ secrets.PROD_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
+        prod-verifiablecredential-authorization-url: ${{ secrets.PROD_VERIFIABLECREDENTIAL_AUTHORIZATION_URL }}
+        prod-verifiablecredential-token-url: ${{ secrets.PROD_VERIFIABLECREDENTIAL_TOKEN_URL }}
         apply: true
 
     - uses: bcgov/sso-requests-actions/keycloak@v0.55.0
