@@ -125,6 +125,8 @@ module "verifiablecredential" {
   standard_realm_name                = local.standard_realm_name
   verifiablecredential_client_id     = var.verifiablecredential_client_id
   verifiablecredential_client_secret = var.verifiablecredential_client_secret
+  authorization_url                  = var.verifiablecredential_authorization_url
+  token_url                          = var.verifiablecredential_token_url
   sub_to_username                    = true
   sandbox_client_redirect_uri        = local.sandbox_client_redirect_uri
 }

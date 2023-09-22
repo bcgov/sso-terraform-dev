@@ -116,6 +116,16 @@ variable "dev_verifiablecredential_client_secret" {
   sensitive = true
 }
 
+variable "dev_verifiablecredential_authorization_url" {
+  type      = string
+  sensitive = true
+}
+
+variable "dev_verifiablecredential_token_url" {
+  type      = string
+  sensitive = true
+}
+
 variable "test_verifiablecredential_client_id" {
   type      = string
   sensitive = true
@@ -126,12 +136,32 @@ variable "test_verifiablecredential_client_secret" {
   sensitive = true
 }
 
+variable "test_verifiablecredential_authorization_url" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_verifiablecredential_token_url" {
+  type      = string
+  sensitive = true
+}
+
 variable "prod_verifiablecredential_client_id" {
   type      = string
   sensitive = true
 }
 
 variable "prod_verifiablecredential_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_verifiablecredential_authorization_url" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_verifiablecredential_token_url" {
   type      = string
   sensitive = true
 }

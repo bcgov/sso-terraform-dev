@@ -62,3 +62,13 @@ variable "verifiablecredential_client_secret" {
   type      = string
   sensitive = true
 }
+
+variable "verifiablecredential_authorization_url" {
+  type      = string
+  sensitive = true
+}
+
+variable "verifiablecredential_token_url" {
+  type      = string
+  sensitive = true
+}
