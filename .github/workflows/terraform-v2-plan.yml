@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: bcgov/sso-terraform-modules
-        ref: main
+        ref: dev
 
     - id: tf-modules
       name: Get Terraform Modules Latest SHA
