@@ -20,6 +20,7 @@ module "tians-testing-9-22-example-app-8951" {
   standard_flow_enabled        = true
   service_accounts_enabled     = true
   valid_redirect_uris = [
+    "http://localhost:3000/*",
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
