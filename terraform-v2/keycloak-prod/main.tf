@@ -1,14 +1,14 @@
 locals {
-  standard_realm_name         = "standard"
-  idir_realm_name             = "idir"
-  azureidir_realm_name        = "azureidir"
-  bceidbasic_realm_name       = "bceidbasic"
-  bceidbusiness_realm_name    = "bceidbusiness"
-  bceidboth_realm_name        = "bceidboth"
-  github_realm_name           = "github"
+  standard_realm_name             = "standard"
+  idir_realm_name                 = "idir"
+  azureidir_realm_name            = "azureidir"
+  bceidbasic_realm_name           = "bceidbasic"
+  bceidbusiness_realm_name        = "bceidbusiness"
+  bceidboth_realm_name            = "bceidboth"
+  github_realm_name               = "github"
   verifiablecredential_realm_name = "verifiablecredential"
-  sandbox_client_redirect_uri = "https://sso-keycloak-e4ca1d-prod.apps.gold.devops.gov.bc.ca/*"
-  saml_entity_id              = "sandbox-client"
+  sandbox_client_redirect_uri     = "https://sso-keycloak-e4ca1d-prod.apps.gold.devops.gov.bc.ca/*"
+  saml_entity_id                  = "sandbox-client"
 }
 
 module "standard" {
@@ -119,14 +119,14 @@ module "github" {
 }
 
 module "verifiablecredential" {
-  source              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-verifiablecredential"
-  keycloak_url        = var.keycloak_url
-  realm_name          = local.verifiablecredential_realm_name
-  standard_realm_name = local.standard_realm_name
-  client_id           = var.verifiablecredential_client_id
-  client_secret       = var.verifiablecredential_client_secret
-  sub_to_username     = true
-  sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
+  source                             = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-verifiablecredential"
+  keycloak_url                       = var.keycloak_url
+  realm_name                         = local.verifiablecredential_realm_name
+  standard_realm_name                = local.standard_realm_name
+  verifiablecredential_client_id     = var.verifiablecredential_client_id
+  verifiablecredential_client_secret = var.verifiablecredential_client_secret
+  sub_to_username                    = true
+  sandbox_client_redirect_uri        = local.sandbox_client_redirect_uri
 }
 
 module "standard_clients" {
