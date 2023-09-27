@@ -20,6 +20,7 @@ module "nextjs-service-account-demo-8900" {
   standard_flow_enabled        = true
   service_accounts_enabled     = true
   valid_redirect_uris = [
+    "*",
     "https://localhost:3000"
   ]
 }
