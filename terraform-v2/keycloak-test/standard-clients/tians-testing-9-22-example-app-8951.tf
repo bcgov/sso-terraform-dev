@@ -10,6 +10,7 @@ module "tians-testing-9-22-example-app-8951" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "azureidir",
     "githubbcgov",
     "common"
   ]
