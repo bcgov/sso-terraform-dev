@@ -15,14 +15,14 @@ module "standard" {
   source       = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-standard"
   keycloak_url = var.keycloak_url
 
-  standard_realm_name                = local.standard_realm_name
-  idir_realm_name                    = local.idir_realm_name
-  azureidir_realm_name               = local.azureidir_realm_name
-  bceidbasic_realm_name              = local.bceidbasic_realm_name
-  bceidbusiness_realm_name           = local.bceidbusiness_realm_name
-  bceidboth_realm_name               = local.bceidboth_realm_name
-  github_realm_name                  = local.github_realm_name
-  verifiablecredential_realm_name    = local.verifiablecredential_realm_name
+  standard_realm_name             = local.standard_realm_name
+  idir_realm_name                 = local.idir_realm_name
+  azureidir_realm_name            = local.azureidir_realm_name
+  bceidbasic_realm_name           = local.bceidbasic_realm_name
+  bceidbusiness_realm_name        = local.bceidbusiness_realm_name
+  bceidboth_realm_name            = local.bceidboth_realm_name
+  github_realm_name               = local.github_realm_name
+  verifiablecredential_realm_name = local.verifiablecredential_realm_name
 
   idir_client_id                     = module.idir.standard_client_id
   idir_client_secret                 = module.idir.standard_client_secret
