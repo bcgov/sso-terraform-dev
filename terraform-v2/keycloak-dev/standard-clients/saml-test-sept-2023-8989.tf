@@ -14,7 +14,7 @@ module "saml-test-sept-2023-8989" {
   description                  = "CSS App Created"
   additional_role_attribute    = ""
   logout_post_binding_url      = ""
-  sign_assertions              = ""
+  sign_assertions              = true
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
 }
