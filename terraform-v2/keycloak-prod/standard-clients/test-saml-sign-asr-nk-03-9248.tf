@@ -14,7 +14,7 @@ module "test-saml-sign-asr-nk-03-9248" {
   description                  = "CSS App Created"
   additional_role_attribute    = ""
   logout_post_binding_url      = ""
-  sign_assertions              = true
+  sign_assertions              = false
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
 }
