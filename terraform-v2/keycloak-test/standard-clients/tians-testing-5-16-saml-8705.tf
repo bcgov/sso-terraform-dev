@@ -14,7 +14,7 @@ module "tians-testing-5-16-saml-8705" {
   description                  = "CSS App Created"
   additional_role_attribute    = ""
   logout_post_binding_url      = ""
-  sign_assertions              = false
+  sign_assertions              = true
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
 }
