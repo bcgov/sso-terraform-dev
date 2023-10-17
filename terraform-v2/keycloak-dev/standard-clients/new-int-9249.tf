@@ -5,7 +5,7 @@ module "new-int-9249" {
   client_name        = "New Int"
   assertion_lifespan = ""
   valid_redirect_uris = [
-    "http://localhost"
+    "*"
   ]
   idps = [
     "idir",
