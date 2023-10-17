@@ -5,7 +5,7 @@ module "new-int-9249" {
   client_name        = "New Int"
   assertion_lifespan = ""
   valid_redirect_uris = [
-    "http://costly-irrigation.biz"
+    "http://localhost"
   ]
   idps = [
     "idir",
@@ -13,7 +13,7 @@ module "new-int-9249" {
   ]
   description                  = "CSS App Created"
   additional_role_attribute    = ""
-  logout_post_binding_url      = ""
+  logout_post_binding_url      = "http://localhost/logout"
   sign_assertions              = false
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
