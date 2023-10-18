@@ -9,7 +9,6 @@ module "css-happy-path-end-2-end-gold-b-ceid-basic-01-7592" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
-    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
@@ -20,12 +19,12 @@ module "css-happy-path-end-2-end-gold-b-ceid-basic-01-7592" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "https://localhost:3000",
+    "https://localhost:8000",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "https://localhost:3000"
+    "https://localhost:8000"
   ]
 }

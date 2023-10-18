@@ -1,15 +1,8 @@
-data "keycloak_authentication_flow" "css_happy_path_end_2_end_gold_b_ceid_basic_01_7592_browserflow" {
-  realm_id = var.standard_realm_id
-  alias    = "idp stopper"
-}
 module "css-happy-path-end-2-end-gold-b-ceid-basic-01-7592" {
-  source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
-  realm_id    = var.standard_realm_id
-  client_id   = "css-happy-path-end-2-end-gold-b-ceid-basic-01-7592"
-  client_name = "CSS-HappyPath-end2end_GoldBCeidBasic01"
-  valid_redirect_uris = [
-    "https://localhost:3000"
-  ]
+  source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
+  realm_id                            = var.standard_realm_id
+  client_id                           = "css-happy-path-end-2-end-gold-b-ceid-basic-01-7592"
+  client_name                         = "CSS-HappyPath-end2end_GoldBCeidBasic01"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
@@ -20,12 +13,19 @@ module "css-happy-path-end-2-end-gold-b-ceid-basic-01-7592" {
     "common"
   ]
   description                  = "CSS App Created"
+  additional_role_attribute    = ""
+  login_theme                  = ""
   override_authentication_flow = true
-  browser_authentication_flow  = data.keycloak_authentication_flow.css_happy_path_end_2_end_gold_b_ceid_basic_01_7592_browserflow.id
+  browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
     "https://localhost:3000",
     "+"
+  ]
+  standard_flow_enabled    = true
+  service_accounts_enabled = false
+  valid_redirect_uris = [
+    "https://localhost:3000"
   ]
 }
