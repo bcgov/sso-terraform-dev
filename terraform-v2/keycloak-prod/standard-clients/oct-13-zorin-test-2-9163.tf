@@ -10,6 +10,7 @@ module "oct-13-zorin-test-2-9163" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
