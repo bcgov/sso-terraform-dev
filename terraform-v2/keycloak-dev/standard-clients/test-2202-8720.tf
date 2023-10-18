@@ -21,6 +21,7 @@ module "test-2202-8720" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
-    "http://localhost.com"
+    "http://localhost.com",
+    "https://bcgov.github.io/keycloak-example-apps/"
   ]
 }
