@@ -22,6 +22,7 @@ module "sso-dashboard-9267" {
   service_accounts_enabled     = false
   valid_redirect_uris = [
     "http://sso-grafana-sandbox.apps.gold.devops.gov.bc.ca/*",
+    "https://d7kjcupxp1.execute-api.ca-central-1.amazonaws.com/*",
     "https://sso-grafana-sandbox.apps.gold.devops.gov.bc.ca/*"
   ]
 }
