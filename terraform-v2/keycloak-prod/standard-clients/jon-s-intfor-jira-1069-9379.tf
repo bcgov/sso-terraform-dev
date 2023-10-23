@@ -11,6 +11,7 @@ module "jon-s-intfor-jira-1069-9379" {
   idps = [
     "idir",
     "azureidir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
