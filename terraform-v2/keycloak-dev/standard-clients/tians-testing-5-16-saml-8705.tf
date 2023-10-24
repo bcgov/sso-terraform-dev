@@ -5,6 +5,7 @@ module "tians-testing-5-16-saml-8705" {
   client_name        = "Tian's Testing - 5/16 SAML"
   assertion_lifespan = ""
   valid_redirect_uris = [
+    "http://localhost",
     "https://bcgov.github.io/keycloak-example-apps/*"
   ]
   idps = [
