@@ -23,6 +23,7 @@ module "sso-dashboard-9267" {
   valid_redirect_uris = [
     "http://sso-grafana-sandbox.apps.gold.devops.gov.bc.ca/*",
     "https://d7kjcupxp1.execute-api.ca-central-1.amazonaws.com/*",
-    "https://sso-grafana-sandbox.apps.gold.devops.gov.bc.ca/*"
+    "https://sso-grafana-sandbox.apps.gold.devops.gov.bc.ca/*",
+    "https://uzw525hsr2.execute-api.ca-central-1.amazonaws.com/*"
   ]
 }
