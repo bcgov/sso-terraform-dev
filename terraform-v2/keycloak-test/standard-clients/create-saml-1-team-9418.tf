@@ -8,7 +8,7 @@ module "create-saml-1-team-9418" {
     "*"
   ]
   idps = [
-    "idir",
+    "azureidir",
     "common"
   ]
   description                  = "CSS App Created"
