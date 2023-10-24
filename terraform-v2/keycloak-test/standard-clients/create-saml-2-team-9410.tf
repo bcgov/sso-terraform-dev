@@ -8,7 +8,7 @@ module "create-saml-2-team-9410" {
     "*"
   ]
   idps = [
-    "bceidboth",
+    "idir",
     "common"
   ]
   description                  = "CSS App Created"
