@@ -2,7 +2,7 @@ module "tians-testing-6-30-team-id-8747" {
   source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "tians-testing-6-30-team-id-8747"
-  client_name                         = "Tian's Testing 6/30 team id"
+  client_name                         = ""
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
