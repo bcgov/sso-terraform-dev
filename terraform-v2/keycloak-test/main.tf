@@ -1,14 +1,14 @@
 locals {
-  standard_realm_name             = "standard"
-  idir_realm_name                 = "idir"
-  azureidir_realm_name            = "azureidir"
-  bceidbasic_realm_name           = "bceidbasic"
-  bceidbusiness_realm_name        = "bceidbusiness"
-  bceidboth_realm_name            = "bceidboth"
-  github_realm_name               = "github"
-  verifiablecredential_realm_name = "verifiablecredential"
-  sandbox_client_redirect_uri     = "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/*"
-  saml_entity_id                  = "sandbox-client"
+  standard_realm_name                   = "standard"
+  idir_realm_name                       = "idir"
+  azureidir_realm_name                  = "azureidir"
+  bceidbasic_realm_name                 = "bceidbasic"
+  bceidbusiness_realm_name              = "bceidbusiness"
+  bceidboth_realm_name                  = "bceidboth"
+  github_realm_name                     = "github"
+  verifiablecredential_realm_name       = "verifiablecredential"
+  sandbox_client_redirect_uri           = "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/*"
+  siteminder_single_sign_on_service_url = "https://sfstest7.gov.bc.ca/affwebservices/public/saml2sso"
 }
 
 module "standard" {
@@ -44,8 +44,8 @@ module "idir" {
   keycloak_url                = var.keycloak_url
   realm_name                  = local.idir_realm_name
   standard_realm_name         = local.standard_realm_name
-  saml_entity_id              = local.saml_entity_id
-  single_sign_on_service_url  = "https://test.loginproxy.gov.bc.ca/auth/realms/idir/protocol/saml"
+  saml_entity_id              = "https://test.sandbox.loginproxy.gov.bc.ca/auth/realms/_idir1/"
+  single_sign_on_service_url  = local.siteminder_single_sign_on_service_url
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
@@ -74,8 +74,8 @@ module "bceidbasic" {
   keycloak_url                = var.keycloak_url
   realm_name                  = local.bceidbasic_realm_name
   standard_realm_name         = local.standard_realm_name
-  saml_entity_id              = local.saml_entity_id
-  single_sign_on_service_url  = "https://test.loginproxy.gov.bc.ca/auth/realms/bceidbasic/protocol/saml"
+  saml_entity_id              = "https://test.sandbox.loginproxy.gov.bc.ca/auth/realms/_bceidbasic1/"
+  single_sign_on_service_url  = local.siteminder_single_sign_on_service_url
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
@@ -88,8 +88,8 @@ module "bceidbusiness" {
   keycloak_url                = var.keycloak_url
   realm_name                  = local.bceidbusiness_realm_name
   standard_realm_name         = local.standard_realm_name
-  saml_entity_id              = local.saml_entity_id
-  single_sign_on_service_url  = "https://test.loginproxy.gov.bc.ca/auth/realms/bceidbusiness/protocol/saml"
+  saml_entity_id              = "https://test.sandbox.loginproxy.gov.bc.ca/auth/realms/_bceidbusiness1/"
+  single_sign_on_service_url  = local.siteminder_single_sign_on_service_url
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
@@ -101,8 +101,8 @@ module "bceidboth" {
   keycloak_url                = var.keycloak_url
   realm_name                  = local.bceidboth_realm_name
   standard_realm_name         = local.standard_realm_name
-  saml_entity_id              = local.saml_entity_id
-  single_sign_on_service_url  = "https://test.loginproxy.gov.bc.ca/auth/realms/bceidboth/protocol/saml"
+  saml_entity_id              = "https://test.sandbox.loginproxy.gov.bc.ca/auth/realms/_bceidbasicbusiness1/"
+  single_sign_on_service_url  = local.siteminder_single_sign_on_service_url
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
