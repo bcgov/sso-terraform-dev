@@ -10,23 +10,23 @@ module "create-oidc-1-team-9469" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
-    "azureidir",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
-  additional_role_attribute    = "tbd"
-  login_theme                  = "bcgov-idp-stopper-no-header-title"
+  additional_role_attribute    = "New one"
+  login_theme                  = ""
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
-    "*",
+    "https://google.com",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "*"
+    "https://google.com"
   ]
 }
