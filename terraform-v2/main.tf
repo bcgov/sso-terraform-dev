@@ -48,6 +48,6 @@ module "keycloak_prod" {
   azureidir_client_secret            = var.prod_azureidir_client_secret
   github_client_id                   = var.prod_github_client_id
   github_client_secret               = var.prod_github_client_secret
-  verifiablecredential_client_id     = var.test_verifiablecredential_client_id
-  verifiablecredential_client_secret = var.test_verifiablecredential_client_secret
+  verifiablecredential_client_id     = var.prod_verifiablecredential_client_id
+  verifiablecredential_client_secret = var.prod_verifiablecredential_client_secret
 }
