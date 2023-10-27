@@ -128,8 +128,8 @@ module "verifiablecredential" {
   standard_realm_name                = local.standard_realm_name
   verifiablecredential_client_id     = var.verifiablecredential_client_id
   verifiablecredential_client_secret = var.verifiablecredential_client_secret
-  authorization_url                  = "https://vc-authn-oidc.apps.silver.devops.gov.bc.ca/authorize"
-  token_url                          = "https://vc-authn-oidc.apps.silver.devops.gov.bc.ca/token"
+  authorization_url                  = "https://vc-authn-oidc-test.apps.silver.devops.gov.bc.ca/authorize"
+  token_url                          = "https://vc-authn-oidc-test.apps.silver.devops.gov.bc.ca/token"
   sub_to_username                    = true
   sandbox_client_redirect_uri        = local.sandbox_client_redirect_uri
 }
