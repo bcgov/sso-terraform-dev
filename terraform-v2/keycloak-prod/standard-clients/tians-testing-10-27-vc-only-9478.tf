@@ -9,6 +9,7 @@ module "tians-testing-10-27-vc-only-9478" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "verifiablecredential",
     "common"
   ]
   description                  = "CSS App Created"
