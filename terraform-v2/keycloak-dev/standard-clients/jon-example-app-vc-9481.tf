@@ -22,11 +22,13 @@ module "jon-example-app-vc-9481" {
   pkce_code_challenge_method   = "S256"
   web_origins = [
     "http://localhost:3000/*",
+    "https://bcgov.github.io/keycloak-example-apps/*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "http://localhost:3000/*"
+    "http://localhost:3000/*",
+    "https://bcgov.github.io/keycloak-example-apps/*"
   ]
 }
