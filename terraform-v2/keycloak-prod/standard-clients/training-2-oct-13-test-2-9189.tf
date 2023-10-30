@@ -10,7 +10,6 @@ module "training-2-oct-13-test-2-9189" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
-    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
@@ -22,13 +21,11 @@ module "training-2-oct-13-test-2-9189" {
   pkce_code_challenge_method   = "S256"
   web_origins = [
     "https://bcgov.github.io/keycloak-example-apps/",
-    "https://bcgov.github.io/keycloak-example-apps/*",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
-    "https://bcgov.github.io/keycloak-example-apps/",
-    "https://bcgov.github.io/keycloak-example-apps/*"
+    "https://bcgov.github.io/keycloak-example-apps/"
   ]
 }
