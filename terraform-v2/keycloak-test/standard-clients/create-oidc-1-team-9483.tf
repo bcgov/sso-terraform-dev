@@ -10,12 +10,12 @@ module "create-oidc-1-team-9483" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
-    "azureidir",
+    "bceidbusiness",
     "common"
   ]
   description                  = "CSS App Created"
-  additional_role_attribute    = "tbd"
-  login_theme                  = "bcgov-idp-stopper-no-header-title"
+  additional_role_attribute    = "New one"
+  login_theme                  = ""
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
   access_type                  = "PUBLIC"
