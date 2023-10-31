@@ -9,6 +9,7 @@ module "tians-testing-10-31-git-hub-only-9515" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "githubbcgov",
     "common"
   ]
   description                  = "CSS App Created"
