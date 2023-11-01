@@ -13,7 +13,7 @@ module "create-saml-2-team-9592" {
   ]
   description                  = "CSS App Created"
   additional_role_attribute    = "TBD"
-  logout_post_binding_url      = ""
+  logout_post_binding_url      = "*"
   sign_assertions              = false
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
