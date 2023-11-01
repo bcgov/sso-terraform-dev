@@ -2,7 +2,7 @@ module "create-oidc-1-public-team-confidential-9586" {
   source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "create-oidc-1-public-team-confidential-9586"
-  client_name                         = "SSO Header Dev"
+  client_name                         = "Header Shown Dev"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
