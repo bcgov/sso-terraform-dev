@@ -10,7 +10,7 @@ module "tians-testing-10-27-vc-9475" {
   client_offline_session_max_lifespan = ""
   idps = [
     "bceidbasic",
-    "verifiablecredential",
+    "digitalcredential",
     "common"
   ]
   description                  = "CSS App Created"

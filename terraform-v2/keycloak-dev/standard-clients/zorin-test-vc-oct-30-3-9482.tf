@@ -9,7 +9,7 @@ module "zorin-test-vc-oct-30-3-9482" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
-    "verifiablecredential",
+    "digitalcredential",
     "common"
   ]
   description                  = "CSS App Created"

@@ -106,32 +106,32 @@ variable "prod_github_client_secret" {
   sensitive = true
 }
 
-variable "dev_verifiablecredential_client_id" {
+variable "dev_digitalcredential_client_id" {
   type      = string
   sensitive = true
 }
 
-variable "dev_verifiablecredential_client_secret" {
+variable "dev_digitalcredential_client_secret" {
   type      = string
   sensitive = true
 }
 
-variable "test_verifiablecredential_client_id" {
+variable "test_digitalcredential_client_id" {
   type      = string
   sensitive = true
 }
 
-variable "test_verifiablecredential_client_secret" {
+variable "test_digitalcredential_client_secret" {
   type      = string
   sensitive = true
 }
 
-variable "prod_verifiablecredential_client_id" {
+variable "prod_digitalcredential_client_id" {
   type      = string
   sensitive = true
 }
 
-variable "prod_verifiablecredential_client_secret" {
+variable "prod_digitalcredential_client_secret" {
   type      = string
   sensitive = true
 }
