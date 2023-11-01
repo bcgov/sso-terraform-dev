@@ -2,7 +2,7 @@ module "create-oidc-1-team-9581" {
   source                              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/standard-client"
   realm_id                            = var.standard_realm_id
   client_id                           = "create-oidc-1-team-9581"
-  client_name                         = "Create OIDC 1 Team"
+  client_name                         = "SSO Header Dev"
   access_token_lifespan               = ""
   client_session_idle_timeout         = ""
   client_session_max_lifespan         = ""
