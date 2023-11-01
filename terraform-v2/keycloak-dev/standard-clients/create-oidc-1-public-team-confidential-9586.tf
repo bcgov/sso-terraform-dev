@@ -14,13 +14,19 @@ module "create-oidc-1-public-team-confidential-9586" {
     "common"
   ]
   description                  = "CSS App Created"
-  additional_role_attribute    = "tbd"
+  additional_role_attribute    = "TBD"
   login_theme                  = ""
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
-  standard_flow_enabled        = true
-  service_accounts_enabled     = false
+  access_type                  = "PUBLIC"
+  pkce_code_challenge_method   = "S256"
+  web_origins = [
+    "https://dev.com",
+    "+"
+  ]
+  standard_flow_enabled    = true
+  service_accounts_enabled = false
   valid_redirect_uris = [
-    "*"
+    "https://dev.com"
   ]
 }
