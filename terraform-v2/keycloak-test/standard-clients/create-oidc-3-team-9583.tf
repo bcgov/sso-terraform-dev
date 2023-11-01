@@ -9,17 +9,18 @@ module "create-oidc-3-team-9583" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "idir",
     "bceidboth",
     "common"
   ]
   description                  = "CSS App Created"
   additional_role_attribute    = "tbd"
-  login_theme                  = "bcgov-idp-stopper-no-header-title"
+  login_theme                  = ""
   override_authentication_flow = true
   browser_authentication_flow  = data.keycloak_authentication_flow.idp_stopper.id
   standard_flow_enabled        = true
   service_accounts_enabled     = true
   valid_redirect_uris = [
-    "*"
+    "https://newlyadded.com"
   ]
 }
