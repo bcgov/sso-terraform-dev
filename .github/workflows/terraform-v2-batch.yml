@@ -65,7 +65,7 @@ jobs:
     - name: Setup Terraform
       if: steps.count.outputs.count != '0'
       id: tf
-      uses: bcgov/sso-requests-actions/actions/setup-terraform@v0.62.0
+      uses: bcgov/sso-requests-actions/actions/setup-terraform@v0.63.0
       with:
         context: ./terraform-v2
         tf-version: ${{ env.TF_VERSION }}
@@ -96,19 +96,19 @@ jobs:
         test-azureidir-client-secret: ${{ secrets.TEST_AZUREIDIR_CLIENT_SECRET }}
         prod-azureidir-client-id: ${{ secrets.PROD_AZUREIDIR_CLIENT_ID }}
         prod-azureidir-client-secret: ${{ secrets.PROD_AZUREIDIR_CLIENT_SECRET }}
-        dev-verifiablecredential-client-id: ${{ secrets.DEV_VERIFIABLECREDENTIAL_CLIENT_ID }}
-        dev-verifiablecredential-client-secret: ${{ secrets.DEV_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
-        test-verifiablecredential-client-id: ${{ secrets.TEST_VERIFIABLECREDENTIAL_CLIENT_ID }}
-        test-verifiablecredential-client-secret: ${{ secrets.TEST_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
-        prod-verifiablecredential-client-id: ${{ secrets.PROD_VERIFIABLECREDENTIAL_CLIENT_ID }}
-        prod-verifiablecredential-client-secret: ${{ secrets.PROD_VERIFIABLECREDENTIAL_CLIENT_SECRET }}
+        dev-digitalcredential-client-id: ${{ secrets.DEV_DIGITALCREDENTIAL_CLIENT_ID }}
+        dev-digitalcredential-client-secret: ${{ secrets.DEV_DIGITALCREDENTIAL_CLIENT_SECRET }}
+        test-digitalcredential-client-id: ${{ secrets.TEST_DIGITALCREDENTIAL_CLIENT_ID }}
+        test-digitalcredential-client-secret: ${{ secrets.TEST_DIGITALCREDENTIAL_CLIENT_SECRET }}
+        prod-digitalcredential-client-id: ${{ secrets.PROD_DIGITALCREDENTIAL_CLIENT_ID }}
+        prod-digitalcredential-client-secret: ${{ secrets.PROD_DIGITALCREDENTIAL_CLIENT_SECRET }}
         apply: true
         tf-modules-cache-key: ${{ steps.tf-modules.outputs.latest-sha }}
       continue-on-error: true
 
     - name: Setup NPM Packages
       if: steps.count.outputs.count != '0'
-      uses: bcgov/sso-requests-actions/actions/setup-yarn@v0.62.0
+      uses: bcgov/sso-requests-actions/actions/setup-yarn@v0.63.0
 
     - name: Update Requests Status
       if: steps.count.outputs.count != '0'

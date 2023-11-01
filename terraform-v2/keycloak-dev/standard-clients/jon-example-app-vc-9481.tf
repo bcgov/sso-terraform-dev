@@ -9,7 +9,7 @@ module "jon-example-app-vc-9481" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
-    "verifiablecredential",
+    "digitalcredential",
     "githubpublic",
     "common"
   ]
