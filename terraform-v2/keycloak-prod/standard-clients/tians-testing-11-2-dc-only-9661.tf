@@ -9,6 +9,7 @@ module "tians-testing-11-2-dc-only-9661" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "digitalcredential",
     "common"
   ]
   description                  = "CSS App Created"
