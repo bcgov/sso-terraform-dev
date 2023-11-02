@@ -11,6 +11,7 @@ module "vc-bceid-github-9654" {
   idps = [
     "idir",
     "bceidbasic",
+    "githubpublic",
     "digitalcredential",
     "common"
   ]
