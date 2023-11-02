@@ -5,14 +5,14 @@ module "create-saml-1-team-9644" {
   client_name        = "SSO Header Test"
   assertion_lifespan = ""
   valid_redirect_uris = [
-    "*"
+    "https://test.com"
   ]
   idps = [
     "bceidboth",
     "common"
   ]
   description                  = "CSS App Created"
-  additional_role_attribute    = "tbd"
+  additional_role_attribute    = "TBD"
   logout_post_binding_url      = ""
   sign_assertions              = false
   override_authentication_flow = true
