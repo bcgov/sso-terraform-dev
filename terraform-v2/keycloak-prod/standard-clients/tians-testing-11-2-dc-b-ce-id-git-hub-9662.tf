@@ -9,6 +9,7 @@ module "tians-testing-11-2-dc-b-ce-id-git-hub-9662" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
+    "bceidbasic",
     "githubbcgov",
     "common"
   ]
