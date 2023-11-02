@@ -10,6 +10,7 @@ module "vc-bceid-github-9654" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "digitalcredential",
     "common"
   ]
