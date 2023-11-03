@@ -10,6 +10,7 @@ module "vc-bceid-9721" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "digitalcredential",
     "common"
   ]
   description                  = "CSS App Created"
