@@ -10,6 +10,7 @@ module "tians-testing-11-3-idir-b-ce-id-git-hub-dc-9722" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
