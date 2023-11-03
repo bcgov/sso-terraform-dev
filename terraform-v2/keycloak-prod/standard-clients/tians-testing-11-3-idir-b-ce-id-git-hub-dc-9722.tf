@@ -11,6 +11,7 @@ module "tians-testing-11-3-idir-b-ce-id-git-hub-dc-9722" {
   idps = [
     "idir",
     "bceidbasic",
+    "digitalcredential",
     "common"
   ]
   description                  = "CSS App Created"
