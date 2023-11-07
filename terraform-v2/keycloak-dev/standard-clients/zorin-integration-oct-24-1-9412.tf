@@ -10,6 +10,7 @@ module "zorin-integration-oct-24-1-9412" {
   client_offline_session_max_lifespan = ""
   idps = [
     "idir",
+    "digitalcredential",
     "common"
   ]
   description                  = "CSS App Created"
@@ -20,12 +21,14 @@ module "zorin-integration-oct-24-1-9412" {
   access_type                  = "PUBLIC"
   pkce_code_challenge_method   = "S256"
   web_origins = [
+    "http://localhost:3000/*",
     "https://bcgov.github.io/keycloak-example-apps/",
     "+"
   ]
   standard_flow_enabled    = true
   service_accounts_enabled = false
   valid_redirect_uris = [
+    "http://localhost:3000/*",
     "https://bcgov.github.io/keycloak-example-apps/"
   ]
 }
