@@ -1,12 +1,6 @@
-name: Terraform Custom Realm Apply
+name: Terraform Custom Realm Batch Job
 
-on:
-  push:
-    branches:
-    - main
-    paths:
-    - terraform-v2-custom/**
-    - .github/workflows/terraform-v2-custom.yml
+on: workflow_dispatch
 
 env:
   TF_VERSION: 1.1.4
