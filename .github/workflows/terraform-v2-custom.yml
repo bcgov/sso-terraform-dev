@@ -94,7 +94,7 @@ jobs:
       if: steps.count.outputs.count != '0'
       uses: fjogeleit/http-request-action@master
       with:
-        url: '{{ env.REALM_REGISTRY_API_URL }}/realms/pending'
+        url: ${{ env.REALM_REGISTRY_API_URL }}/realms/pending
         method: PUT
         data: "{\"ids\": ${{ steps.requests.outputs.response }}, \"action\": \"tf_plan\", \"success\": \"${{ steps.plan.outcome != 'failure' }}\"}"
         customHeaders: '{"Authorization": "${{ secrets.REALM_REGISTRY_GH_API_TOKEN }}"}'
@@ -125,7 +125,7 @@ jobs:
       if: steps.count.outputs.count != '0'
       uses: fjogeleit/http-request-action@master
       with:
-        url: '{{ env.REALM_REGISTRY_API_URL }}/realms/pending'
+        url: ${{ env.REALM_REGISTRY_API_URL }}/realms/pending
         method: PUT
         data: "{\"ids\": ${{ steps.requests.outputs.response }}, \"action\": \"tf_apply\", \"success\": \"${{ steps.apply.outcome != 'failure' }}\"}"
         customHeaders: '{"Authorization": "${{ secrets.REALM_REGISTRY_GH_API_TOKEN }}"}'
