@@ -7,7 +7,7 @@ env:
   KEYCLOAK_V2_DEV_URL: https://dev.sandbox.loginproxy.gov.bc.ca
   KEYCLOAK_V2_TEST_URL: https://test.sandbox.loginproxy.gov.bc.ca
   KEYCLOAK_V2_PROD_URL: https://sandbox.loginproxy.gov.bc.ca
-  REALM_REGISTRY_API_URL: '{{ secrets.REALM_REGISTRY_API_URL }}'
+  REALM_REGISTRY_API_URL: ${{ secrets.REALM_REGISTRY_API_URL }}
 
 jobs:
   terraform:
@@ -20,7 +20,7 @@ jobs:
       id: requests
       uses: fjogeleit/http-request-action@master
       with:
-        url: '{{ env.REALM_REGISTRY_API_URL }}/realms/pending'
+        url: ${{ env.REALM_REGISTRY_API_URL }}/realms/pending
         method: GET
         customHeaders: '{"Authorization": "${{ secrets.REALM_REGISTRY_GH_API_TOKEN }}"}'
         timeout: '60000'
