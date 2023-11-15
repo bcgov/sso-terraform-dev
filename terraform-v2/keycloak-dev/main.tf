@@ -147,6 +147,17 @@ module "master_idir_link" {
   idp_realm_name   = module.idir.realm_name
   idp_display_name = "IDIR"
   idp_public_attrs = ["display_name", "idir_user_guid", "idir_username"]
+  sub_to_username  = true
+}
+
+module "master_azureidir_link" {
+  source           = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/master-idp-link"
+  keycloak_url     = var.keycloak_url
+  idp_realm_id     = module.azureidir.realm_id
+  idp_realm_name   = module.azureidir.realm_name
+  idp_display_name = "Azure IDIR"
+  idp_public_attrs = ["display_name", "idir_user_guid", "idir_username"]
+  sub_to_username  = true
 }
 
 module "master_viewer_role" {
