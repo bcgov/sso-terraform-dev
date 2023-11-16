@@ -1,6 +1,7 @@
 name: Terraform Custom Realm Batch Job
 
 on:
+  workflow_dispatch:
   schedule:
   - cron: 0 12 * * *
 
