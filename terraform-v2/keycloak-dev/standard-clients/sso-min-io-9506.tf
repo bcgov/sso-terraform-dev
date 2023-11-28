@@ -21,7 +21,7 @@ module "sso-min-io-9506" {
   standard_flow_enabled        = true
   service_accounts_enabled     = false
   valid_redirect_uris = [
-    "http://sso-minio-sandbox.apps.gold.devops.gov.bc.ca/*",
-    "https://sso-minio-sandbox.apps.gold.devops.gov.bc.ca/*"
+    "http://sso-minio.apps.gold.devops.gov.bc.ca/*",
+    "https://sso-minio.apps.gold.devops.gov.bc.ca/*"
   ]
 }
