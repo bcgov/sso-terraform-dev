@@ -8,7 +8,7 @@ module "create-saml-1-no-team-to-team-9981" {
     "*"
   ]
   idps = [
-    "bceidboth",
+    "githubbcgov",
     "common"
   ]
   description                  = "CSS App Created"
