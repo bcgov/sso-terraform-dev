@@ -20,6 +20,6 @@ module "test-both-auths-nk-8486" {
   standard_flow_enabled        = true
   service_accounts_enabled     = true
   valid_redirect_uris = [
-    "http://example"
+    "http://localhost:3000/"
   ]
 }
