@@ -9,7 +9,7 @@ module "single-sign-on-test-1-b-10483" {
   client_offline_session_idle_timeout = ""
   client_offline_session_max_lifespan = ""
   idps = [
-    "idir",
+    "bceidbasic",
     "common"
   ]
   description                  = "CSS App Created"
