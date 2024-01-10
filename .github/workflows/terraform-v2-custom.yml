@@ -77,6 +77,12 @@ jobs:
         dev_client_secret="${{ secrets.KEYCLOAK_V2_DEV_CLIENT_SECRET }}"
         test_client_secret="${{ secrets.KEYCLOAK_V2_TEST_CLIENT_SECRET }}"
         prod_client_secret="${{ secrets.KEYCLOAK_V2_PROD_CLIENT_SECRET }}"
+        dev_username="${{ secrets.KEYCLOAK_V2_DEV_USERNAME }}"
+        dev_password="${{ secrets.KEYCLOAK_V2_DEV_PASSWORD }}"
+        test_username="${{ secrets.KEYCLOAK_V2_TEST_USERNAME }}"
+        test_password="${{ secrets.KEYCLOAK_V2_TEST_PASSWORD }}"
+        prod_username="${{ secrets.KEYCLOAK_V2_PROD_USERNAME }}"
+        prod_password="${{ secrets.KEYCLOAK_V2_PROD_PASSWORD }}"
         EOF
       working-directory: ./terraform-v2-custom
 
