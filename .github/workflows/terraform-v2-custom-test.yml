@@ -20,19 +20,16 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Setup Terraform
-      if: steps.count.outputs.count != '0'
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: ${{ env.TF_VERSION }}
 
     - name: Terraform Format
       id: fmt
-      if: steps.count.outputs.count != '0'
       run: terraform fmt -check
       working-directory: ./terraform-v2-custom
 
     - name: Terraform Variables
-      if: steps.count.outputs.count != '0'
       run: |
         cat >"config.tf" <<EOF
         terraform {
@@ -71,18 +68,15 @@ jobs:
       working-directory: ./terraform-v2-custom
 
     - name: Terraform Init
-      if: steps.count.outputs.count != '0'
       id: init
       run: terraform init -upgrade
       working-directory: ./terraform-v2-custom
 
     - name: Terraform Plan
-      if: steps.count.outputs.count != '0'
       id: plan
       run: terraform plan -no-color
       working-directory: ./terraform-v2-custom
       continue-on-error: true
 
-    - name: Terraform Plan Status
-      if: steps.count.outputs.count != '0' && steps.plan.outcome == 'failure'
+    - name: Terraform Plan Status && steps.plan.outcome == 'failure'
       run: exit 1
