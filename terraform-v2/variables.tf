@@ -1,7 +1,7 @@
 # KEYCLOAK_DEV
 variable "dev_client_id" {
   description = "The client_id for the Keycloak client in Master Realm"
-  default     = "terraform-cli"
+  default     = ""
 }
 
 variable "dev_client_secret" {
@@ -27,7 +27,7 @@ variable "dev_keycloak_url" {
 # KEYCLOAK_TEST
 variable "test_client_id" {
   description = "The client_id for the Keycloak client in Master Realm"
-  default     = "terraform-cli"
+  default     = ""
 }
 
 variable "test_client_secret" {
@@ -53,7 +53,7 @@ variable "test_keycloak_url" {
 # KEYCLOAK_PROD
 variable "prod_client_id" {
   description = "The client_id for the Keycloak client in Master Realm"
-  default     = "terraform-cli"
+  default     = ""
 }
 
 variable "prod_client_secret" {
