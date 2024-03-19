@@ -17,10 +17,10 @@ jobs:
     name: Remove Stale Branches
     runs-on: ubuntu-latest
     steps:
-      - uses: fpicalausa/remove-stale-branches@f442973cf98f499d7d13c7e274c62d87fbaedc39
-        with:
-          dry-run: ${{ github.event.inputs.dry_run }} 
-          exempt-branches-regex: (master|main|dev)
-          days-before-branch-delete: ${{ github.event.inputs.days_before_branch_delete }}
-          days-before-branch-stale: 30
-          operations-per-run: ${{ github.event.inputs.operations_per_run }}
+    - uses: fpicalausa/remove-stale-branches@f442973cf98f499d7d13c7e274c62d87fbaedc39
+      with:
+        dry-run: ${{ github.event.inputs.dry_run }}
+        exempt-branches-regex: (master|main|dev)
+        days-before-branch-delete: ${{ github.event.inputs.days_before_branch_delete }}
+        days-before-branch-stale: 30
+        operations-per-run: ${{ github.event.inputs.operations_per_run }}
