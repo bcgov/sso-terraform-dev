@@ -1,3 +1,5 @@
+name: Prune Branches
+
 on:
   workflow_dispatch:
     inputs:
@@ -11,6 +13,12 @@ on:
       operations_per_run:
         default: 10
         description: Maximum branch deletions
+      ignore_unknown_authors:
+        default: false
+        type: boolean
+        description: Ignore unknown authors
+      default_recipient:
+        description: Default recipient for notifications
 
 jobs:
   remove-stale-branches:
@@ -20,7 +28,9 @@ jobs:
     - uses: fpicalausa/remove-stale-branches@f442973cf98f499d7d13c7e274c62d87fbaedc39
       with:
         dry-run: ${{ github.event.inputs.dry_run }}
-        exempt-branches-regex: (master|main|dev)
+        exempt-branches-regex: ^(main|master|dev)$
         days-before-branch-delete: ${{ github.event.inputs.days_before_branch_delete }}
-        days-before-branch-stale: 30
+        days-before-branch-stale: 90
         operations-per-run: ${{ github.event.inputs.operations_per_run }}
+        ignore-unknown-authors: ${{ github.event.inputs.ignore_unknown_authors }}
+        default-recipient: ${{ github.event.inputs.default_recipient }}
