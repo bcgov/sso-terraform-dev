@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 30
     steps:
-    - uses: hmarr/debug-action@v2
+    - uses: hmarr/debug-action@v3
 
     - name: Checkout Terraform Modules
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: bcgov/sso-terraform-modules
         ref: dev
@@ -26,7 +26,7 @@ jobs:
       run: echo "latest-sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       shell: bash
 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Setup Terraform
       uses: bcgov/sso-requests-actions/actions/setup-terraform@v0.65.0
