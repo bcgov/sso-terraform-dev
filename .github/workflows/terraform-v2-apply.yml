@@ -29,7 +29,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Setup Terraform
-      uses: bcgov/sso-requests-actions/actions/setup-terraform@ssoteam-2161
+      uses: bcgov/sso-requests-actions/actions/setup-terraform@ssoteam-2061
       with:
         context: ./terraform-v2
         tf-version: ${{ env.TF_VERSION }}
