@@ -43,21 +43,30 @@ jobs:
         kc-dev-url: ${{ env.KEYCLOAK_V2_DEV_URL }}
         kc-test-url: ${{ env.KEYCLOAK_V2_TEST_URL }}
         kc-prod-url: ${{ env.KEYCLOAK_V2_PROD_URL }}
-        kc-dev-secret: ${{ secrets.KEYCLOAK_V2_DEV_CLIENT_SECRET }}
-        kc-test-secret: ${{ secrets.KEYCLOAK_V2_TEST_CLIENT_SECRET }}
-        kc-prod-secret: ${{ secrets.KEYCLOAK_V2_PROD_CLIENT_SECRET }}
-        dev-github-client-id: ${{ secrets.DEV_GITHUB_CLIENT_ID }}
-        dev-github-client-secret: ${{ secrets.DEV_GITHUB_CLIENT_SECRET }}
-        test-github-client-id: ${{ secrets.TEST_GITHUB_CLIENT_ID }}
-        test-github-client-secret: ${{ secrets.TEST_GITHUB_CLIENT_SECRET }}
-        prod-github-client-id: ${{ secrets.PROD_GITHUB_CLIENT_ID }}
-        prod-github-client-secret: ${{ secrets.PROD_GITHUB_CLIENT_SECRET }}
+        kc-dev-username: ${{ secrets.KEYCLOAK_V2_DEV_USERNAME }}
+        kc-test-username: ${{ secrets.KEYCLOAK_V2_TEST_USERNAME }}
+        kc-prod-username: ${{ secrets.KEYCLOAK_V2_PROD_USERNAME }}
+        kc-dev-password: ${{ secrets.KEYCLOAK_V2_DEV_PASSWORD }}
+        kc-test-password: ${{ secrets.KEYCLOAK_V2_TEST_PASSWORD }}
+        kc-prod-password: ${{ secrets.KEYCLOAK_V2_PROD_PASSWORD }}
         test-siteminder-signing-certificate: ${{ secrets.TEST_SITEMINDER_SIGNING_CERTIFICATE }}
         prod-siteminder-signing-certificate: ${{ secrets.PROD_SITEMINDER_SIGNING_CERTIFICATE }}
+        dev-azureidir-client-id: ${{ secrets.DEV_AZUREIDIR_CLIENT_ID }}
+        dev-azureidir-client-secret: ${{ secrets.DEV_AZUREIDIR_CLIENT_SECRET }}
+        test-azureidir-client-id: ${{ secrets.TEST_AZUREIDIR_CLIENT_ID }}
+        test-azureidir-client-secret: ${{ secrets.TEST_AZUREIDIR_CLIENT_SECRET }}
+        prod-azureidir-client-id: ${{ secrets.PROD_AZUREIDIR_CLIENT_ID }}
+        prod-azureidir-client-secret: ${{ secrets.PROD_AZUREIDIR_CLIENT_SECRET }}
+        dev-github-client-id: ${{ secrets.DEV_GITHUB_CLIENT_ID }}
+        dev-github-client-secret: ${{ secrets.DEV_GITHUB_CLIENT_SECRET }}
         dev-digitalcredential-client-id: ${{ secrets.DEV_DIGITALCREDENTIAL_CLIENT_ID }}
         dev-digitalcredential-client-secret: ${{ secrets.DEV_DIGITALCREDENTIAL_CLIENT_SECRET }}
+        test-github-client-id: ${{ secrets.TEST_GITHUB_CLIENT_ID }}
+        test-github-client-secret: ${{ secrets.TEST_GITHUB_CLIENT_SECRET }}
         test-digitalcredential-client-id: ${{ secrets.TEST_DIGITALCREDENTIAL_CLIENT_ID }}
         test-digitalcredential-client-secret: ${{ secrets.TEST_DIGITALCREDENTIAL_CLIENT_SECRET }}
+        prod-github-client-id: ${{ secrets.PROD_GITHUB_CLIENT_ID }}
+        prod-github-client-secret: ${{ secrets.PROD_GITHUB_CLIENT_SECRET }}
         prod-digitalcredential-client-id: ${{ secrets.PROD_DIGITALCREDENTIAL_CLIENT_ID }}
         prod-digitalcredential-client-secret: ${{ secrets.PROD_DIGITALCREDENTIAL_CLIENT_SECRET }}
         plan: true
