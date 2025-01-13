@@ -2,8 +2,8 @@ name: Terraform Custom Realm Batch Job
 
 on:
   workflow_dispatch:
-  schedule:
-  - cron: 0 12 * * *
+  # schedule:
+  # - cron: 0 12 * * *
 
 env:
   TF_VERSION: 1.1.4
@@ -36,19 +36,19 @@ jobs:
         echo "count=$count" >> $GITHUB_OUTPUT
 
     - name: Setup Terraform
-      # if: steps.count.outputs.count != '0'
+      if: steps.count.outputs.count != '0'
       uses: hashicorp/setup-terraform@v3
       with:
         terraform_version: ${{ env.TF_VERSION }}
 
     - name: Terraform Format
       id: fmt
-      # if: steps.count.outputs.count != '0'
+      if: steps.count.outputs.count != '0'
       run: terraform fmt -check
       working-directory: ./terraform-v2-custom
 
     - name: Terraform Variables
-      # if: steps.count.outputs.count != '0'
+      if: steps.count.outputs.count != '0'
       run: |
         cat >"config.tf" <<EOF
         terraform {
@@ -84,13 +84,13 @@ jobs:
       working-directory: ./terraform-v2-custom
 
     - name: Terraform Init
-      # if: steps.count.outputs.count != '0'
+      if: steps.count.outputs.count != '0'
       id: init
       run: terraform init -upgrade
       working-directory: ./terraform-v2-custom
 
     - name: Terraform Plan
-      # if: steps.count.outputs.count != '0'
+      if: steps.count.outputs.count != '0'
       id: plan
       run: terraform plan -no-color
       working-directory: ./terraform-v2-custom
@@ -111,7 +111,7 @@ jobs:
       run: exit 1
 
     - name: Terraform Apply
-      # if: steps.count.outputs.count != '0' && steps.plan.outcome != 'failure'
+      if: steps.count.outputs.count != '0' && steps.plan.outcome != 'failure'
       id: apply
       run: terraform apply -auto-approve
       working-directory: ./terraform-v2-custom
