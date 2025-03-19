@@ -69,6 +69,12 @@ jobs:
         prod-github-client-secret: ${{ secrets.PROD_GITHUB_CLIENT_SECRET }}
         prod-digitalcredential-client-id: ${{ secrets.PROD_DIGITALCREDENTIAL_CLIENT_ID }}
         prod-digitalcredential-client-secret: ${{ secrets.PROD_DIGITALCREDENTIAL_CLIENT_SECRET }}
+        dev-google-client-id: ${{ secrets.DEV_GOOGLE_CLIENT_ID }}
+        dev-google-client-secret: ${{ secrets.DEV_GOOGLE_CLIENT_SECRET }}
+        test-google-client-id: ${{ secrets.DEV_GOOGLE_CLIENT_ID }}
+        test-google-client-secret: ${{ secrets.DEV_GOOGLE_CLIENT_SECRET }}
+        prod-google-client-id: ${{ secrets.DEV_GOOGLE_CLIENT_ID }}
+        prod-google-client-secret: ${{ secrets.DEV_GOOGLE_CLIENT_SECRET }}
         apply: true
         tf-modules-cache-key: ${{ steps.tf-modules.outputs.latest-sha }}
 
