@@ -65,7 +65,7 @@ jobs:
     - name: Setup Terraform
       if: steps.count.outputs.count != '0'
       id: tf
-      uses: bcgov/sso-requests-actions/actions/setup-terraform@v0.63.0
+      uses: bcgov/sso-requests-actions/actions/setup-terraform@v0.68.0
       with:
         context: ./terraform-v2
         tf-version: ${{ env.TF_VERSION }}
