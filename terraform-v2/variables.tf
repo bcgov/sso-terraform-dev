@@ -106,6 +106,36 @@ variable "prod_github_client_secret" {
   sensitive = true
 }
 
+variable "dev_google_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "dev_google_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_google_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_google_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_google_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_google_client_secret" {
+  type      = string
+  sensitive = true
+}
+
 variable "dev_digitalcredential_client_id" {
   type      = string
   sensitive = true

@@ -35,6 +35,9 @@ module "standard" {
   bceidboth_client_secret     = module.bceidboth.standard_client_secret
   github_client_id            = module.github.standard_client_id
   github_client_secret        = module.github.standard_client_secret
+  google_client_id            = module.google.standard_client_id
+  google_client_secret        = module.google.standard_client_secret
+
 
   digitalcredential_client_id         = var.digitalcredential_client_id
   digitalcredential_client_secret     = var.digitalcredential_client_secret
