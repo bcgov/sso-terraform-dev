@@ -205,3 +205,33 @@ variable "prod_azureidir_client_secret" {
   type      = string
   sensitive = true
 }
+
+variable "dev_microsoft_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "dev_microsoft_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_microsoft_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_microsoft_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_microsoft_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_microsoft_client_secret" {
+  type      = string
+  sensitive = true
+}

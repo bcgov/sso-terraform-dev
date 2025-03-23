@@ -65,7 +65,7 @@ jobs:
     - name: Setup Terraform
       if: steps.count.outputs.count != '0'
       id: tf
-      uses: bcgov/sso-requests-actions/actions/setup-terraform@v0.68.0
+      uses: bcgov/sso-requests-actions/actions/setup-terraform@v0.69.0
       with:
         context: ./terraform-v2
         tf-version: ${{ env.TF_VERSION }}
@@ -108,6 +108,12 @@ jobs:
         test-google-client-secret: ${{ secrets.SANDBOX_GOOGLE_CLIENT_SECRET }}
         prod-google-client-id: ${{ secrets.SANDBOX_GOOGLE_CLIENT_ID }}
         prod-google-client-secret: ${{ secrets.SANDBOX_GOOGLE_CLIENT_SECRET }}
+        dev-microsoft-client-id: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_ID }}
+        dev-microsoft-client-secret: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_SECRET }}
+        test-microsoft-client-id: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_ID }}
+        test-microsoft-client-secret: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_SECRET }}
+        prod-microsoft-client-id: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_ID }}
+        prod-microsoft-client-secret: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_SECRET }}
         apply: true
         tf-modules-cache-key: ${{ steps.tf-modules.outputs.latest-sha }}
       continue-on-error: true
