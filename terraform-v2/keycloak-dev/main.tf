@@ -6,6 +6,8 @@ locals {
   bceidbusiness_realm_name              = "bceidbusiness"
   bceidboth_realm_name                  = "bceidboth"
   github_realm_name                     = "github"
+  google_realm_name                     = "google"
+  microsoft_realm_name                  = "microsoft"
   digitalcredential_realm_name          = "digitalcredential"
   sandbox_client_redirect_uri           = "https://sso-keycloak-e4ca1d-dev.apps.gold.devops.gov.bc.ca/*"
   siteminder_single_sign_on_service_url = "https://sfstest7.gov.bc.ca/affwebservices/public/saml2sso"
@@ -22,6 +24,8 @@ module "standard" {
   bceidbusiness_realm_name = local.bceidbusiness_realm_name
   bceidboth_realm_name     = local.bceidboth_realm_name
   github_realm_name        = local.github_realm_name
+  google_realm_name        = local.google_realm_name
+  microsoft_realm_name     = local.microsoft_realm_name
 
   idir_client_id              = module.idir.standard_client_id
   idir_client_secret          = module.idir.standard_client_secret
@@ -37,6 +41,8 @@ module "standard" {
   github_client_secret        = module.github.standard_client_secret
   google_client_id            = module.google.standard_client_id
   google_client_secret        = module.google.standard_client_secret
+  microsoft_client_id         = module.microsoft.standard_client_id
+  microsoft_client_secret     = module.microsoft.standard_client_secret
 
 
   digitalcredential_client_id         = var.digitalcredential_client_id
@@ -124,6 +130,27 @@ module "github" {
   sub_to_username     = true
 }
 
+module "google" {
+  source              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-google"
+  keycloak_url        = var.keycloak_url
+  realm_name          = local.google_realm_name
+  standard_realm_name = local.standard_realm_name
+  client_id           = var.google_client_id
+  client_secret       = var.google_client_secret
+  sub_to_username     = true
+}
+
+module "microsoft" {
+  source                  = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-microsoft"
+  keycloak_url            = var.keycloak_url
+  realm_name              = local.microsoft_realm_name
+  standard_realm_name     = local.standard_realm_name
+  sub_to_username         = true
+  microsoft_tenant_id     = var.microsoft_tenant_id
+  microsoft_client_id     = var.microsoft_client_id
+  microsoft_client_secret = var.microsoft_client_secret
+}
+
 module "master_idir_link" {
   source           = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/master-idp-link"
   keycloak_url     = var.keycloak_url
@@ -142,6 +169,14 @@ module "master_azureidir_link" {
   idp_public_attrs = ["display_name", "idir_user_guid", "idir_username"]
 }
 
+module "master_microsoft_link" {
+  source           = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/master-idp-link"
+  keycloak_url     = var.keycloak_url
+  idp_realm_id     = module.microsoft.realm_id
+  idp_realm_name   = module.microsoft.realm_name
+  idp_display_name = "Microsoft"
+  idp_public_attrs = ["display_name"]
+}
 module "master_viewer_role" {
   source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/master-viewer-role"
   realm_names = ["master", "standard", "idir", "azureidir", "bceidbasic", "bceidbusiness", "bceidboth"]
