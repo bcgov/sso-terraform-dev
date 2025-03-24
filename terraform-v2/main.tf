@@ -16,7 +16,7 @@ module "keycloak_dev" {
   google_client_secret            = var.dev_google_client_secret
   microsoft_client_id             = var.dev_microsoft_client_id
   microsoft_client_secret         = var.dev_microsoft_client_secret
-  microsoft_tenant_id             = ""
+  microsoft_tenant_id             = "common"
 }
 
 module "keycloak_test" {
@@ -37,7 +37,7 @@ module "keycloak_test" {
   google_client_secret            = var.test_google_client_secret
   microsoft_client_id             = var.test_microsoft_client_id
   microsoft_client_secret         = var.test_microsoft_client_secret
-  microsoft_tenant_id             = ""
+  microsoft_tenant_id             = "common"
 }
 
 module "keycloak_prod" {
@@ -58,5 +58,5 @@ module "keycloak_prod" {
   google_client_secret            = var.prod_google_client_secret
   microsoft_client_id             = var.prod_microsoft_client_id
   microsoft_client_secret         = var.prod_microsoft_client_secret
-  microsoft_tenant_id             = ""
+  microsoft_tenant_id             = "common"
 }
