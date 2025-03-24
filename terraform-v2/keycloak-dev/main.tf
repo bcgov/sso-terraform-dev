@@ -169,14 +169,6 @@ module "master_azureidir_link" {
   idp_public_attrs = ["display_name", "idir_user_guid", "idir_username"]
 }
 
-module "master_microsoft_link" {
-  source           = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/master-idp-link"
-  keycloak_url     = var.keycloak_url
-  idp_realm_id     = module.microsoft.realm_id
-  idp_realm_name   = module.microsoft.realm_name
-  idp_display_name = "Microsoft"
-  idp_public_attrs = ["display_name"]
-}
 module "master_viewer_role" {
   source      = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/master-viewer-role"
   realm_names = ["master", "standard", "idir", "azureidir", "bceidbasic", "bceidbusiness", "bceidboth"]
