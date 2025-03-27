@@ -71,6 +71,18 @@ variable "microsoft_client_id" {
   sensitive = true
 }
 
+variable "apple_client_id" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
+variable "apple_client_secret" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
 variable "microsoft_client_secret" {
   type      = string
   sensitive = true
