@@ -235,3 +235,33 @@ variable "prod_microsoft_client_secret" {
   type      = string
   sensitive = true
 }
+
+variable "dev_apple_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "dev_apple_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_apple_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "test_apple_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_apple_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "prod_apple_client_secret" {
+  type      = string
+  sensitive = true
+}
