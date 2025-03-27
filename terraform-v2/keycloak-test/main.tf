@@ -57,13 +57,13 @@ module "standard" {
 }
 
 module "apple" {
-  source                   = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-apple"
-  keycloak_url             = var.keycloak_url
-  realm_name               = local.apple_realm_name
-  standard_realm_name      = local.standard_realm_name
-  sub_to_username          = true
-  apple_client_id          = var.apple_client_id
-  apple_client_secret      = var.apple_client_secret
+  source              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-apple"
+  keycloak_url        = var.keycloak_url
+  realm_name          = local.apple_realm_name
+  standard_realm_name = local.standard_realm_name
+  sub_to_username     = true
+  apple_client_id     = var.apple_client_id
+  apple_client_secret = var.apple_client_secret
 }
 
 module "idir" {
