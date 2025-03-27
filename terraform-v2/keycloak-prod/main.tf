@@ -57,7 +57,7 @@ module "standard" {
 }
 
 module "apple" {
-  source                   = "../modules/base-realms/realm-apple"
+  source                   = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-apple"
   keycloak_url             = var.keycloak_url
   realm_name               = local.apple_realm_name
   standard_realm_name      = local.standard_realm_name
