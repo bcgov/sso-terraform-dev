@@ -114,6 +114,12 @@ jobs:
         test-microsoft-client-secret: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_SECRET }}
         prod-microsoft-client-id: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_ID }}
         prod-microsoft-client-secret: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_SECRET }}
+        dev-apple-client-id: ${{ secrets.SANDBOX_DEV_APPLE_CLIENT_ID }}
+        dev-apple-client-secret: ${{ secrets.SANDBOX_DEV_APPLE_CLIENT_SECRET }}
+        test-apple-client-id: ${{ secrets.SANDBOX_TEST_APPLE_CLIENT_ID }}
+        test-apple-client-secret: ${{ secrets.SANDBOX_TEST_APPLE_CLIENT_SECRET }}
+        prod-apple-client-id: ${{ secrets.SANDBOX_PROD_APPLE_CLIENT_ID }}
+        prod-apple-client-secret: ${{ secrets.SANDBOX_PROD_APPLE_CLIENT_SECRET }}
         apply: true
         tf-modules-cache-key: ${{ steps.tf-modules.outputs.latest-sha }}
       continue-on-error: true
