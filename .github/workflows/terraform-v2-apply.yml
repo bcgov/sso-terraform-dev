@@ -90,7 +90,7 @@ jobs:
         apply: true
         tf-modules-cache-key: ${{ steps.tf-modules.outputs.latest-sha }}
 
-    - uses: bcgov/sso-requests-actions/keycloak@v0.69.0
+    - uses: bcgov/sso-requests-actions/keycloak@v0.72.0
       with:
         dev-keycloak-url: ${{ env.KEYCLOAK_V2_DEV_URL }}
         test-keycloak-url: ${{ env.KEYCLOAK_V2_TEST_URL }}
