@@ -12,13 +12,6 @@ module "keycloak_dev" {
   github_client_secret            = var.dev_github_client_secret
   digitalcredential_client_id     = var.dev_digitalcredential_client_id
   digitalcredential_client_secret = var.dev_digitalcredential_client_secret
-  google_client_id                = var.dev_google_client_id
-  google_client_secret            = var.dev_google_client_secret
-  microsoft_client_id             = var.dev_microsoft_client_id
-  microsoft_client_secret         = var.dev_microsoft_client_secret
-  apple_client_id                 = var.dev_apple_client_id
-  apple_client_secret             = var.dev_apple_client_secret
-  microsoft_tenant_id             = "common"
 }
 
 module "keycloak_test" {
@@ -35,13 +28,6 @@ module "keycloak_test" {
   github_client_secret            = var.test_github_client_secret
   digitalcredential_client_id     = var.test_digitalcredential_client_id
   digitalcredential_client_secret = var.test_digitalcredential_client_secret
-  google_client_id                = var.test_google_client_id
-  google_client_secret            = var.test_google_client_secret
-  microsoft_client_id             = var.test_microsoft_client_id
-  microsoft_client_secret         = var.test_microsoft_client_secret
-  apple_client_id                 = var.test_apple_client_id
-  apple_client_secret             = var.test_apple_client_secret
-  microsoft_tenant_id             = "common"
 }
 
 module "keycloak_prod" {
@@ -58,11 +44,4 @@ module "keycloak_prod" {
   github_client_secret            = var.prod_github_client_secret
   digitalcredential_client_id     = var.prod_digitalcredential_client_id
   digitalcredential_client_secret = var.prod_digitalcredential_client_secret
-  google_client_id                = var.prod_google_client_id
-  google_client_secret            = var.prod_google_client_secret
-  microsoft_client_id             = var.prod_microsoft_client_id
-  microsoft_client_secret         = var.prod_microsoft_client_secret
-  apple_client_id                 = var.prod_apple_client_id
-  apple_client_secret             = var.prod_apple_client_secret
-  microsoft_tenant_id             = "common"
 }

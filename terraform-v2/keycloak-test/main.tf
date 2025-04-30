@@ -6,9 +6,6 @@ locals {
   bceidbusiness_realm_name              = "bceidbusiness"
   bceidboth_realm_name                  = "bceidboth"
   github_realm_name                     = "github"
-  google_realm_name                     = "google"
-  microsoft_realm_name                  = "microsoft"
-  apple_realm_name                      = "apple"
   digitalcredential_realm_name          = "digitalcredential"
   sandbox_client_redirect_uri           = "https://sso-keycloak-e4ca1d-test.apps.gold.devops.gov.bc.ca/*"
   siteminder_single_sign_on_service_url = "https://sfstest7.gov.bc.ca/affwebservices/public/saml2sso"
@@ -25,9 +22,6 @@ module "standard" {
   bceidbusiness_realm_name = local.bceidbusiness_realm_name
   bceidboth_realm_name     = local.bceidboth_realm_name
   github_realm_name        = local.github_realm_name
-  google_realm_name        = local.google_realm_name
-  microsoft_realm_name     = local.microsoft_realm_name
-  apple_realm_name         = local.apple_realm_name
 
   idir_client_id              = module.idir.standard_client_id
   idir_client_secret          = module.idir.standard_client_secret
@@ -41,12 +35,6 @@ module "standard" {
   bceidboth_client_secret     = module.bceidboth.standard_client_secret
   github_client_id            = module.github.standard_client_id
   github_client_secret        = module.github.standard_client_secret
-  google_client_id            = module.google.standard_client_id
-  google_client_secret        = module.google.standard_client_secret
-  microsoft_client_id         = module.microsoft.standard_client_id
-  microsoft_client_secret     = module.microsoft.standard_client_secret
-  apple_client_id             = module.apple.standard_client_id
-  apple_client_secret         = module.apple.standard_client_secret
 
   digitalcredential_client_id         = var.digitalcredential_client_id
   digitalcredential_client_secret     = var.digitalcredential_client_secret
@@ -54,16 +42,6 @@ module "standard" {
   digitalcredential_token_url         = "https://vc-authn-oidc-test.apps.silver.devops.gov.bc.ca/token"
 
   add_backwards_compatible_mappers = true
-}
-
-module "apple" {
-  source              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-apple"
-  keycloak_url        = var.keycloak_url
-  realm_name          = local.apple_realm_name
-  standard_realm_name = local.standard_realm_name
-  sub_to_username     = true
-  apple_client_id     = var.apple_client_id
-  apple_client_secret = var.apple_client_secret
 }
 
 module "idir" {
@@ -146,28 +124,6 @@ module "github" {
   github_org          = "bcgov-sso"
   sub_to_username     = true
 }
-
-module "google" {
-  source              = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-google"
-  keycloak_url        = var.keycloak_url
-  realm_name          = local.google_realm_name
-  standard_realm_name = local.standard_realm_name
-  client_id           = var.google_client_id
-  client_secret       = var.google_client_secret
-  sub_to_username     = true
-}
-
-module "microsoft" {
-  source                  = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/base-realms/realm-microsoft"
-  keycloak_url            = var.keycloak_url
-  realm_name              = local.microsoft_realm_name
-  standard_realm_name     = local.standard_realm_name
-  sub_to_username         = true
-  microsoft_tenant_id     = var.microsoft_tenant_id
-  microsoft_client_id     = var.microsoft_client_id
-  microsoft_client_secret = var.microsoft_client_secret
-}
-# TODO: fix the creation of the microsoft realm, may need to add to the sso-terraform repos
 
 module "master_idir_link" {
   source           = "github.com/bcgov/sso-terraform-modules?ref=dev/modules/master-idp-link"

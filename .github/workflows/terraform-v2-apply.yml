@@ -69,24 +69,6 @@ jobs:
         prod-github-client-secret: ${{ secrets.PROD_GITHUB_CLIENT_SECRET }}
         prod-digitalcredential-client-id: ${{ secrets.PROD_DIGITALCREDENTIAL_CLIENT_ID }}
         prod-digitalcredential-client-secret: ${{ secrets.PROD_DIGITALCREDENTIAL_CLIENT_SECRET }}
-        dev-google-client-id: ${{ secrets.SANDBOX_GOOGLE_CLIENT_ID }}
-        dev-google-client-secret: ${{ secrets.SANDBOX_GOOGLE_CLIENT_SECRET }}
-        test-google-client-id: ${{ secrets.SANDBOX_GOOGLE_CLIENT_ID }}
-        test-google-client-secret: ${{ secrets.SANDBOX_GOOGLE_CLIENT_SECRET }}
-        prod-google-client-id: ${{ secrets.SANDBOX_GOOGLE_CLIENT_ID }}
-        prod-google-client-secret: ${{ secrets.SANDBOX_GOOGLE_CLIENT_SECRET }}
-        dev-microsoft-client-id: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_ID }}
-        dev-microsoft-client-secret: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_SECRET }}
-        test-microsoft-client-id: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_ID }}
-        test-microsoft-client-secret: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_SECRET }}
-        prod-microsoft-client-id: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_ID }}
-        prod-microsoft-client-secret: ${{ secrets.SANDBOX_MICROSOFT_CLIENT_SECRET }}
-        dev-apple-client-id: ${{ secrets.SANDBOX_DEV_APPLE_CLIENT_ID }}
-        dev-apple-client-secret: ${{ secrets.SANDBOX_DEV_APPLE_CLIENT_SECRET }}
-        test-apple-client-id: ${{ secrets.SANDBOX_TEST_APPLE_CLIENT_ID }}
-        test-apple-client-secret: ${{ secrets.SANDBOX_TEST_APPLE_CLIENT_SECRET }}
-        prod-apple-client-id: ${{ secrets.SANDBOX_PROD_APPLE_CLIENT_ID }}
-        prod-apple-client-secret: ${{ secrets.SANDBOX_PROD_APPLE_CLIENT_SECRET }}
         apply: true
         tf-modules-cache-key: ${{ steps.tf-modules.outputs.latest-sha }}
 
