@@ -1,6 +1,8 @@
 ## sso-terraform-dev
 
-![Lifecycle:Stable](https://img.shields.io/badge/Lifecycle-Stable-97ca00)
+# **THIS PROJECT IS ARCHIVED IN FAVOUR OF BRANCH BASED DEPLOYMENT OF https://github.com/bcgov/sso_terraform**
+
+![Lifecycle:Retired](https://img.shields.io/badge/Lifecycle-Retired-d45500)
 
 ### This repository is used as a `development` environment of `sso-requests` project.
 
